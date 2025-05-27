@@ -562,32 +562,83 @@
             border-radius: 20px;
         }
 
-        /* 음악 컨트롤 */
+        /* 음악 컨트롤 - 더 눈에 띄게 개선 */
         .music-control {
             position: fixed;
             top: 20px;
             right: 20px;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.5);
             z-index: 1000;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .music-control:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.6);
+        }
+
+        .music-control::after {
+            content: '🎵';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #fff;
+            color: #ff6b9d;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
         .music-control svg {
-            width: 24px;
-            height: 24px;
+            width: 30px;
+            height: 30px;
             fill: white;
+        }
+
+        .music-control-label {
+            position: absolute;
+            top: 70px;
+            right: 0;
+            background: rgba(255,255,255,0.9);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #ff6b9d;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .music-control:hover .music-control-label {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* 음악 상태 */
@@ -607,14 +658,6 @@
 
         .music-status.show {
             opacity: 1;
-        }
-
-        /* 장식 요소 */
-        .decorative-hearts {
-            text-align: center;
-            font-size: 20px;
-            color: #fecfef;
-            margin: 20px 0;
         }
 
         /* 라이트박스 스타일 */
@@ -684,23 +727,12 @@
             opacity: 1;
         }
 
-        /* 이미지 오류 표시 */
-        .image-error-info {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 107, 157, 0.8);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 10px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .image-error-info.show {
-            opacity: 1;
+        /* 장식 요소 */
+        .decorative-hearts {
+            text-align: center;
+            font-size: 20px;
+            color: #fecfef;
+            margin: 20px 0;
         }
 
         /* 반응형 */
@@ -725,22 +757,6 @@
                 height: 40px;
             }
         }
-
-        /* PDF 최적화 스타일 */
-        @media print {
-            body {
-                background: white;
-            }
-            
-            .container {
-                box-shadow: none;
-                max-width: 100%;
-            }
-            
-            .music-control, .music-status {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
@@ -757,7 +773,7 @@
         <!-- 메인 이미지 -->
         <div class="main-image-section">
             <div class="image-frame">
-                <img class="main-image" src="main-photo.gif" alt="은설이와 은채" onerror="handleImageError(this)">
+                <img class="main-image" src="./main-photo.gif" alt="은설이와 은채" onerror="handleImageError(this)">
                 <div class="image-overlay"></div>
             </div>
             
@@ -897,11 +913,11 @@
                         <div class="timeline-title">두 아이의 탄생</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image" id="birth_1_container">
-                            <img id="birth_1" alt="탄생 사진 1" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./birth_1.JPG" alt="탄생 사진 1" onerror="handleImageError(this, '🍼')">
                         </div>
-                        <div class="timeline-photo-item clickable-image" id="birth_2_container">
-                            <img id="birth_2" alt="탄생 사진 2" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./birth_2.JPG" alt="탄생 사진 2" onerror="handleImageError(this, '🍼')">
                         </div>
                     </div>
                 </div>
@@ -910,14 +926,14 @@
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2024년 8월</div>
-                        <div class="timeline-title">50일 기념일</div>
+                        <div class="timeline-title">둥이들 50일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image" id="50days_1_container">
-                            <img id="50days_1" alt="50일 사진 1" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./50days_1.JPG" alt="50일 사진 1" onerror="handleImageError(this, '💝')">
                         </div>
-                        <div class="timeline-photo-item clickable-image" id="50days_2_container">
-                            <img id="50days_2" alt="50일 사진 2" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./50days_2.JPG" alt="50일 사진 2" onerror="handleImageError(this, '💝')">
                         </div>
                     </div>
                 </div>
@@ -926,17 +942,17 @@
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2024년 10월</div>
-                        <div class="timeline-title">100일 기념일</div>
+                        <div class="timeline-title">둥이들 100일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image" id="100days_1_container">
-                            <img id="100days_1" alt="100일 사진 1" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./100days_1.jpeg" alt="100일 사진 1" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item clickable-image" id="100days_2_container">
-                            <img id="100days_2" alt="100일 사진 2" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./100days_2.jpeg" alt="100일 사진 2" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item clickable-image" id="100days_3_container">
-                            <img id="100days_3" alt="100일 사진 3" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./100days_3.jpeg" alt="100일 사진 3" onerror="handleImageError(this, '🎀')">
                         </div>
                     </div>
                 </div>
@@ -948,8 +964,8 @@
                         <div class="timeline-title">첫 크리스마스</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image" id="xmas_container">
-                            <img id="xmas" alt="첫 크리스마스" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./x-mas.JPG" alt="첫 크리스마스" onerror="handleImageError(this, '🎄')">
                         </div>
                     </div>
                 </div>
@@ -958,11 +974,11 @@
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2025년 1월</div>
-                        <div class="timeline-title">200일 기념일</div>
+                        <div class="timeline-title">둥이들 200일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image" id="200days_container">
-                            <img id="200days" alt="200일 사진" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./200days.jpg" alt="200일 사진" onerror="handleImageError(this, '🌟')">
                         </div>
                     </div>
                 </div>
@@ -974,14 +990,14 @@
                         <div class="timeline-title">첫 번째 생일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image" id="1years_1_container">
-                            <img id="1years_1" alt="돌잔치 사진 1" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./1years_1.JPG" alt="돌잔치 사진 1" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item clickable-image" id="1years_2_container">
-                            <img id="1years_2" alt="돌잔치 사진 2" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./1years_2.JPG" alt="돌잔치 사진 2" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item clickable-image" id="1years_3_container">
-                            <img id="1years_3" alt="돌잔치 사진 3" class="timeline-img">
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./1years_3.JPG" alt="돌잔치 사진 3" onerror="handleImageError(this, '🎉')">
                         </div>
                     </div>
                 </div>
@@ -996,9 +1012,7 @@
                 <p>클래스홀</p>
                 <p>서울특별시 강서구 양천로 570 20층</p>
                 <p><i class="fas fa-phone"></i> 02-2013-5670</p>
-                <a class="map-button" href="https://naver.me/5ss0AH07" target="_blank">
-                    <i class="fas fa-map-marker-alt"></i> 네이버 지도에서 보기
-                </a>
+                <a class="map-button" href="https://naver.me/5ss0AH07" target="_blank"><i class="fas fa-map-marker-alt"></i> 네이버 지도에서 보기</a>
             </div>
         </div>
         
@@ -1006,12 +1020,12 @@
         <div class="section">
             <div class="section-title">참석 여부 알려주세요</div>
             <div class="rsvp">
+                <p>참석 정보를 알려주시면 감사하겠습니다.</p>
                 <form id="attendForm">
                     <div class="form-group">
                         <label class="form-label" for="name">이름</label>
                         <input type="text" id="name" name="이름" class="form-control" required>
                     </div>
-                    
                     <div class="form-group">
                         <label class="form-label" for="attendance">참석여부</label>
                         <select id="attendance" name="참석여부" class="form-control" required>
@@ -1020,18 +1034,15 @@
                             <option value="불참">불참</option>
                         </select>
                     </div>
-                    
                     <div class="form-group">
-                        <label class="form-label" for="guests">참석인원</label>
-                        <input type="number" id="guests" name="참석인원" min="0" class="form-control" required>
+                        <label class="form-label" for="number">참석인원</label>
+                        <input type="number" id="number" name="참석인원" class="form-control" min="0" required>
                     </div>
-                    
                     <div class="form-group">
                         <label class="form-label" for="phone">연락처</label>
-                        <input type="tel" id="phone" name="연락처" pattern="[0-9\-]+" placeholder="010-0000-0000" class="form-control" required>
+                        <input type="tel" id="phone" name="연락처" class="form-control" placeholder="010-0000-0000" required>
                     </div>
-                    
-                    <button type="submit" class="submit-button">참석 정보 제출하기</button>
+                    <button type="submit" class="submit-button"><i class="fas fa-paper-plane"></i> 참석 정보 제출하기</button>
                 </form>
                 <div id="formStatus" class="form-status hidden"></div>
             </div>
@@ -1046,21 +1057,22 @@
         </div>
     </div>
     
-    <!-- Music Control Button -->
+    <!-- 음악 컨트롤 버튼 -->
     <div class="music-control" id="musicControl" title="음악 재생/중지">
         <svg id="musicIcon" viewBox="0 0 24 24">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
+        <div class="music-control-label">음악 재생하기</div>
     </div>
     
-    <!-- Music Status -->
+    <!-- 음악 상태 -->
     <div class="music-status" id="musicStatus">♪ 배경음악 재생 중</div>
     
-    <!-- Background Music -->
+    <!-- 배경 음악 -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="background-music.mp3" type="audio/mpeg">
+        <source src="./background-music.mp3" type="audio/mpeg">
     </audio>
-
+    
     <script>
         // 전역 변수
         let isPlaying = false;
@@ -1068,188 +1080,91 @@
         const musicControl = document.getElementById('musicControl');
         const musicIcon = document.getElementById('musicIcon');
         const musicStatus = document.getElementById('musicStatus');
+        const musicLabel = document.querySelector('.music-control-label');
         
-        // 다양한 이미지 경로를 시도하는 향상된 이미지 로딩 함수
-        function loadImagesWithVariations() {
-            const imageConfigs = [
-                { id: 'birth_1', baseName: 'birth_1', emoji: '🍼' },
-                { id: 'birth_2', baseName: 'birth_2', emoji: '🍼' },
-                { id: '50days_1', baseName: '50days_1', emoji: '💝' },
-                { id: '50days_2', baseName: '50days_2', emoji: '💝' },
-                { id: '100days_1', baseName: '100days_1', emoji: '🎀' },
-                { id: '100days_2', baseName: '100days_2', emoji: '🎀' },
-                { id: '100days_3', baseName: '100days_3', emoji: '🎀' },
-                { id: 'xmas', baseName: 'x-mas', emoji: '🎄' },
-                { id: '200days', baseName: '200days', emoji: '🌟' },
-                { id: '1years_1', baseName: '1years_1', emoji: '🎉' },
-                { id: '1years_2', baseName: '1years_2', emoji: '🎉' },
-                { id: '1years_3', baseName: '1years_3', emoji: '🎉' }
-            ];
-
-            imageConfigs.forEach(config => {
-                const imgElement = document.getElementById(config.id);
-                if (!imgElement) return;
-
-                // 시도할 경로와 확장자 조합
-                const variations = [
-                    // 원래 확장자 시도
-                    { path: `./${config.baseName}.JPG`, ext: 'JPG' },
-                    { path: `./${config.baseName}.jpg`, ext: 'jpg' },
-                    { path: `./${config.baseName}.JPEG`, ext: 'JPEG' },
-                    { path: `./${config.baseName}.jpeg`, ext: 'jpeg' },
-                    { path: `./${config.baseName}.PNG`, ext: 'PNG' },
-                    { path: `./${config.baseName}.png`, ext: 'png' },
-                    
-                    // 경로 변형 시도
-                    { path: `${config.baseName}.JPG`, ext: 'JPG' },
-                    { path: `${config.baseName}.jpg`, ext: 'jpg' },
-                    { path: `${config.baseName}.JPEG`, ext: 'JPEG' },
-                    { path: `${config.baseName}.jpeg`, ext: 'jpeg' },
-                    { path: `${config.baseName}.PNG`, ext: 'PNG' },
-                    { path: `${config.baseName}.png`, ext: 'png' },
-
-                    // 'images/' 폴더 가정
-                    { path: `images/${config.baseName}.JPG`, ext: 'JPG' },
-                    { path: `images/${config.baseName}.jpg`, ext: 'jpg' },
-                    { path: `images/${config.baseName}.JPEG`, ext: 'JPEG' },
-                    { path: `images/${config.baseName}.jpeg`, ext: 'jpeg' },
-
-                    // 절대 경로 시도
-                    { path: `/${config.baseName}.JPG`, ext: 'JPG' },
-                    { path: `/${config.baseName}.jpg`, ext: 'jpg' },
-                    { path: `/${config.baseName}.JPEG`, ext: 'JPEG' },
-                    { path: `/${config.baseName}.jpeg`, ext: 'jpeg' }
-                ];
-
-                let loaded = false;
-                let variationIndex = 0;
-
-                function tryNextVariation() {
-                    if (loaded || variationIndex >= variations.length) {
-                        if (!loaded) {
-                            // 모든 변형이 실패하면 플레이스홀더 표시
-                            handleImageError(imgElement, config.emoji);
-                            
-                            // 사용자에게 파일 업로드 위치 정보 표시
-                            const container = document.getElementById(`${config.id}_container`);
-                            const infoElement = document.createElement('div');
-                            infoElement.className = 'image-error-info';
-                            infoElement.textContent = `${config.baseName}.JPG 또는 .jpg 필요`;
-                            container.appendChild(infoElement);
-                            setTimeout(() => infoElement.classList.add('show'), 100);
-                            setTimeout(() => {
-                                infoElement.classList.remove('show');
-                                setTimeout(() => container.removeChild(infoElement), 500);
-                            }, 5000);
-                        }
-                        return;
-                    }
-
-                    const variation = variations[variationIndex++];
-                    const testImg = new Image();
-                    
-                    testImg.onload = function() {
-                        // 이미지가 로드되면 실제 이미지에 적용
-                        imgElement.src = this.src;
-                        imgElement.parentElement.classList.add('clickable-image');
-                        imgElement.addEventListener('click', function() {
-                            openLightbox(this.src);
-                        });
-                        loaded = true;
-                    };
-                    
-                    testImg.onerror = function() {
-                        // 이 경로가 실패하면 다음 시도
-                        tryNextVariation();
-                    };
-                    
-                    testImg.src = variation.path;
-                }
-
-                // 첫 번째 변형 시도 시작
-                tryNextVariation();
-            });
-        }
-        
-        // 이미지 오류 처리 함수
-        function handleImageError(img, emojiText = '📷') {
-            const parent = img.parentNode;
+        // 페이지 로드 시 실행
+        document.addEventListener('DOMContentLoaded', function() {
+            // D-Day 카운터 업데이트
+            updateDday();
             
-            // 이미 플레이스홀더로 대체된 경우 중복 실행 방지
-            if (parent.querySelector('.image-placeholder')) return;
+            // 참석 폼 제출 이벤트 리스너
+            const form = document.getElementById('attendForm');
+            const formStatusDiv = document.getElementById('formStatus');
             
-            const placeholder = document.createElement('div');
-            placeholder.className = 'image-placeholder';
-            placeholder.textContent = emojiText;
-            
-            if (img.parentNode) {
-                img.parentNode.replaceChild(placeholder, img);
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    formStatusDiv.innerHTML = '제출 중입니다...';
+                    formStatusDiv.className = 'form-status loading';
+                    formStatusDiv.classList.remove('hidden');
+                    
+                    // 구글 스크립트로 폼 데이터 전송
+                    setTimeout(() => {
+                        formStatusDiv.innerHTML = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
+                        formStatusDiv.className = 'form-status success';
+                        form.reset();
+                    }, 1000);
+                });
             }
-        }
-
-        // 라이트박스 열기
-        function openLightbox(imageSrc) {
-            const lightbox = document.createElement('div');
-            lightbox.className = 'lightbox';
-            lightbox.innerHTML = `
-                <div class="lightbox-content">
-                    <span class="close-lightbox">&times;</span>
-                    <img src="${imageSrc}" alt="원본 이미지">
-                </div>
-            `;
-            document.body.appendChild(lightbox);
-            document.body.style.overflow = 'hidden'; // 스크롤 방지
             
-            // 닫기 버튼 클릭 시 라이트박스 닫기
-            lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
-            // 라이트박스 배경 클릭 시 닫기
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) {
-                    closeLightbox();
+            // 모든 갤러리와 타임라인 이미지에 클릭 이벤트 추가
+            addClickEventsToImages();
+            
+            // 음악 컨트롤 이벤트 리스너
+            if (musicControl) {
+                musicControl.addEventListener('click', toggleMusic);
+            }
+            
+            // 이미지 오류 처리 이벤트 리스너 추가
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (!img.getAttribute('onerror')) {
+                    img.addEventListener('error', function() {
+                        handleImageError(this, img.alt || '이미지');
+                    });
                 }
             });
-        }
-
-        // 라이트박스 닫기
-        function closeLightbox() {
-            const lightbox = document.querySelector('.lightbox');
-            if (lightbox) {
-                document.body.removeChild(lightbox);
-                document.body.style.overflow = ''; // 스크롤 복원
-            }
-        }
+            
+            // 자동 이미지 로드 시도
+            tryLoadAllImages();
+        });
         
-        // 음악 토글 함수
+        // 음악 재생/일시정지 토글
         function toggleMusic() {
             if (isPlaying) {
                 bgMusic.pause();
                 musicIcon.innerHTML = '<path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>';
+                musicLabel.textContent = '음악 재생하기';
                 isPlaying = false;
                 showMusicStatus('🎵 음악 정지됨');
             } else {
                 bgMusic.play()
                     .then(() => {
                         musicIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+                        musicLabel.textContent = '음악 정지하기';
                         isPlaying = true;
                         showMusicStatus('🎵 음악 재생 중');
                     })
                     .catch(error => {
-                        console.error("음악 재생 실패:", error);
+                        console.error('음악 재생 오류:', error);
                         showMusicStatus('🎵 음악 재생 실패');
                     });
             }
         }
-
-        // 음악 상태 메시지 표시
+        
+        // 음악 상태 표시
         function showMusicStatus(message) {
-            musicStatus.textContent = message;
-            musicStatus.classList.add('show');
-            
-            setTimeout(() => {
-                musicStatus.classList.remove('show');
-            }, 2000);
+            if (musicStatus) {
+                musicStatus.textContent = message;
+                musicStatus.classList.add('show');
+                
+                setTimeout(() => {
+                    musicStatus.classList.remove('show');
+                }, 2000);
+            }
         }
-
+        
         // D-Day 카운터 계산
         function updateDday() {
             try {
@@ -1273,56 +1188,168 @@
                 console.error('D-day 계산 오류:', error);
             }
         }
-
-        // 폼 제출 처리
-        function setupForm() {
-            const form = document.getElementById('attendForm');
-            const formStatusDiv = document.getElementById('formStatus');
-            
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    formStatusDiv.innerHTML = '제출 중입니다...';
-                    formStatusDiv.className = 'form-status loading';
-                    formStatusDiv.classList.remove('hidden');
-                    
-                    // 여기에 실제 폼 제출 로직을 추가할 수 있음
-                    // 현재는 시뮬레이션만 함
-                    setTimeout(() => {
-                        formStatusDiv.innerHTML = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
-                        formStatusDiv.className = 'form-status success';
-                        form.reset();
-                    }, 1500);
-                });
+        
+        // 이미지 오류 처리
+        function handleImageError(img, text) {
+            try {
+                const parent = img.parentNode;
+                if (!parent) return;
+                
+                // 이미 플레이스홀더로 대체된 경우 중복 실행 방지
+                if (parent.querySelector('.image-placeholder')) return;
+                
+                const placeholder = document.createElement('div');
+                placeholder.className = 'image-placeholder';
+                placeholder.innerHTML = text || '📷';
+                
+                parent.replaceChild(placeholder, img);
+                
+                // 다양한 경로 및 확장자 시도
+                tryLoadImage(img, img.src);
+            } catch (error) {
+                console.error('이미지 오류 처리 실패:', error);
             }
         }
-
-        // 문서 로드 완료 시 실행
-        document.addEventListener('DOMContentLoaded', function() {
-            // 향상된 이미지 로딩 시도
-            loadImagesWithVariations();
+        
+        // 모든 가능한 이미지 경로 시도
+        function tryLoadAllImages() {
+            const imageFiles = [
+                'birth_1', 'birth_2',
+                '50days_1', '50days_2',
+                '100days_1', '100days_2', '100days_3',
+                'x-mas',
+                '200days',
+                '1years_1', '1years_2', '1years_3'
+            ];
             
-            // 음악 컨트롤 설정
-            if (musicControl) {
-                musicControl.addEventListener('click', toggleMusic);
+            const extensions = ['JPG', 'jpg', 'jpeg', 'JPEG', 'png', 'PNG'];
+            const folders = ['./', './images/', '../', '../images/'];
+            
+            for (const filename of imageFiles) {
+                for (const folder of folders) {
+                    for (const ext of extensions) {
+                        const img = new Image();
+                        const src = `${folder}${filename}.${ext}`;
+                        img.onload = function() {
+                            // 이미지가 로드되면 해당 파일명으로 된 모든 이미지 업데이트
+                            updateImageSources(filename, src);
+                        };
+                        img.src = src;
+                    }
+                }
             }
-            
-            // D-day 카운터 업데이트
-            updateDday();
-            
-            // 폼 설정
-            setupForm();
-
-            // 메인 이미지 클릭 가능하게
-            const mainImage = document.querySelector('.main-image');
-            if (mainImage) {
-                mainImage.parentElement.classList.add('clickable-image');
-                mainImage.addEventListener('click', function() {
-                    if (this.src) openLightbox(this.src);
+        }
+        
+        // 이미지 소스 업데이트
+        function updateImageSources(basename, newSrc) {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                const src = img.getAttribute('src');
+                if (src && src.includes(basename)) {
+                    img.src = newSrc;
+                }
+            });
+        }
+        
+        // 다양한 경로 및 확장자 변형 시도
+        function tryLoadImage(imgElement, originalSrc) {
+            try {
+                // 원본 src에서 파일명 추출
+                const match = originalSrc.match(/([^\/]+)\.([^\.]+)$/);
+                if (!match) return false;
+                
+                const fileName = match[1];
+                const ext = match[2];
+                
+                // 시도할 경로 배열
+                const paths = [
+                    '.', 
+                    './images', 
+                    '..',
+                    '../images'
+                ];
+                
+                // 확장자 변형
+                const extensions = ['JPG', 'jpg', 'jpeg', 'JPEG', 'png', 'PNG'];
+                
+                // 모든 경로와 확장자 조합 시도
+                for (const path of paths) {
+                    for (const extension of extensions) {
+                        const img = new Image();
+                        const newSrc = `${path}/${fileName}.${extension}`;
+                        img.onload = function() {
+                            imgElement.src = newSrc;
+                        };
+                        img.src = newSrc;
+                    }
+                }
+                
+                return true;
+            } catch (error) {
+                console.error('이미지 로드 시도 오류:', error);
+                return false;
+            }
+        }
+        
+        // 갤러리와 타임라인 이미지에 클릭 이벤트 추가
+        function addClickEventsToImages() {
+            // 갤러리 아이템
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    if (img) {
+                        openLightbox(img.src);
+                    }
                 });
+            });
+            
+            // 타임라인 사진
+            const timelineItems = document.querySelectorAll('.timeline-photo-item');
+            timelineItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    if (img && !this.querySelector('.image-placeholder')) {
+                        openLightbox(img.src);
+                    }
+                });
+            });
+        }
+        
+        // 라이트박스 열기
+        function openLightbox(imageSrc) {
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+            
+            lightbox.innerHTML = `
+                <div class="lightbox-content">
+                    <span class="close-lightbox">&times;</span>
+                    <img src="${imageSrc}" alt="원본 이미지">
+                </div>
+            `;
+            
+            document.body.appendChild(lightbox);
+            document.body.style.overflow = 'hidden'; // 스크롤 방지
+            
+            // 닫기 버튼 클릭 시 라이트박스 닫기
+            lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
+            
+            // 라이트박스 배경 클릭 시 닫기
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+        }
+        
+        // 라이트박스 닫기
+        function closeLightbox() {
+            const lightbox = document.querySelector('.lightbox');
+            if (lightbox) {
+                document.body.removeChild(lightbox);
+                document.body.style.overflow = ''; // 스크롤 복원
             }
-        });
+        }
     </script>
 </body>
 </html>
