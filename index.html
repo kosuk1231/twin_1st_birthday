@@ -1,3 +1,7 @@
+
+### 1부: HTML 시작 및 HEAD 부분
+
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -180,7 +184,7 @@
             border-radius: 2px;
         }
 
-        /* 가족 정보 - 폰트 및 색상 통일 */
+        /* 가족 정보 */
         .family-info {
             text-align: center;
         }
@@ -199,7 +203,11 @@
             color: #ff6b9d;
             font-size: 16px;
         }
+```
 
+### 2부: CSS 계속
+
+```css
         /* 날짜 정보 */
         .date-info {
             text-align: center;
@@ -255,7 +263,7 @@
             100% { transform: scale(1); }
         }
 
-        /* 달력 스타일 - 비율 재조정 */
+        /* 달력 스타일 */
         .calendar {
             background: white;
             border-radius: 15px;
@@ -343,7 +351,7 @@
             color: #ff6b9d;
         }
 
-        /* 타임라인 - 성장 여정 */
+        /* 타임라인 */
         .timeline {
             margin-top: 30px;
         }
@@ -375,7 +383,11 @@
             font-weight: 700;
             margin-top: 5px;
         }
+```
 
+### 3부: CSS 계속
+
+```css
         .timeline-photos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -545,7 +557,11 @@
             background-color: rgba(145, 187, 255, 0.2);
             color: #3f51b5;
         }
+```
 
+### 4부: CSS 계속 및 라이트박스 스타일
+
+```css
         .hidden {
             display: none;
         }
@@ -616,6 +632,73 @@
             margin: 20px 0;
         }
 
+        /* 라이트박스 스타일 */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .clickable-image {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .clickable-image::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .clickable-image:hover::after {
+            opacity: 1;
+        }
+
         /* 반응형 */
         @media (max-width: 480px) {
             .container {
@@ -640,19 +723,12 @@
         }
     </style>
 </head>
+```
+
+### 5부: HTML BODY 시작 부분
+
+```html
 <body>
-    <div class="music-control" id="musicControl">
-        <svg id="musicIcon" viewBox="0 0 24 24">
-            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-        </svg>
-    </div>
-    
-    <div class="music-status" id="musicStatus"></div>
-    
-    <audio id="bgMusic" preload="auto">
-        <source src="background-music.mp3" type="audio/mpeg">
-    </audio>
-    
     <div class="container">
         <!-- 헤더 -->
         <div class="header">
@@ -666,7 +742,7 @@
         <!-- 메인 이미지 -->
         <div class="main-image-section">
             <div class="image-frame">
-                <img class="main-image" src="main-photo.gif" alt="은설이와 은채" onerror="handleImageError(this)">
+                <img class="main-image" src="./main-photo.gif" alt="은설이와 은채" onerror="handleImageError(this)">
                 <div class="image-overlay"></div>
             </div>
             
@@ -769,27 +845,31 @@
                 </table>
             </div>
         </div>
-        
+```
+
+### 6부: HTML 계속 - 갤러리와 타임라인 시작
+
+```html        
         <!-- 갤러리 -->
         <div class="section">
             <div class="section-title">갤러리</div>
             <div class="gallery">
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">🎂</div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">👶</div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">👶</div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">🎁</div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">🎈</div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">🎊</div>
                 </div>
             </div>
@@ -806,11 +886,11 @@
                         <div class="timeline-title">두 아이의 탄생</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">🍼 탄생 사진</div>
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./birth_1.JPG" alt="탄생 사진 1" onerror="handleImageError(this, '🍼 탄생 사진')">
                         </div>
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">🍼 탄생 사진</div>
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./birth_2.JPG" alt="탄생 사진 2" onerror="handleImageError(this, '🍼 탄생 사진')">
                         </div>
                     </div>
                 </div>
@@ -822,265 +902,8 @@
                         <div class="timeline-title">50일 기념일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">💝 50일 사진</div>
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./50days_1.JPG" alt="50일 사진 1" onerror="handleImageError(this, '💝 50일 사진')">
                         </div>
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">💝 50일 사진</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 100일 사진 -->
-                <div class="timeline-section">
-                    <div class="timeline-header">
-                        <div class="timeline-date">2024년 10월</div>
-                        <div class="timeline-title">100일 기념일</div>
-                    </div>
-                    <div class="timeline-photos">
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">🎀 100일 사진</div>
-                        </div>
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">🎀 100일 사진</div>
-                        </div>
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">🎀 100일 사진</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 첫 크리스마스 -->
-                <div class="timeline-section">
-                    <div class="timeline-header">
-                        <div class="timeline-date">2024년 12월</div>
-                        <div class="timeline-title">첫 크리스마스</div>
-                    </div>
-                    <div class="timeline-photos">
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">🎄 첫 크리스마스</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 200일 사진 -->
-                <div class="timeline-section">
-                    <div class="timeline-header">
-                        <div class="timeline-date">2025년 1월</div>
-                        <div class="timeline-title">200일 기념일</div>
-                    </div>
-                    <div class="timeline-photos">
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">🌟 200일 기념일</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 생일사진 -->
-                <div class="timeline-section">
-                    <div class="timeline-header">
-                        <div class="timeline-date">2025년 7월</div>
-                        <div class="timeline-title">첫 번째 생일</div>
-                    </div>
-                    <div class="timeline-photos">
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">🎉 첫 생일 사진</div>
-                        </div>
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">🎉 첫 생일 사진</div>
-                        </div>
-                        <div class="timeline-photo-item">
-                            <div class="image-placeholder">🎉 첫 생일 사진</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 오시는 길 -->
-        <div class="section">
-            <div class="section-title">오시는 길</div>
-            <div class="location-info">
-                <p class="location-name">더퍼스트클래스 강서NH서울타워점</p>
-                <p>클래스홀</p>
-                <p>서울특별시 강서구 양천로 570 20층</p>
-                <p>📞 02-2013-5670</p>
-                <a class="map-button" href="https://naver.me/5ss0AH07" target="_blank">📍 네이버 지도에서 보기</a>
-            </div>
-        </div>
-        
-        <!-- 참석 여부 -->
-        <div class="section">
-            <div class="section-title">참석 여부 알려주세요</div>
-            <form id="attendForm" class="rsvp">
-                <div class="form-group">
-                    <label class="form-label" for="name">이름</label>
-                    <input type="text" id="name" name="이름" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="attendance">참석여부</label>
-                    <select id="attendance" name="참석여부" class="form-control" required>
-                        <option value="">선택해주세요</option>
-                        <option value="참석">참석</option>
-                        <option value="불참">불참</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="count">참석인원</label>
-                    <input type="number" id="count" name="참석인원" class="form-control" min="0" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="phone">연락처</label>
-                    <input type="tel" id="phone" name="연락처" class="form-control" placeholder="010-0000-0000" required>
-                </div>
-                
-                <button type="submit" class="submit-button">참석 정보 제출하기</button>
-                
-                <div id="formStatus" class="form-status hidden"></div>
-            </form>
-        </div>
-        
-        <div class="decorative-hearts">♡ ♡ ♡</div>
-        
-        <!-- 감사 메시지 -->
-        <div class="thanks">
-            소중한 첫 생일을<br>
-            함께 축하해 주셔서 감사합니다.
-        </div>
-    </div>
-    
-    <script>
-        // 전역 변수
-        const bgMusic = document.getElementById('bgMusic');
-        const musicControl = document.getElementById('musicControl');
-        const musicIcon = document.getElementById('musicIcon');
-        const musicStatus = document.getElementById('musicStatus');
-        let isPlaying = false;
-        
-        // 이미지 오류 핸들러
-        function handleImageError(img, text) {
-            if (!img.parentNode) return;
-            
-            const placeholder = document.createElement('div');
-            placeholder.className = 'image-placeholder';
-            
-            if (text) {
-                placeholder.textContent = text;
-            } else {
-                placeholder.textContent = '📷 이미지';
-            }
-            
-            if (img.parentNode.classList.contains('timeline-photo-item')) {
-                img.parentNode.appendChild(placeholder);
-                img.style.display = 'none';
-            } else {
-                img.parentNode.replaceChild(placeholder, img);
-            }
-        }
-        
-        // 음악 컨트롤 이벤트 리스너
-        musicControl.addEventListener('click', function() {
-            toggleMusic();
-        });
-        
-        // 음악 재생/정지 토글
-        function toggleMusic() {
-            if (isPlaying) {
-                bgMusic.pause();
-                musicIcon.innerHTML = '<path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>';
-                isPlaying = false;
-                showMusicStatus('🎵 음악 정지됨');
-            } else {
-                try {
-                    const playPromise = bgMusic.play();
-                    
-                    if (playPromise !== undefined) {
-                        playPromise.then(() => {
-                            musicIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
-                            isPlaying = true;
-                            showMusicStatus('🎵 음악 재생 중');
-                        }).catch(error => {
-                            console.error("음악 재생 실패:", error);
-                            showMusicStatus('🎵 음악을 재생할 수 없습니다');
-                        });
-                    }
-                } catch (error) {
-                    console.error("음악 재생 오류:", error);
-                }
-            }
-        }
-        
-        // 음악 상태 표시
-        function showMusicStatus(message) {
-            musicStatus.textContent = message;
-            musicStatus.classList.add('show');
-            
-            setTimeout(() => {
-                musicStatus.classList.remove('show');
-            }, 2000);
-        }
-        
-        // D-day 카운터
-        function updateDday() {
-            const eventDate = new Date(2025, 6, 5); // 2025년 7월 5일 (월은 0부터 시작)
-            const today = new Date();
-            
-            // 날짜 차이 계산 (밀리초)
-            const diffTime = eventDate.getTime() - today.getTime();
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            
-            const ddayCounter = document.getElementById('dday-counter');
-            if (diffDays > 0) {
-                ddayCounter.innerHTML = `D-${diffDays}`;
-            } else if (diffDays === 0) {
-                ddayCounter.innerHTML = "D-Day";
-            } else {
-                ddayCounter.innerHTML = `D+${Math.abs(diffDays)}`;
-            }
-        }
-        
-        // 폼 제출 처리
-        document.getElementById('attendForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const formStatusDiv = document.getElementById('formStatus');
-            
-            formStatusDiv.textContent = '제출 중입니다...';
-            formStatusDiv.className = 'form-status loading';
-            formStatusDiv.classList.remove('hidden');
-            
-            // 실제 API 호출
-            setTimeout(() => {
-                // 실제로는 fetch를 사용하여 API로 데이터 전송
-                // fetch('https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec', {
-                //     method: 'POST',
-                //     body: formData
-                // }).then().catch()
-                
-                formStatusDiv.textContent = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
-                formStatusDiv.className = 'form-status success';
-                this.reset();
-            }, 1000);
-        });
-        
-        // 페이지 로드 시 실행
-        document.addEventListener('DOMContentLoaded', function() {
-            updateDday();
-            
-            // 이미지 오류 처리를 위한 초기화 (이미 오류가 발생한 이미지 처리)
-            document.querySelectorAll('img').forEach(img => {
-                if (img.complete && img.naturalHeight === 0) {
-                    handleImageError(img);
-                }
-            });
-            
-            // 음악 자동 로드 (재생은 안 함)
-            bgMusic.load();
-        });
-    </script>
-</body>
-</html>
+                        <div class="timeline-photo-item clickable-image">
+                            <img src="./50days_2.JPG" alt="50일 사진 2" onerror="handleImageError(this, '💝 50일 사진')">
