@@ -136,6 +136,29 @@
         }
 
         /* 초대 메시지 */
+        .invitation-header {
+            font-size: 21px;
+            font-weight: 700;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            position: relative;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        .invitation-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #fecfef, #ff6b9d, #fecfef);
+            border-radius: 2px;
+        }
+
         .invitation-text {
             font-size: 18px;
             line-height: 2.0;
@@ -461,6 +484,100 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
+        /* 참석여부 */
+        .rsvp {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 10px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .rsvp p {
+            margin-bottom: 15px;
+            color: #6a5a7a;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #fecfef;
+            border-radius: 10px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 14px;
+            color: #5a4a6a;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #ff6b9d;
+            box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.2);
+        }
+
+        .form-label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #8b5fbf;
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .submit-button {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff6b9d, #fecfef);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .form-status {
+            margin-top: 15px;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .form-status.success {
+            background-color: rgba(145, 255, 172, 0.2);
+            color: #4CAF50;
+            display: block;
+        }
+
+        .form-status.error {
+            background-color: rgba(255, 145, 145, 0.2);
+            color: #f44336;
+            display: block;
+        }
+
+        .form-status.loading {
+            background-color: rgba(145, 187, 255, 0.2);
+            color: #3f51b5;
+            display: block;
+        }
+
         /* 연락처 */
         .contact-info {
             padding: 15px 10px;
@@ -737,13 +854,13 @@
                 <div class="image-overlay"></div>
             </div>
             
+            <div class="invitation-header">
+                소중한 순간, 소중한 분들을 모십니다
+            </div>
             <div class="invitation-text">
-                사랑스런 두 아이, <span class="highlight">은설이와 은채</span>가<br>
-                세상에 온 지 벌써 1년이 되었습니다.<br><br>
-                처음 웃고, 처음 손을 잡아준 그 순간부터<br>
-                우리는 매일 기적을 마주했습니다.<br><br>
-                소중한 첫 생일, 함께 축하해주시고<br>
-                따뜻한 응원을 보내주세요.
+                저희 부부에게 기적처럼 찾아와준 선물같은 두 아이, <span class="highlight">은설이와 은채</span>가 어느덧 건강하게 자라 첫 번째 생일을 맞이하였습니다.<br><br>
+                늘 마음으로 저희를 응원해주시는 감사한 분들을 초대하여 뜻깊은 날의 기쁨을 함께 나누고자 합니다.<br><br>
+                귀한 발걸음으로 자리를 빛내주시면 감사하겠습니다.
             </div>
         </div>
         
@@ -834,31 +951,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-        
-        <!-- 갤러리 -->
-        <div class="section">
-            <div class="section-title">갤러리</div>
-            <div class="gallery">
-                <div class="gallery-item clickable-image">
-                    <div class="gallery-placeholder">🎂</div>
-                </div>
-                <div class="gallery-item clickable-image">
-                    <div class="gallery-placeholder">👶</div>
-                </div>
-                <div class="gallery-item clickable-image">
-                    <div class="gallery-placeholder">👶</div>
-                </div>
-                <div class="gallery-item clickable-image">
-                    <div class="gallery-placeholder">🎁</div>
-                </div>
-                <div class="gallery-item clickable-image">
-                    <div class="gallery-placeholder">🎈</div>
-                </div>
-                <div class="gallery-item clickable-image">
-                    <div class="gallery-placeholder">🎊</div>
-                </div>
             </div>
         </div>
         
@@ -994,6 +1086,31 @@
             </div>
         </div>
         
+        <!-- 갤러리 -->
+        <div class="section">
+            <div class="section-title">갤러리</div>
+            <div class="gallery">
+                <div class="gallery-item clickable-image">
+                    <div class="gallery-placeholder">🎂</div>
+                </div>
+                <div class="gallery-item clickable-image">
+                    <div class="gallery-placeholder">👶</div>
+                </div>
+                <div class="gallery-item clickable-image">
+                    <div class="gallery-placeholder">👶</div>
+                </div>
+                <div class="gallery-item clickable-image">
+                    <div class="gallery-placeholder">🎁</div>
+                </div>
+                <div class="gallery-item clickable-image">
+                    <div class="gallery-placeholder">🎈</div>
+                </div>
+                <div class="gallery-item clickable-image">
+                    <div class="gallery-placeholder">🎊</div>
+                </div>
+            </div>
+        </div>
+        
         <!-- 오시는 길 -->
         <div class="section">
             <div class="section-title">오시는 길</div>
@@ -1009,12 +1126,43 @@
         <!-- 참석 여부 -->
         <div class="section">
             <div class="section-title">참석 여부 알려주세요</div>
+            <div class="rsvp">
+                <form id="attendForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">이름</label>
+                        <input type="text" id="name" name="이름" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="attend" class="form-label">참석여부</label>
+                        <select id="attend" name="참석여부" class="form-control" required>
+                            <option value="">선택해주세요</option>
+                            <option value="참석">참석</option>
+                            <option value="불참">불참</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests" class="form-label">참석인원</label>
+                        <input type="number" id="guests" name="참석인원" class="form-control" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">연락처</label>
+                        <input type="tel" id="phone" name="연락처" class="form-control" placeholder="010-0000-0000" required>
+                    </div>
+                    <button type="submit" class="submit-button">참석 정보 제출하기</button>
+                </form>
+                <div id="formStatus" class="form-status"></div>
+            </div>
+        </div>
+        
+        <!-- 연락처 정보 -->
+        <div class="section">
+            <div class="section-title">연락처</div>
             <div class="contact-info">
                 <!-- 아빠 연락처 -->
                 <div class="contact-person">
                     <div class="contact-name">아빠 고석우</div>
                     <a href="tel:010-9062-8804" class="phone-button">
-                        <div class="phone-icon">📱</div>
+                        <div class="phone-icon">👨</div>
                         <div class="phone-number">010-9062-8804</div>
                     </a>
                 </div>
@@ -1026,7 +1174,7 @@
                 <div class="contact-person">
                     <div class="contact-name">엄마 민초원</div>
                     <a href="tel:010-4656-9202" class="phone-button">
-                        <div class="phone-icon">📱</div>
+                        <div class="phone-icon">👩</div>
                         <div class="phone-number">010-4656-9202</div>
                     </a>
                 </div>
@@ -1082,6 +1230,9 @@
             setTimeout(function() {
                 tryAutoplayMusic();
             }, 1000);
+            
+            // 폼 제출 이벤트 설정
+            setupFormSubmission();
         });
         
         // D-Day 카운터 계산
@@ -1203,6 +1354,41 @@
                 .catch(error => {
                     console.log('자동 재생 실패:', error);
                 });
+        }
+        
+        // 폼 제출 설정
+        function setupFormSubmission() {
+            const form = document.getElementById('attendForm');
+            const formStatus = document.getElementById('formStatus');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // 폼 데이터 수집
+                    const formData = new FormData(form);
+                    
+                    // 제출 중 상태 표시
+                    formStatus.textContent = '제출 중입니다...';
+                    formStatus.className = 'form-status loading';
+                    
+                    // Google Script로 데이터 전송
+                    fetch('https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        formStatus.textContent = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
+                        formStatus.className = 'form-status success';
+                        form.reset();
+                    })
+                    .catch(error => {
+                        formStatus.textContent = '제출 중 오류가 발생했습니다. 다시 시도해 주세요.';
+                        formStatus.className = 'form-status error';
+                        console.error('Error:', error);
+                    });
+                });
+            }
         }
         
         // 이미지 파일 확장자 대소문자 관계없이 로딩
