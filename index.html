@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>은설이와 은채의 첫 번째 생일에 초대합니다</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         * {
@@ -19,21 +19,21 @@
             color: #5a4a6a;
             line-height: 1.6;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 460px;
+            max-width: 500px;
             margin: 0 auto;
             background: white;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
             position: relative;
         }
 
         /* 헤더 섹션 */
         .header {
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-            padding: 40px 20px;
+            padding: 30px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -57,7 +57,7 @@
 
         .header-container {
             background: rgba(255, 255, 255, 0.3);
-            border-radius: 25px;
+            border-radius: 20px;
             padding: 15px 20px;
             margin: 0 auto;
             max-width: 280px;
@@ -65,27 +65,23 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             position: relative;
             z-index: 2;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .age-number {
-            font-size: 80px;
+            font-size: 70px;
             font-weight: bold;
             color: #ffffff;
-            text-shadow: 
-                0px 0px 5px rgba(0,0,0,0.3),
-                0px 0px 10px rgba(0,0,0,0.2);
-            margin-bottom: 10px;
+            text-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+            margin-bottom: 8px;
             position: relative;
             z-index: 2;
         }
 
         .date-text {
-            font-size: 18px;
+            font-size: 16px;
             color: #ffffff;
-            text-shadow: 
-                0px 0px 5px rgba(0,0,0,0.3),
-                0px 0px 8px rgba(0,0,0,0.2);
+            text-shadow: 0px 0px 5px rgba(0,0,0,0.3);
             margin-bottom: 5px;
             font-weight: 600;
             position: relative;
@@ -93,11 +89,9 @@
         }
 
         .names {
-            font-size: 24px;
+            font-size: 22px;
             color: #ffffff;
-            text-shadow: 
-                0px 0px 5px rgba(0,0,0,0.3),
-                0px 0px 8px rgba(0,0,0,0.2);
+            text-shadow: 0px 0px 5px rgba(0,0,0,0.3);
             font-weight: 700;
             position: relative;
             z-index: 2;
@@ -105,7 +99,7 @@
 
         /* 메인 이미지 섹션 */
         .main-image-section {
-            padding: 30px 20px;
+            padding: 25px 20px;
             text-align: center;
             background: white;
         }
@@ -116,32 +110,22 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .main-image {
             width: 100%;
-            max-width: 300px;
+            max-width: 280px;
             height: auto;
             display: block;
         }
 
-        .image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 154, 158, 0.1), rgba(254, 207, 239, 0.1));
-            pointer-events: none;
-        }
-
         /* 초대 메시지 */
         .invitation-text {
-            font-size: 16px;
-            line-height: 1.8;
+            font-size: 15px;
+            line-height: 1.7;
             color: #6a5a7a;
-            margin: 20px 0;
+            margin: 15px 0;
             padding: 0 10px;
         }
 
@@ -152,30 +136,30 @@
 
         /* 섹션 스타일 */
         .section {
-            margin: 20px;
-            padding: 25px;
+            margin: 15px;
+            padding: 20px;
             background: linear-gradient(135deg, #faf8ff 0%, #f5f3ff 100%);
-            border-radius: 20px;
+            border-radius: 15px;
             border: 1px solid rgba(255, 107, 157, 0.1);
             position: relative;
         }
 
         .section-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: #ff6b9d;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             position: relative;
         }
 
         .section-title::after {
             content: '';
-            width: 50px;
+            width: 40px;
             height: 3px;
             background: linear-gradient(90deg, #ff6b9d, #fecfef);
             position: absolute;
-            bottom: -8px;
+            bottom: -5px;
             left: 50%;
             transform: translateX(-50%);
             border-radius: 2px;
@@ -187,63 +171,57 @@
         }
 
         .family-info p {
-            margin: 15px 0;
-            font-size: 17px;
+            margin: 10px 0;
+            font-size: 15px;
             color: #5a4a6a;
             font-weight: 500;
-            letter-spacing: 0.5px;
-            line-height: 1.8;
-        }
-
-        .family-info p i {
-            margin-right: 6px;
-            color: #ff6b9d;
-            font-size: 16px;
+            letter-spacing: 0.3px;
+            line-height: 1.6;
         }
 
         /* 날짜 정보 */
         .date-info {
             text-align: center;
-            padding: 20px;
+            padding: 18px;
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
             margin: 10px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             position: relative;
         }
 
         .event-date {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: #ff6b9d;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .event-time {
-            font-size: 16px;
+            font-size: 15px;
             color: #8b5fbf;
             font-weight: 500;
         }
 
         .venue {
-            font-size: 15px;
+            font-size: 14px;
             color: #6a5a7a;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .dday-badge {
             position: absolute;
-            top: -15px;
-            right: -15px;
-            width: 60px;
-            height: 60px;
+            top: -12px;
+            right: -12px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
             z-index: 10;
@@ -259,18 +237,18 @@
         /* 달력 스타일 */
         .calendar {
             background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .calendar-header {
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: #ff6b9d;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         table {
@@ -279,11 +257,11 @@
         }
 
         table th, table td {
-            padding: 12px 6px;
+            padding: 8px 4px;
             text-align: center;
-            font-size: 14px;
+            font-size: 12px;
             width: 14.28%;
-            height: 45px;
+            height: 35px;
             vertical-align: middle;
         }
 
@@ -291,7 +269,7 @@
             color: #8b5fbf;
             font-weight: 600;
             border-bottom: 2px solid #fecfef;
-            height: 35px;
+            height: 30px;
         }
 
         table td {
@@ -303,9 +281,9 @@
         .special-date {
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
             color: white !important;
-            border-radius: 8px;
+            border-radius: 6px;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 10px;
             line-height: 1.2;
         }
 
@@ -313,45 +291,70 @@
         .gallery {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 15px;
-            margin: 20px 0;
+            gap: 12px;
+            margin: 15px 0;
         }
 
         .gallery-item {
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
+        }
+
+        .gallery-item::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
         }
 
         .gallery-item img {
             width: 100%;
-            height: 120px;
+            height: 100px;
             object-fit: cover;
         }
 
         .gallery-placeholder {
-            height: 120px;
+            height: 100px;
             background: linear-gradient(135deg, #ffeef8, #f8e8ff);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
             color: #ff6b9d;
         }
 
         /* 타임라인 */
         .timeline {
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .timeline-section {
-            margin-bottom: 30px;
-            padding-bottom: 25px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 1px dashed rgba(255, 107, 157, 0.3);
         }
 
@@ -361,42 +364,65 @@
         }
 
         .timeline-header {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .timeline-date {
-            font-size: 15px;
+            font-size: 13px;
             color: #8b5fbf;
             font-weight: 600;
         }
 
         .timeline-title {
-            font-size: 18px;
+            font-size: 16px;
             color: #ff6b9d;
             font-weight: 700;
-            margin-top: 5px;
+            margin-top: 3px;
         }
 
         .timeline-photos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .timeline-photo-item {
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
             position: relative;
             width: 100%;
-            padding-bottom: 100%; /* 1:1 비율 */
+            padding-bottom: 100%;
+            cursor: pointer;
         }
 
         .timeline-photo-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .timeline-photo-item::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .timeline-photo-item:hover::after {
+            opacity: 1;
         }
 
         .timeline-photo-item img {
@@ -418,38 +444,40 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 14px;
             color: #ff6b9d;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         /* 위치 정보 */
         .location-info {
             text-align: center;
-            line-height: 1.8;
+            line-height: 1.6;
         }
 
         .location-info p {
-            margin: 8px 0;
+            margin: 6px 0;
             color: #6a5a7a;
+            font-size: 14px;
         }
 
         .location-name {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: #ff6b9d;
         }
 
         .map-button {
             display: inline-block;
-            margin-top: 15px;
-            padding: 12px 25px;
+            margin-top: 12px;
+            padding: 10px 20px;
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
             color: white;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 20px;
             font-weight: 600;
+            font-size: 14px;
             transition: transform 0.3s ease;
         }
 
@@ -458,29 +486,30 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
-        /* RSVP - 구글시트 연결 */
+        /* RSVP */
         .rsvp {
             text-align: center;
             background: white;
-            padding: 20px;
-            border-radius: 15px;
+            padding: 18px;
+            border-radius: 12px;
             margin: 10px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .rsvp p {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #6a5a7a;
+            font-size: 14px;
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 15px;
+            padding: 10px 12px;
+            margin-bottom: 12px;
             border: 1px solid #fecfef;
-            border-radius: 10px;
+            border-radius: 8px;
             font-family: 'Noto Sans KR', sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             color: #5a4a6a;
             transition: border-color 0.3s ease;
         }
@@ -494,26 +523,25 @@
         .form-label {
             display: block;
             text-align: left;
-            margin-bottom: 5px;
-            font-size: 14px;
+            margin-bottom: 4px;
+            font-size: 13px;
             color: #8b5fbf;
             font-weight: 500;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .submit-button {
-            display: inline-block;
             width: 100%;
-            padding: 15px;
+            padding: 12px;
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 20px;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
             transition: transform 0.3s ease;
             font-family: 'Noto Sans KR', sans-serif;
@@ -525,11 +553,11 @@
         }
 
         .form-status {
-            margin-top: 15px;
-            font-size: 15px;
+            margin-top: 12px;
+            font-size: 14px;
             font-weight: 500;
-            padding: 10px;
-            border-radius: 10px;
+            padding: 8px;
+            border-radius: 8px;
         }
 
         .form-status.success {
@@ -554,91 +582,43 @@
         /* 감사 메시지 */
         .thanks {
             text-align: center;
-            padding: 30px 20px;
+            padding: 25px 20px;
             font-style: italic;
             color: #8b5fbf;
             background: linear-gradient(135deg, #ffeef8, #f8e8ff);
-            margin: 20px;
-            border-radius: 20px;
+            margin: 15px;
+            border-radius: 15px;
+            font-size: 15px;
         }
 
-        /* 음악 컨트롤 - 더 눈에 띄게 개선 */
+        /* 음악 컨트롤 */
         .music-control {
             position: fixed;
             top: 20px;
             right: 20px;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
+            border: 2px solid rgba(255, 255, 255, 0.8);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.5);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
         .music-control:hover {
-            transform: scale(1.1) rotate(15deg);
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.6);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.6);
         }
 
-        .music-control::after {
-            content: '🎵';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #fff;
-            color: #ff6b9d;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        .music-control svg {
-            width: 30px;
-            height: 30px;
-            fill: white;
-        }
-
-        .music-control-label {
-            position: absolute;
-            top: 70px;
-            right: 0;
-            background: rgba(255,255,255,0.9);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            color: #ff6b9d;
-            white-space: nowrap;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .music-control:hover .music-control-label {
-            opacity: 1;
-            transform: translateY(0);
+        .music-control i {
+            font-size: 20px;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         /* 음악 상태 */
@@ -648,9 +628,9 @@
             right: 20px;
             background: rgba(255, 107, 157, 0.9);
             color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 11px;
             z-index: 1000;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -660,7 +640,7 @@
             opacity: 1;
         }
 
-        /* 라이트박스 스타일 */
+        /* 라이트박스 */
         .lightbox {
             position: fixed;
             top: 0;
@@ -672,20 +652,27 @@
             justify-content: center;
             align-items: center;
             z-index: 2000;
+            backdrop-filter: blur(3px);
         }
 
         .lightbox-content {
             position: relative;
             max-width: 90%;
             max-height: 90%;
+            animation: fadeIn 0.3s;
         }
 
-        .lightbox-content img,
-        .lightbox-content video {
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .lightbox-content img {
             max-width: 100%;
             max-height: 90vh;
             object-fit: contain;
             border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .close-lightbox {
@@ -693,46 +680,29 @@
             top: -30px;
             right: 0;
             color: white;
-            font-size: 30px;
+            font-size: 24px;
             cursor: pointer;
             font-weight: bold;
-        }
-
-        .clickable-image {
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        .clickable-image::after {
-            content: '🔍';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: white;
             background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: background 0.3s;
         }
 
-        .clickable-image:hover::after {
-            opacity: 1;
+        .close-lightbox:hover {
+            background: rgba(0, 0, 0, 0.7);
         }
 
         /* 장식 요소 */
         .decorative-hearts {
             text-align: center;
-            font-size: 20px;
+            font-size: 18px;
             color: #fecfef;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         /* 반응형 */
@@ -743,18 +713,54 @@
             }
             
             .age-number {
-                font-size: 60px;
+                font-size: 55px;
             }
             
             .section {
-                margin: 15px;
-                padding: 20px;
+                margin: 10px;
+                padding: 15px;
             }
 
             table th, table td {
-                padding: 8px 4px;
-                font-size: 12px;
-                height: 40px;
+                padding: 6px 3px;
+                font-size: 11px;
+                height: 30px;
+            }
+
+            .timeline-photos {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .gallery-item img,
+            .gallery-placeholder {
+                height: 80px;
+            }
+        }
+
+        /* PDF 출력 최적화 */
+        @media print {
+            body {
+                background: white !important;
+            }
+            
+            .music-control,
+            .music-status {
+                display: none !important;
+            }
+            
+            .container {
+                box-shadow: none !important;
+                max-width: none !important;
+            }
+            
+            .section {
+                break-inside: avoid;
+                margin: 10px 0;
             }
         }
     </style>
@@ -774,7 +780,6 @@
         <div class="main-image-section">
             <div class="image-frame">
                 <img class="main-image" src="./main-photo.gif" alt="은설이와 은채" onerror="handleImageError(this)">
-                <div class="image-overlay"></div>
             </div>
             
             <div class="invitation-text">
@@ -801,11 +806,11 @@
         <div class="section">
             <div class="section-title">가족 소개</div>
             <div class="family-info">
-                <p><i class="fas fa-heart"></i> 할머니 소애숙</p>
-                <p><i class="fas fa-heart"></i> 외할아버지 민한훈, 외할머니 신춘덕</p>
-                <p><i class="fas fa-heart"></i> 외삼촌 민재원</p>
-                <p><i class="fas fa-heart"></i> 아빠 고석우, 엄마 민초원</p>
-                <p><i class="fas fa-heart"></i> 첫째 고은설, 둘째 고은채</p>
+                <p>👵 할머니 소애숙</p>
+                <p>👨‍👩‍ 외할아버지 민한훈, 외할머니 신춘덕</p>
+                <p>👨 외삼촌 민재원</p>
+                <p>👨‍👩‍ 아빠 고석우, 엄마 민초원</p>
+                <p>👧👧 첫째 고은설, 둘째 고은채</p>
             </div>
         </div>
         
@@ -881,22 +886,22 @@
         <div class="section">
             <div class="section-title">갤러리</div>
             <div class="gallery">
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item" onclick="openLightbox('./gallery1.jpg')">
                     <div class="gallery-placeholder">🎂</div>
                 </div>
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item" onclick="openLightbox('./gallery2.jpg')">
                     <div class="gallery-placeholder">👶</div>
                 </div>
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item" onclick="openLightbox('./gallery3.jpg')">
                     <div class="gallery-placeholder">👶</div>
                 </div>
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item" onclick="openLightbox('./gallery4.jpg')">
                     <div class="gallery-placeholder">🎁</div>
                 </div>
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item" onclick="openLightbox('./gallery5.jpg')">
                     <div class="gallery-placeholder">🎈</div>
                 </div>
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item" onclick="openLightbox('./gallery6.jpg')">
                     <div class="gallery-placeholder">🎊</div>
                 </div>
             </div>
@@ -913,10 +918,10 @@
                         <div class="timeline-title">두 아이의 탄생</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./birth_1.JPG')">
                             <img src="./birth_1.JPG" alt="탄생 사진 1" onerror="handleImageError(this, '🍼')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./birth_2.JPG')">
                             <img src="./birth_2.JPG" alt="탄생 사진 2" onerror="handleImageError(this, '🍼')">
                         </div>
                     </div>
@@ -929,10 +934,10 @@
                         <div class="timeline-title">둥이들 50일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./50days_1.JPG')">
                             <img src="./50days_1.JPG" alt="50일 사진 1" onerror="handleImageError(this, '💝')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./50days_2.JPG')">
                             <img src="./50days_2.JPG" alt="50일 사진 2" onerror="handleImageError(this, '💝')">
                         </div>
                     </div>
@@ -945,13 +950,13 @@
                         <div class="timeline-title">둥이들 100일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./100days_1.jpeg')">
                             <img src="./100days_1.jpeg" alt="100일 사진 1" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./100days_2.jpeg')">
                             <img src="./100days_2.jpeg" alt="100일 사진 2" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./100days_3.jpeg')">
                             <img src="./100days_3.jpeg" alt="100일 사진 3" onerror="handleImageError(this, '🎀')">
                         </div>
                     </div>
@@ -964,7 +969,7 @@
                         <div class="timeline-title">첫 크리스마스</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./x-mas.JPG')">
                             <img src="./x-mas.JPG" alt="첫 크리스마스" onerror="handleImageError(this, '🎄')">
                         </div>
                     </div>
@@ -977,7 +982,7 @@
                         <div class="timeline-title">둥이들 200일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./200days.jpg')">
                             <img src="./200days.jpg" alt="200일 사진" onerror="handleImageError(this, '🌟')">
                         </div>
                     </div>
@@ -990,13 +995,13 @@
                         <div class="timeline-title">첫 번째 생일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./1years_1.JPG')">
                             <img src="./1years_1.JPG" alt="돌잔치 사진 1" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./1years_2.JPG')">
                             <img src="./1years_2.JPG" alt="돌잔치 사진 2" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item" onclick="openLightbox('./1years_3.JPG')">
                             <img src="./1years_3.JPG" alt="돌잔치 사진 3" onerror="handleImageError(this, '🎉')">
                         </div>
                     </div>
@@ -1011,8 +1016,8 @@
                 <p class="location-name">더퍼스트클래스 강서NH서울타워점</p>
                 <p>클래스홀</p>
                 <p>서울특별시 강서구 양천로 570 20층</p>
-                <p><i class="fas fa-phone"></i> 02-2013-5670</p>
-                <a class="map-button" href="https://naver.me/5ss0AH07" target="_blank"><i class="fas fa-map-marker-alt"></i> 네이버 지도에서 보기</a>
+                <p>📞 02-2013-5670</p>
+                <a class="map-button" href="https://naver.me/5ss0AH07" target="_blank">📍 네이버 지도에서 보기</a>
             </div>
         </div>
         
@@ -1023,26 +1028,30 @@
                 <p>참석 정보를 알려주시면 감사하겠습니다.</p>
                 <form id="attendForm">
                     <div class="form-group">
-                        <label class="form-label" for="name">이름</label>
-                        <input type="text" id="name" name="이름" class="form-control" required>
+                        <label class="form-label" for="이름">이름</label>
+                        <input type="text" id="이름" name="이름" class="form-control" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label class="form-label" for="attendance">참석여부</label>
-                        <select id="attendance" name="참석여부" class="form-control" required>
+                        <label class="form-label" for="참석여부">참석여부</label>
+                        <select id="참석여부" name="참석여부" class="form-control" required>
                             <option value="">선택해주세요</option>
                             <option value="참석">참석</option>
                             <option value="불참">불참</option>
                         </select>
                     </div>
+                    
                     <div class="form-group">
-                        <label class="form-label" for="number">참석인원</label>
-                        <input type="number" id="number" name="참석인원" class="form-control" min="0" required>
+                        <label class="form-label" for="참석인원">참석인원</label>
+                        <input type="number" id="참석인원" name="참석인원" class="form-control" min="0" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label class="form-label" for="phone">연락처</label>
-                        <input type="tel" id="phone" name="연락처" class="form-control" placeholder="010-0000-0000" required>
+                        <label class="form-label" for="연락처">연락처</label>
+                        <input type="tel" id="연락처" name="연락처" class="form-control" placeholder="010-0000-0000" required>
                     </div>
-                    <button type="submit" class="submit-button"><i class="fas fa-paper-plane"></i> 참석 정보 제출하기</button>
+                    
+                    <button type="submit" class="submit-button">참석 정보 제출하기</button>
                 </form>
                 <div id="formStatus" class="form-status hidden"></div>
             </div>
@@ -1057,18 +1066,15 @@
         </div>
     </div>
     
-    <!-- 음악 컨트롤 버튼 -->
-    <div class="music-control" id="musicControl" title="음악 재생/중지">
-        <svg id="musicIcon" viewBox="0 0 24 24">
-            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-        </svg>
-        <div class="music-control-label">음악 재생하기</div>
+    <!-- Music Control Button -->
+    <div class="music-control" id="musicControl" title="음악 재생/정지" onclick="toggleMusic()">
+        <i class="fas fa-music" id="musicIcon"></i>
     </div>
     
-    <!-- 음악 상태 -->
-    <div class="music-status" id="musicStatus">♪ 배경음악 재생 중</div>
+    <!-- Music Status -->
+    <div class="music-status" id="musicStatus">♪ 음악을 시작하려면 클릭하세요</div>
     
-    <!-- 배경 음악 -->
+    <!-- Background Music -->
     <audio id="bgMusic" loop preload="auto">
         <source src="./background-music.mp3" type="audio/mpeg">
     </audio>
@@ -1076,93 +1082,103 @@
     <script>
         // 전역 변수
         let isPlaying = false;
+        let musicInitialized = false;
         const bgMusic = document.getElementById('bgMusic');
         const musicControl = document.getElementById('musicControl');
         const musicIcon = document.getElementById('musicIcon');
         const musicStatus = document.getElementById('musicStatus');
-        const musicLabel = document.querySelector('.music-control-label');
         
-        // 페이지 로드 시 실행
+        // 페이지 로드 완료 시 실행
         document.addEventListener('DOMContentLoaded', function() {
-            // D-Day 카운터 업데이트
+            // D-Day 계산
             updateDday();
             
-            // 참석 폼 제출 이벤트 리스너
-            const form = document.getElementById('attendForm');
-            const formStatusDiv = document.getElementById('formStatus');
-            
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    formStatusDiv.innerHTML = '제출 중입니다...';
-                    formStatusDiv.className = 'form-status loading';
-                    formStatusDiv.classList.remove('hidden');
-                    
-                    // 구글 스크립트로 폼 데이터 전송
-                    setTimeout(() => {
-                        formStatusDiv.innerHTML = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
-                        formStatusDiv.className = 'form-status success';
-                        form.reset();
-                    }, 1000);
-                });
-            }
-            
-            // 모든 갤러리와 타임라인 이미지에 클릭 이벤트 추가
-            addClickEventsToImages();
-            
-            // 음악 컨트롤 이벤트 리스너
-            if (musicControl) {
-                musicControl.addEventListener('click', toggleMusic);
-            }
-            
-            // 이미지 오류 처리 이벤트 리스너 추가
+            // 이미지 오류 처리
             const images = document.querySelectorAll('img');
             images.forEach(img => {
-                if (!img.getAttribute('onerror')) {
-                    img.addEventListener('error', function() {
-                        handleImageError(this, img.alt || '이미지');
-                    });
-                }
+                img.addEventListener('error', function() {
+                    handleImageError(this);
+                });
             });
             
-            // 자동 이미지 로드 시도
-            tryLoadAllImages();
+            // 폼 제출 처리
+            const form = document.getElementById('attendForm');
+            form.addEventListener('submit', handleFormSubmit);
+            
+            // 자동 음악 재생 시도 (첫 번째 사용자 상호작용 후)
+            document.body.addEventListener('click', initializeMusic, { once: true });
+            document.body.addEventListener('touchstart', initializeMusic, { once: true });
+            
+            // 음악 상태 표시
+            showMusicStatus('♪ 음악을 시작하려면 클릭하세요');
         });
         
-        // 음악 재생/일시정지 토글
+        // 음악 초기화 및 자동 재생
+        function initializeMusic() {
+            if (!musicInitialized) {
+                musicInitialized = true;
+                tryAutoPlay();
+            }
+        }
+        
+        // 자동 재생 시도
+        function tryAutoPlay() {
+            const playPromise = bgMusic.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    updateMusicControl();
+                    showMusicStatus('♪ 배경음악 재생 중');
+                }).catch(error => {
+                    console.log('자동 재생 실패:', error);
+                    showMusicStatus('♪ 음악 버튼을 클릭해 주세요');
+                });
+            }
+        }
+        
+        // 음악 토글 함수
         function toggleMusic() {
+            if (!musicInitialized) {
+                musicInitialized = true;
+            }
+            
             if (isPlaying) {
                 bgMusic.pause();
-                musicIcon.innerHTML = '<path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>';
-                musicLabel.textContent = '음악 재생하기';
                 isPlaying = false;
-                showMusicStatus('🎵 음악 정지됨');
+                showMusicStatus('♪ 음악 정지');
             } else {
-                bgMusic.play()
-                    .then(() => {
-                        musicIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
-                        musicLabel.textContent = '음악 정지하기';
+                const playPromise = bgMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
                         isPlaying = true;
-                        showMusicStatus('🎵 음악 재생 중');
-                    })
-                    .catch(error => {
-                        console.error('음악 재생 오류:', error);
-                        showMusicStatus('🎵 음악 재생 실패');
+                        showMusicStatus('♪ 음악 재생 중');
+                    }).catch(error => {
+                        console.error('음악 재생 실패:', error);
+                        showMusicStatus('♪ 음악 재생 실패');
                     });
+                }
+            }
+            updateMusicControl();
+        }
+        
+        // 음악 컨트롤 아이콘 업데이트
+        function updateMusicControl() {
+            if (isPlaying) {
+                musicIcon.className = 'fas fa-pause';
+            } else {
+                musicIcon.className = 'fas fa-music';
             }
         }
         
         // 음악 상태 표시
         function showMusicStatus(message) {
-            if (musicStatus) {
-                musicStatus.textContent = message;
-                musicStatus.classList.add('show');
-                
-                setTimeout(() => {
-                    musicStatus.classList.remove('show');
-                }, 2000);
-            }
+            musicStatus.textContent = message;
+            musicStatus.classList.add('show');
+            
+            setTimeout(() => {
+                musicStatus.classList.remove('show');
+            }, 3000);
         }
         
         // D-Day 카운터 계산
@@ -1189,154 +1205,45 @@
             }
         }
         
-        // 이미지 오류 처리
+        // 이미지 로딩 실패 처리
         function handleImageError(img, text) {
-            try {
-                const parent = img.parentNode;
-                if (!parent) return;
-                
-                // 이미 플레이스홀더로 대체된 경우 중복 실행 방지
-                if (parent.querySelector('.image-placeholder')) return;
-                
-                const placeholder = document.createElement('div');
-                placeholder.className = 'image-placeholder';
-                placeholder.innerHTML = text || '📷';
-                
-                parent.replaceChild(placeholder, img);
-                
-                // 다양한 경로 및 확장자 시도
-                tryLoadImage(img, img.src);
-            } catch (error) {
-                console.error('이미지 오류 처리 실패:', error);
-            }
-        }
-        
-        // 모든 가능한 이미지 경로 시도
-        function tryLoadAllImages() {
-            const imageFiles = [
-                'birth_1', 'birth_2',
-                '50days_1', '50days_2',
-                '100days_1', '100days_2', '100days_3',
-                'x-mas',
-                '200days',
-                '1years_1', '1years_2', '1years_3'
-            ];
+            const parent = img.parentNode;
             
-            const extensions = ['JPG', 'jpg', 'jpeg', 'JPEG', 'png', 'PNG'];
-            const folders = ['./', './images/', '../', '../images/'];
+            // 이미 플레이스홀더로 대체된 경우 중복 실행 방지
+            if (parent.querySelector('.image-placeholder')) return;
             
-            for (const filename of imageFiles) {
-                for (const folder of folders) {
-                    for (const ext of extensions) {
-                        const img = new Image();
-                        const src = `${folder}${filename}.${ext}`;
-                        img.onload = function() {
-                            // 이미지가 로드되면 해당 파일명으로 된 모든 이미지 업데이트
-                            updateImageSources(filename, src);
-                        };
-                        img.src = src;
-                    }
-                }
-            }
-        }
-        
-        // 이미지 소스 업데이트
-        function updateImageSources(basename, newSrc) {
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                const src = img.getAttribute('src');
-                if (src && src.includes(basename)) {
-                    img.src = newSrc;
-                }
-            });
-        }
-        
-        // 다양한 경로 및 확장자 변형 시도
-        function tryLoadImage(imgElement, originalSrc) {
-            try {
-                // 원본 src에서 파일명 추출
-                const match = originalSrc.match(/([^\/]+)\.([^\.]+)$/);
-                if (!match) return false;
-                
-                const fileName = match[1];
-                const ext = match[2];
-                
-                // 시도할 경로 배열
-                const paths = [
-                    '.', 
-                    './images', 
-                    '..',
-                    '../images'
-                ];
-                
-                // 확장자 변형
-                const extensions = ['JPG', 'jpg', 'jpeg', 'JPEG', 'png', 'PNG'];
-                
-                // 모든 경로와 확장자 조합 시도
-                for (const path of paths) {
-                    for (const extension of extensions) {
-                        const img = new Image();
-                        const newSrc = `${path}/${fileName}.${extension}`;
-                        img.onload = function() {
-                            imgElement.src = newSrc;
-                        };
-                        img.src = newSrc;
-                    }
-                }
-                
-                return true;
-            } catch (error) {
-                console.error('이미지 로드 시도 오류:', error);
-                return false;
-            }
-        }
-        
-        // 갤러리와 타임라인 이미지에 클릭 이벤트 추가
-        function addClickEventsToImages() {
-            // 갤러리 아이템
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            galleryItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const img = this.querySelector('img');
-                    if (img) {
-                        openLightbox(img.src);
-                    }
-                });
-            });
+            const placeholder = document.createElement('div');
+            placeholder.className = 'image-placeholder';
+            placeholder.innerHTML = text || '📷';
             
-            // 타임라인 사진
-            const timelineItems = document.querySelectorAll('.timeline-photo-item');
-            timelineItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const img = this.querySelector('img');
-                    if (img && !this.querySelector('.image-placeholder')) {
-                        openLightbox(img.src);
-                    }
-                });
-            });
+            parent.replaceChild(placeholder, img);
         }
         
         // 라이트박스 열기
         function openLightbox(imageSrc) {
             const lightbox = document.createElement('div');
             lightbox.className = 'lightbox';
-            
             lightbox.innerHTML = `
                 <div class="lightbox-content">
                     <span class="close-lightbox">&times;</span>
                     <img src="${imageSrc}" alt="원본 이미지">
                 </div>
             `;
-            
             document.body.appendChild(lightbox);
-            document.body.style.overflow = 'hidden'; // 스크롤 방지
+            document.body.style.overflow = 'hidden';
             
             // 닫기 버튼 클릭 시 라이트박스 닫기
             lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
-            
             // 라이트박스 배경 클릭 시 닫기
             lightbox.addEventListener('click', function(e) {
                 if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // ESC 키로 닫기
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
                     closeLightbox();
                 }
             });
@@ -1347,8 +1254,37 @@
             const lightbox = document.querySelector('.lightbox');
             if (lightbox) {
                 document.body.removeChild(lightbox);
-                document.body.style.overflow = ''; // 스크롤 복원
+                document.body.style.overflow = '';
             }
+        }
+        
+        // 폼 제출 처리
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const formStatusDiv = document.getElementById('formStatus');
+            
+            // 로딩 상태 표시
+            formStatusDiv.innerHTML = '제출 중입니다...';
+            formStatusDiv.className = 'form-status loading';
+            formStatusDiv.classList.remove('hidden');
+            
+            // Google Apps Script로 데이터 전송
+            fetch('https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                formStatusDiv.innerHTML = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
+                formStatusDiv.className = 'form-status success';
+                e.target.reset();
+            })
+            .catch(error => {
+                formStatusDiv.innerHTML = '제출 중 오류가 발생했습니다. 다시 시도해 주세요.';
+                formStatusDiv.className = 'form-status error';
+                console.error('Error:', error);
+            });
         }
     </script>
 </body>
