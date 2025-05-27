@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>은설이와 은채의 첫 번째 생일에 초대합니다</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -29,7 +30,7 @@
             position: relative;
         }
 
-        /* 헤더 섹션 - 글자색 개선 */
+        /* 헤더 섹션 */
         .header {
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
             padding: 40px 20px;
@@ -57,26 +58,31 @@
         .age-number {
             font-size: 80px;
             font-weight: bold;
-            color: #2d1b3d;
+            color: #ffffff;
             text-shadow: 
-                3px 3px 0px rgba(255,255,255,0.9),
-                -1px -1px 0px rgba(255,255,255,0.9),
-                1px -1px 0px rgba(255,255,255,0.9),
-                -1px 1px 0px rgba(255,255,255,0.9),
-                0px 0px 15px rgba(255,255,255,0.7);
+                0px 0px 5px rgba(0,0,0,0.3),
+                0px 0px 10px rgba(0,0,0,0.2);
             margin-bottom: 10px;
             position: relative;
             z-index: 2;
         }
 
+        .header-container {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 15px 20px;
+            margin: 0 auto;
+            max-width: 280px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
         .date-text {
             font-size: 18px;
-            color: #2d1b3d;
+            color: #ffffff;
             text-shadow: 
-                2px 2px 0px rgba(255,255,255,0.9),
-                -1px -1px 0px rgba(255,255,255,0.9),
-                1px -1px 0px rgba(255,255,255,0.9),
-                -1px 1px 0px rgba(255,255,255,0.9);
+                0px 0px 5px rgba(0,0,0,0.3),
+                0px 0px 8px rgba(0,0,0,0.2);
             margin-bottom: 5px;
             font-weight: 600;
             position: relative;
@@ -85,12 +91,10 @@
 
         .names {
             font-size: 24px;
-            color: #2d1b3d;
+            color: #ffffff;
             text-shadow: 
-                2px 2px 0px rgba(255,255,255,0.9),
-                -1px -1px 0px rgba(255,255,255,0.9),
-                1px -1px 0px rgba(255,255,255,0.9),
-                -1px 1px 0px rgba(255,255,255,0.9);
+                0px 0px 5px rgba(0,0,0,0.3),
+                0px 0px 8px rgba(0,0,0,0.2);
             font-weight: 700;
             position: relative;
             z-index: 2;
@@ -174,17 +178,18 @@
             border-radius: 2px;
         }
 
-        /* 가족 정보 - 폰트 및 색상 통일 */
+        /* 가족 정보 */
         .family-info {
             text-align: center;
         }
 
         .family-info p {
-            margin: 12px 0;
-            font-size: 15px;
-            color: #6a5a7a;
-            font-weight: 400;
-            font-family: 'Noto Sans KR', sans-serif;
+            margin: 15px 0;
+            font-size: 17px;
+            color: #5a4a6a;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
         }
 
         /* 날짜 정보 */
@@ -216,7 +221,24 @@
             margin-top: 10px;
         }
 
-        /* 달력 스타일 - 비율 재조정 */
+        /* D-Day Counter */
+        .dday-wrapper {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .dday-counter {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d, #fecfef);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px 25px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
+        }
+
+        /* 달력 스타일 */
         .calendar {
             background: white;
             border-radius: 15px;
@@ -236,15 +258,14 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            table-layout: fixed;
         }
 
         table th, table td {
-            padding: 10px 0;
+            padding: 12px 6px;
             text-align: center;
             font-size: 14px;
-            width: calc(100% / 7);
-            height: 40px;
+            width: 14.28%;
+            height: 45px;
             vertical-align: middle;
         }
 
@@ -252,7 +273,7 @@
             color: #8b5fbf;
             font-weight: 600;
             border-bottom: 2px solid #fecfef;
-            height: 30px;
+            height: 35px;
         }
 
         table td {
@@ -273,7 +294,7 @@
         /* 갤러리 */
         .gallery {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 15px;
             margin: 20px 0;
         }
@@ -305,80 +326,106 @@
             color: #ff6b9d;
         }
 
-        /* 타임라인 - 사진 공간 확보 */
+        /* 타임라인 */
         .timeline {
             position: relative;
-            padding-left: 30px;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 15px;
+            left: 50%;
             top: 0;
             bottom: 0;
             width: 2px;
             background: linear-gradient(180deg, #ff6b9d, #fecfef);
+            transform: translateX(-50%);
         }
 
-        .timeline-item {
-            position: relative;
+        .timeline-event {
             margin-bottom: 40px;
-            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-event-header {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -27px;
-            top: 50px;
-            width: 12px;
-            height: 12px;
-            background: #ff6b9d;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px #ff6b9d;
-        }
-
-        .timeline-image {
-            width: 100%;
-            max-width: 280px;
-            height: 200px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .timeline-image-placeholder {
-            width: 100%;
-            max-width: 280px;
-            height: 200px;
-            background: linear-gradient(135deg, #ffeef8, #f8e8ff);
-            border-radius: 12px;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-            font-size: 20px;
-            color: #ff6b9d;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
         }
 
         .timeline-date {
-            font-size: 14px;
-            color: #ff6b9d;
+            background: linear-gradient(135deg, #ff6b9d, #fecfef);
+            color: white;
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 16px;
             font-weight: 600;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(255, 107, 157, 0.2);
+        }
+
+        .timeline-milestone {
+            font-size: 20px;
+            color: #8b5fbf;
+            font-weight: 700;
             margin-bottom: 5px;
         }
 
-        .timeline-desc {
-            font-size: 15px;
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 3px solid #ff6b9d;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+
+        .timeline-photos {
+            display: grid;
+            grid-gap: 15px;
+            margin-top: 20px;
+        }
+
+        .timeline-photos.photos-1 {
+            grid-template-columns: 1fr;
+        }
+
+        .timeline-photos.photos-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .timeline-photos.photos-3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .timeline-photo {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-photo img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-photo img:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-description {
+            text-align: center;
             color: #6a5a7a;
+            margin: 10px 0;
+            font-style: italic;
         }
 
         /* 위치 정보 */
@@ -415,31 +462,88 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
-        /* RSVP - 구글시트 연결 */
-        .rsvp {
-            text-align: center;
+        /* RSVP Form */
+        .rsvp-form {
             background: white;
-            padding: 20px;
             border-radius: 15px;
-            margin: 10px 0;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
-        .rsvp-button {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 15px 30px;
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #6a5a7a;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #fecfef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #ff6b9d;
+        }
+
+        select.form-control {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff6b9d'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px;
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
             color: white;
-            text-decoration: none;
+            border: none;
             border-radius: 25px;
-            font-weight: 600;
             font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
             transition: transform 0.3s ease;
         }
 
-        .rsvp-button:hover {
+        .submit-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .form-status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-status.success {
+            display: block;
+            background-color: rgba(255, 107, 157, 0.1);
+            color: #ff6b9d;
+            border: 1px solid #fecfef;
+        }
+
+        .form-status.error {
+            display: block;
+            background-color: rgba(255, 73, 73, 0.1);
+            color: #ff4949;
+            border: 1px solid #ffcfcf;
         }
 
         /* 감사 메시지 */
@@ -591,9 +695,12 @@
                 height: 40px;
             }
 
-            .timeline-image-placeholder {
-                height: 180px;
-                font-size: 16px;
+            .timeline-photos.photos-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .timeline-photos.photos-3 > div:last-child {
+                grid-column: span 2;
             }
         }
     </style>
@@ -613,8 +720,10 @@
         <!-- 헤더 -->
         <div class="header">
             <div class="age-number">1</div>
-            <div class="date-text">2025. 07. 05</div>
-            <div class="names">은설, 은채의 첫 생일</div>
+            <div class="header-container">
+                <div class="date-text">2025. 07. 05</div>
+                <div class="names">은설, 은채의 첫 생일</div>
+            </div>
         </div>
         
         <!-- 메인 이미지 -->
@@ -641,17 +750,22 @@
                 <div class="event-time">오전 11시 30분</div>
                 <div class="venue">더퍼스트클래스 강서NH서울타워점</div>
             </div>
+            
+            <!-- D-Day Counter -->
+            <div class="dday-wrapper">
+                <div class="dday-counter" id="dday-counter">D-Day</div>
+            </div>
         </div>
         
         <!-- 가족 소개 -->
         <div class="section">
             <div class="section-title">가족 소개</div>
             <div class="family-info">
-                <p>할머니 소애숙</p>
-                <p>외할아버지 민한훈, 외할머니 신춘덕</p>
-                <p>외삼촌 민재원</p>
-                <p>아빠 고석우, 엄마 민초원</p>
-                <p>첫째 고은설, 둘째 고은채</p>
+                <p><i class="fas fa-heart"></i> 할머니 소애숙</p>
+                <p><i class="fas fa-heart"></i> 외할아버지 민한훈, 외할머니 신춘덕</p>
+                <p><i class="fas fa-heart"></i> 외삼촌 민재원</p>
+                <p><i class="fas fa-heart"></i> 아빠 고석우, 엄마 민초원</p>
+                <p><i class="fas fa-heart"></i> 첫째 고은설, 둘째 고은채</p>
             </div>
         </div>
         
@@ -731,7 +845,19 @@
                     <div class="gallery-placeholder">🎂</div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-placeholder">👶👶</div>
+                    <div class="gallery-placeholder">👶</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">👶</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🎁</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🎈</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">💕</div>
                 </div>
             </div>
         </div>
@@ -740,33 +866,124 @@
         <div class="section">
             <div class="section-title">성장 타임라인</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-image-placeholder">
-                        🍼<br>탄생 사진<br>업로드 예정
+                <!-- 탄생 -->
+                <div class="timeline-event">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-event-header">
+                        <div class="timeline-date">2024년 7월</div>
+                        <div class="timeline-milestone">탄생</div>
                     </div>
-                    <div class="timeline-date">2024년 7월</div>
-                    <div class="timeline-desc">두 아이의 탄생</div>
+                    <div class="timeline-photos photos-2">
+                        <div class="timeline-photo">
+                            <img src="./birth_1.JPG" alt="탄생 사진 1" onerror="handleImageError(this)">
+                        </div>
+                        <div class="timeline-photo">
+                            <img src="./birth_2.JPG" alt="탄생 사진 2" onerror="handleImageError(this)">
+                        </div>
+                    </div>
+                    <div class="timeline-description">
+                        소중한 두 아이가 세상에 태어났습니다.
+                    </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-image-placeholder">
-                        💯<br>100일 사진<br>업로드 예정
+                
+                <!-- 50일 -->
+                <div class="timeline-event">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-event-header">
+                        <div class="timeline-date">2024년 8월</div>
+                        <div class="timeline-milestone">50일</div>
                     </div>
-                    <div class="timeline-date">2024년 10월</div>
-                    <div class="timeline-desc">100일 기념일</div>
+                    <div class="timeline-photos photos-2">
+                        <div class="timeline-photo">
+                            <img src="./50days_1.JPG" alt="50일 사진 1" onerror="handleImageError(this)">
+                        </div>
+                        <div class="timeline-photo">
+                            <img src="./50days_2.JPG" alt="50일 사진 2" onerror="handleImageError(this)">
+                        </div>
+                    </div>
+                    <div class="timeline-description">
+                        태어난 지 50일, 처음으로 방긋 웃었어요.
+                    </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-image-placeholder">
-                        🧧<br>명절 사진<br>업로드 예정
+                
+                <!-- 100일 -->
+                <div class="timeline-event">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-event-header">
+                        <div class="timeline-date">2024년 10월</div>
+                        <div class="timeline-milestone">100일</div>
                     </div>
-                    <div class="timeline-date">2025년 1월</div>
-                    <div class="timeline-desc">첫 명절</div>
+                    <div class="timeline-photos photos-3">
+                        <div class="timeline-photo">
+                            <img src="./100days_1.jpeg" alt="100일 사진 1" onerror="handleImageError(this)">
+                        </div>
+                        <div class="timeline-photo">
+                            <img src="./100days_2.jpeg" alt="100일 사진 2" onerror="handleImageError(this)">
+                        </div>
+                        <div class="timeline-photo">
+                            <img src="./100days_3.jpeg" alt="100일 사진 3" onerror="handleImageError(this)">
+                        </div>
+                    </div>
+                    <div class="timeline-description">
+                        100일을 기념하여 첫 가족사진을 찍었습니다.
+                    </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-image-placeholder">
-                        🎉<br>생일 사진<br>업로드 예정
+                
+                <!-- 첫 크리스마스 -->
+                <div class="timeline-event">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-event-header">
+                        <div class="timeline-date">2024년 12월</div>
+                        <div class="timeline-milestone">첫 크리스마스</div>
                     </div>
-                    <div class="timeline-date">2025년 7월</div>
-                    <div class="timeline-desc">첫 번째 생일</div>
+                    <div class="timeline-photos photos-1">
+                        <div class="timeline-photo">
+                            <img src="./x-mas.JPG" alt="첫 크리스마스" onerror="handleImageError(this)">
+                        </div>
+                    </div>
+                    <div class="timeline-description">
+                        두 아이의 첫 크리스마스를 맞이했습니다.
+                    </div>
+                </div>
+                
+                <!-- 200일 -->
+                <div class="timeline-event">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-event-header">
+                        <div class="timeline-date">2025년 1월</div>
+                        <div class="timeline-milestone">200일</div>
+                    </div>
+                    <div class="timeline-photos photos-1">
+                        <div class="timeline-photo">
+                            <img src="./200days.jpg" alt="200일 사진" onerror="handleImageError(this)">
+                        </div>
+                    </div>
+                    <div class="timeline-description">
+                        벌써 200일, 몰라보게 쑥쑥 자랐습니다.
+                    </div>
+                </div>
+                
+                <!-- 첫 번째 생일 -->
+                <div class="timeline-event">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-event-header">
+                        <div class="timeline-date">2025년 7월</div>
+                        <div class="timeline-milestone">첫 번째 생일</div>
+                    </div>
+                    <div class="timeline-photos photos-3">
+                        <div class="timeline-photo">
+                            <img src="./1years_1.JPG" alt="첫 생일 사진 1" onerror="handleImageError(this)">
+                        </div>
+                        <div class="timeline-photo">
+                            <img src="./1years_2.JPG" alt="첫 생일 사진 2" onerror="handleImageError(this)">
+                        </div>
+                        <div class="timeline-photo">
+                            <img src="./1years_3.JPG" alt="첫 생일 사진 3" onerror="handleImageError(this)">
+                        </div>
+                    </div>
+                    <div class="timeline-description">
+                        1년의 소중한 순간들을 함께 축하해주세요!
+                    </div>
                 </div>
             </div>
         </div>
@@ -786,11 +1003,36 @@
         <!-- 참석 여부 -->
         <div class="section">
             <div class="section-title">참석 여부 알려주세요</div>
-            <div class="rsvp">
-                <p>참석 정보를 알려주시면 감사하겠습니다.</p>
-                <a class="rsvp-button" href="https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec" target="_blank">
-                    📝 참석 여부 알리기
-                </a>
+            <div class="rsvp-form">
+                <form id="attendForm">
+                    <div class="form-group">
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="이름" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="attendance">참석여부</label>
+                        <select id="attendance" name="참석여부" class="form-control" required>
+                            <option value="">선택해주세요</option>
+                            <option value="참석">참석</option>
+                            <option value="불참">불참</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="people">참석인원</label>
+                        <input type="number" id="people" name="참석인원" class="form-control" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">연락처</label>
+                        <input type="tel" id="phone" name="연락처" class="form-control" placeholder="010-0000-0000" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">참석 정보 제출하기</button>
+                </form>
+                
+                <div id="formStatus" class="form-status"></div>
             </div>
         </div>
         
@@ -826,15 +1068,54 @@
         const musicControl = document.getElementById('musicControl');
         const musicModal = document.getElementById('musicModal');
         const musicStatus = document.getElementById('musicStatus');
+        const formStatusDiv = document.getElementById('formStatus');
+        
+        // D-Day 카운터 계산
+        function updateDday() {
+            const eventDate = new Date(2025, 6, 5); // 2025년 7월 5일 (월은 0부터 시작)
+            const today = new Date();
+            
+            // 날짜 차이 계산 (밀리초)
+            const diffTime = eventDate.getTime() - today.getTime();
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            const ddayCounter = document.getElementById('dday-counter');
+            if (diffDays > 0) {
+                ddayCounter.innerHTML = `D-${diffDays}`;
+            } else if (diffDays === 0) {
+                ddayCounter.innerHTML = "D-Day";
+            } else {
+                ddayCounter.innerHTML = `D+${Math.abs(diffDays)}`;
+            }
+        }
         
         // 이미지 로딩 실패 처리
         function handleImageError(img) {
             const placeholder = document.createElement('div');
             placeholder.className = 'gallery-placeholder';
-            placeholder.style.width = '100%';
-            placeholder.style.height = '200px';
-            placeholder.innerHTML = '📷<br>이미지 로딩 중...';
-            img.parentNode.replaceChild(placeholder, img);
+            
+            // 이미지의 alt 텍스트에 따라 다른 아이콘 표시
+            if(img.alt.includes("탄생")) {
+                placeholder.innerHTML = '🍼';
+            } else if(img.alt.includes("50일")) {
+                placeholder.innerHTML = '👶';
+            } else if(img.alt.includes("100일")) {
+                placeholder.innerHTML = '💯';
+            } else if(img.alt.includes("크리스마스")) {
+                placeholder.innerHTML = '🎄';
+            } else if(img.alt.includes("200일")) {
+                placeholder.innerHTML = '🌟';
+            } else if(img.alt.includes("생일")) {
+                placeholder.innerHTML = '🎂';
+            } else {
+                placeholder.innerHTML = '📷';
+            }
+            
+            placeholder.innerHTML += '<br>준비 중';
+            
+            // 부모 요소 스타일 유지
+            const parent = img.parentNode;
+            parent.replaceChild(placeholder, img);
         }
         
         // 음악 시작 함수
@@ -860,34 +1141,9 @@
         function skipMusic() {
             musicModal.classList.add('hidden');
             musicInitialized = true;
-            showMusicStatus('🔇 음악 없이 시작');
-            
-            setTimeout(() => {
-                musicStatus.classList.remove('show');
-            }, 2000);
         }
         
-        // 음악 재생/중지 전환
-        function toggleMusic() {
-            if (!musicInitialized) {
-                startMusic();
-                return;
-            }
-            
-            if (isPlaying) {
-                bgMusic.pause();
-                isPlaying = false;
-                showMusicStatus('🔇 배경음악 중지됨');
-            } else {
-                bgMusic.play();
-                isPlaying = true;
-                showMusicStatus('♪ 배경음악 재생 중');
-            }
-            
-            updateMusicControl();
-        }
-        
-        // 음악 컨트롤 아이콘 업데이트
+        // 음악 컨트롤 업데이트
         function updateMusicControl() {
             if (isPlaying) {
                 musicControl.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
@@ -905,6 +1161,62 @@
                 musicStatus.classList.remove('show');
             }, 2000);
         }
+        
+        // 음악 토글
+        function toggleMusic() {
+            if (!musicInitialized) {
+                startMusic();
+                return;
+            }
+            
+            if (isPlaying) {
+                bgMusic.pause();
+                isPlaying = false;
+                updateMusicControl();
+                showMusicStatus('🔇 배경음악 중지됨');
+            } else {
+                bgMusic.play()
+                    .then(() => {
+                        isPlaying = true;
+                        updateMusicControl();
+                        showMusicStatus('♪ 배경음악 재생 중');
+                    })
+                    .catch(error => {
+                        console.log('재생 실패:', error);
+                        showMusicStatus('🔇 음악 재생 실패');
+                    });
+            }
+        }
+        
+        // 폼 제출
+        const form = document.getElementById('attendForm');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            formStatusDiv.innerHTML = '제출 중입니다...';
+            formStatusDiv.className = 'form-status success';
+            
+            fetch('https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                formStatusDiv.innerHTML = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
+                formStatusDiv.className = 'form-status success';
+                form.reset();
+            })
+            .catch(error => {
+                formStatusDiv.innerHTML = '제출 중 오류가 발생했습니다. 다시 시도해 주세요.';
+                formStatusDiv.className = 'form-status error';
+            });
+        });
+        
+        // 페이지 로드 시 실행
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDday();
+        });
     </script>
 </body>
 </html>
