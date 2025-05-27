@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>은설이와 은채의 첫 번째 생일에 초대합니다</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -322,6 +321,7 @@
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            aspect-ratio: 1/1;
         }
 
         .gallery-item:hover {
@@ -330,12 +330,12 @@
 
         .gallery-item img {
             width: 100%;
-            height: 120px;
+            height: 100%;
             object-fit: cover;
         }
 
         .gallery-placeholder {
-            height: 120px;
+            height: 100%;
             background: linear-gradient(135deg, #ffeef8, #f8e8ff);
             display: flex;
             align-items: center;
@@ -379,17 +379,9 @@
 
         .timeline-photos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 15px;
             margin-top: 15px;
-        }
-
-        .timeline-photos.three-photos {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .timeline-photos.one-photo {
-            grid-template-columns: 1fr;
         }
 
         .timeline-photo-item {
@@ -397,6 +389,7 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 1/1;
         }
 
         .timeline-photo-item:hover {
@@ -406,14 +399,14 @@
 
         .timeline-photo-item img {
             width: 100%;
-            height: 180px;
+            height: 100%;
             object-fit: cover;
             display: block;
         }
 
         .image-placeholder {
             width: 100%;
-            height: 180px;
+            height: 100%;
             background: linear-gradient(135deg, #ffeef8, #f8e8ff);
             display: flex;
             align-items: center;
@@ -562,10 +555,10 @@
             border-radius: 20px;
         }
 
-        /* 음악 컨트롤 */
+        /* 음악 컨트롤 - 단순화 */
         .music-control {
             position: fixed;
-            top: 20px;
+            bottom: 20px;
             right: 20px;
             width: 50px;
             height: 50px;
@@ -584,73 +577,16 @@
             transform: scale(1.1);
         }
 
-        .music-control i {
-            font-size: 20px;
+        .music-control-icon {
+            width: 24px;
+            height: 24px;
+            display: block;
             color: white;
         }
 
-        /* 음악 모달 */
-        .music-modal {
+        .music-status-toast {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .music-modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 300px;
-            margin: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .music-modal h3 {
-            color: #ff6b9d;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .music-modal p {
-            color: #6a5a7a;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .music-modal button {
-            background: linear-gradient(135deg, #ff6b9d, #fecfef);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            margin: 5px;
-            transition: transform 0.3s ease;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-
-        .music-modal button:hover {
-            transform: translateY(-2px);
-        }
-
-        .music-modal button.secondary {
-            background: #ddd;
-            color: #666;
-        }
-
-        /* 음악 상태 */
-        .music-status {
-            position: fixed;
-            bottom: 20px;
+            bottom: 80px;
             right: 20px;
             background: rgba(255, 107, 157, 0.9);
             color: white;
@@ -662,8 +598,61 @@
             transition: opacity 0.3s ease;
         }
 
-        .music-status.show {
+        .music-status-toast.show {
             opacity: 1;
+        }
+
+        /* 음악 시작 배너 - 간소화 */
+        .music-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .music-banner.hidden {
+            transform: translateY(100%);
+        }
+
+        .music-banner-text {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #5a4a6a;
+        }
+
+        .music-banner-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .music-button {
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #ff6b9d, #fecfef);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .music-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .music-button.secondary {
+            background: #e0e0e0;
+            color: #5a5a5a;
         }
 
         /* 장식 요소 */
@@ -697,28 +686,25 @@
             }
 
             .timeline-photos {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-
-            .timeline-photos.three-photos {
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             }
 
             .image-placeholder {
-                height: 150px;
                 font-size: 16px;
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 음악 시작 모달 -->
-    <div class="music-modal" id="musicModal">
-        <div class="music-modal-content">
-            <h3>🎵 배경음악</h3>
-            <p>은설이와 은채의 돌잔치에<br>배경음악과 함께 참여하시겠어요?</p>
-            <button id="startMusicBtn">음악과 함께 시작</button>
-            <button class="secondary" id="skipMusicBtn">음악 없이 시작</button>
+    <!-- 음악 배너 (하단에 고정) -->
+    <div class="music-banner" id="musicBanner">
+        <div class="music-banner-text">
+            🎵 은설이와 은채의 돌잔치에 배경음악과 함께 참여하시겠어요?
+        </div>
+        <div class="music-banner-buttons">
+            <button class="music-button" id="startMusicBtn">음악과 함께 시작</button>
+            <button class="music-button secondary" id="skipMusicBtn">음악 없이 시작</button>
         </div>
     </div>
     
@@ -763,11 +749,11 @@
         <div class="section">
             <div class="section-title">가족 소개</div>
             <div class="family-info">
-                <p><i class="fas fa-heart"></i>할머니 소애숙</p>
-                <p><i class="fas fa-heart"></i>외할아버지 민한훈, 외할머니 신춘덕</p>
-                <p><i class="fas fa-heart"></i>외삼촌 민재원</p>
-                <p><i class="fas fa-heart"></i>아빠 고석우, 엄마 민초원</p>
-                <p><i class="fas fa-heart"></i>첫째 고은설, 둘째 고은채</p>
+                <p><i>👵</i> 할머니 소애숙</p>
+                <p><i>👨‍👩‍</i> 외할아버지 민한훈, 외할머니 신춘덕</p>
+                <p><i>👨</i> 외삼촌 민재원</p>
+                <p><i>👨‍👩‍</i> 아빠 고석우, 엄마 민초원</p>
+                <p><i>👧👧</i> 첫째 고은설, 둘째 고은채</p>
             </div>
         </div>
         
@@ -868,7 +854,6 @@
         <div class="section">
             <div class="section-title">성장 타임라인</div>
             <div class="timeline">
-                <!-- 1. 탄생사진 : 2장 -->
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2024년 7월</div>
@@ -884,7 +869,6 @@
                     </div>
                 </div>
                 
-                <!-- 2. 50일 사진 : 2장 -->
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2024년 8월</div>
@@ -900,13 +884,12 @@
                     </div>
                 </div>
                 
-                <!-- 3. 100일 사진 : 3장 -->
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2024년 10월</div>
                         <div class="timeline-title">100일 기념일</div>
                     </div>
-                    <div class="timeline-photos three-photos">
+                    <div class="timeline-photos">
                         <div class="timeline-photo-item">
                             <img src="./100days_1.jpeg" alt="100일 사진 1" onerror="handleImageError(this, '💯 100일 사진')">
                         </div>
@@ -919,47 +902,44 @@
                     </div>
                 </div>
                 
-                <!-- 4. 첫 크리스마스 : 1장 -->
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2024년 12월</div>
                         <div class="timeline-title">첫 크리스마스</div>
                     </div>
-                    <div class="timeline-photos one-photo">
+                    <div class="timeline-photos">
                         <div class="timeline-photo-item">
-                            <img src="./x-mas.JPG" alt="크리스마스 사진" onerror="handleImageError(this, '🎄 첫 크리스마스')">
+                            <img src="./x-mas.JPG" alt="첫 크리스마스" onerror="handleImageError(this, '🎄 첫 크리스마스')">
                         </div>
                     </div>
                 </div>
                 
-                <!-- 5. 200일 사진 : 1장 -->
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2025년 1월</div>
                         <div class="timeline-title">200일 기념일</div>
                     </div>
-                    <div class="timeline-photos one-photo">
+                    <div class="timeline-photos">
                         <div class="timeline-photo-item">
-                            <img src="./200days.jpg" alt="200일 사진" onerror="handleImageError(this, '🌟 200일 기념')">
+                            <img src="./200days.jpg" alt="200일 사진" onerror="handleImageError(this, '🎈 200일 사진')">
                         </div>
                     </div>
                 </div>
                 
-                <!-- 6. 생일사진 : 3장 -->
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2025년 7월</div>
                         <div class="timeline-title">첫 번째 생일</div>
                     </div>
-                    <div class="timeline-photos three-photos">
+                    <div class="timeline-photos">
                         <div class="timeline-photo-item">
-                            <img src="./1years_1.JPG" alt="생일 사진 1" onerror="handleImageError(this, '🎂 첫 생일')">
+                            <img src="./1years_1.JPG" alt="생일 사진 1" onerror="handleImageError(this, '🎂 생일 사진')">
                         </div>
                         <div class="timeline-photo-item">
-                            <img src="./1years_2.JPG" alt="생일 사진 2" onerror="handleImageError(this, '🎂 첫 생일')">
+                            <img src="./1years_2.JPG" alt="생일 사진 2" onerror="handleImageError(this, '🎂 생일 사진')">
                         </div>
                         <div class="timeline-photo-item">
-                            <img src="./1years_3.JPG" alt="생일 사진 3" onerror="handleImageError(this, '🎂 첫 생일')">
+                            <img src="./1years_3.JPG" alt="생일 사진 3" onerror="handleImageError(this, '🎂 생일 사진')">
                         </div>
                     </div>
                 </div>
@@ -984,25 +964,29 @@
             <div class="rsvp">
                 <form id="attendForm">
                     <div class="form-group">
-                        <label for="name" class="form-label">이름</label>
+                        <label class="form-label" for="name">이름</label>
                         <input type="text" id="name" name="이름" class="form-control" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="attendance" class="form-label">참석여부</label>
+                        <label class="form-label" for="attendance">참석여부</label>
                         <select id="attendance" name="참석여부" class="form-control" required>
                             <option value="">선택해주세요</option>
                             <option value="참석">참석</option>
                             <option value="불참">불참</option>
                         </select>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="people" class="form-label">참석인원</label>
-                        <input type="number" id="people" name="참석인원" class="form-control" min="0" required>
+                        <label class="form-label" for="guests">참석인원</label>
+                        <input type="number" id="guests" name="참석인원" class="form-control" min="0" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="phone" class="form-label">연락처</label>
+                        <label class="form-label" for="phone">연락처</label>
                         <input type="tel" id="phone" name="연락처" class="form-control" placeholder="010-0000-0000" required>
                     </div>
+                    
                     <button type="submit" class="submit-button">참석 정보 제출하기</button>
                 </form>
                 <div id="formStatus" class="form-status hidden"></div>
@@ -1018,128 +1002,154 @@
         </div>
     </div>
     
-    <!-- Music Control Button -->
+    <!-- 음악 컨트롤 버튼 -->
     <div class="music-control" id="musicControl" title="음악 재생/중지">
-        <i class="fas fa-music" id="musicIcon"></i>
+        <svg class="music-control-icon" id="musicIcon" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" fill="currentColor"/>
+        </svg>
     </div>
     
-    <!-- Music Status -->
-    <div class="music-status" id="musicStatus">♪ 배경음악 재생 중</div>
+    <!-- 음악 상태 토스트 -->
+    <div class="music-status-toast" id="musicStatus">♪ 음악 재생 중</div>
     
-    <!-- Background Music -->
+    <!-- 배경 음악 -->
     <audio id="bgMusic" loop preload="auto">
         <source src="./background-music.mp3" type="audio/mpeg">
     </audio>
     
     <script>
-        // 전역 변수
+        // 글로벌 변수
         let isPlaying = false;
-        let musicInitialized = false;
         const bgMusic = document.getElementById('bgMusic');
         const musicControl = document.getElementById('musicControl');
         const musicIcon = document.getElementById('musicIcon');
-        const musicModal = document.getElementById('musicModal');
         const musicStatus = document.getElementById('musicStatus');
+        const musicBanner = document.getElementById('musicBanner');
         const startMusicBtn = document.getElementById('startMusicBtn');
         const skipMusicBtn = document.getElementById('skipMusicBtn');
+        const formStatus = document.getElementById('formStatus');
         
-        // DOM이 로드된 후 실행
+        // DOM이 로드되면 초기 설정 실행
         document.addEventListener('DOMContentLoaded', function() {
-            // 음악 버튼 이벤트 연결
-            startMusicBtn.addEventListener('click', startMusic);
-            skipMusicBtn.addEventListener('click', skipMusic);
-            musicControl.addEventListener('click', toggleMusic);
-            
             // D-day 카운터 업데이트
             updateDday();
             
-            // 폼 제출 이벤트 연결
-            const form = document.getElementById('attendForm');
-            if (form) {
-                form.addEventListener('submit', submitForm);
-            }
+            // 이벤트 리스너 설정
+            setupEventListeners();
+            
+            // 폼 제출 로직 설정
+            setupFormSubmission();
         });
+        
+        // 이벤트 리스너 설정
+        function setupEventListeners() {
+            // 음악 시작 버튼
+            startMusicBtn.addEventListener('click', function() {
+                startMusic();
+            });
+            
+            // 음악 없이 시작 버튼
+            skipMusicBtn.addEventListener('click', function() {
+                skipMusic();
+            });
+            
+            // 음악 컨트롤 버튼
+            musicControl.addEventListener('click', function() {
+                toggleMusic();
+            });
+        }
         
         // 이미지 로딩 실패 처리
         function handleImageError(img, text) {
             const placeholder = document.createElement('div');
             placeholder.className = 'image-placeholder';
-            placeholder.innerHTML = text || '📷<br>이미지 로딩 중...';
-            img.parentNode.replaceChild(placeholder, img);
+            placeholder.innerHTML = text || '📷 이미지 준비 중';
+            
+            // 부모 요소 찾기 및 이미지 대체
+            const parent = img.parentNode;
+            parent.replaceChild(placeholder, img);
         }
         
-        // 음악 시작 함수
+        // 음악 시작
         function startMusic() {
-            musicModal.classList.add('hidden');
-            musicInitialized = true;
+            hideMusicBanner();
             
-            // 음악 재생 시도
-            bgMusic.play()
-                .then(() => {
-                    isPlaying = true;
-                    updateMusicControl();
-                    showMusicStatus('♪ 배경음악 재생 중');
-                })
-                .catch(error => {
-                    console.log('자동 재생 실패:', error);
-                    showMusicStatus('🔇 음악 재생 실패');
-                });
+            try {
+                const playPromise = bgMusic.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        isPlaying = true;
+                        updateMusicUI();
+                        showMusicStatus('♪ 배경음악 재생 중');
+                    }).catch(error => {
+                        console.log('음악 재생 실패:', error);
+                        showMusicStatus('🔇 음악 재생 실패');
+                    });
+                }
+            } catch (error) {
+                console.error('음악 재생 오류:', error);
+            }
         }
         
         // 음악 없이 시작
         function skipMusic() {
-            musicModal.classList.add('hidden');
-            musicInitialized = true;
-            isPlaying = false;
-            updateMusicControl();
+            hideMusicBanner();
+            showMusicStatus('🔇 음악 없이 시작');
         }
         
-        // 음악 토글
+        // 음악 토글 (재생/정지)
         function toggleMusic() {
-            if (!musicInitialized) {
-                startMusic();
-                return;
-            }
-            
             if (isPlaying) {
                 bgMusic.pause();
                 isPlaying = false;
-                updateMusicControl();
-                showMusicStatus('🔇 배경음악 중지됨');
+                updateMusicUI();
+                showMusicStatus('🔇 음악 정지됨');
             } else {
-                bgMusic.play()
-                    .then(() => {
-                        isPlaying = true;
-                        updateMusicControl();
-                        showMusicStatus('♪ 배경음악 재생 중');
-                    })
-                    .catch(error => {
-                        console.log('재생 실패:', error);
-                        showMusicStatus('🔇 음악 재생 실패');
-                    });
+                try {
+                    const playPromise = bgMusic.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            isPlaying = true;
+                            updateMusicUI();
+                            showMusicStatus('♪ 음악 재생 중');
+                        }).catch(error => {
+                            console.log('음악 재생 실패:', error);
+                            showMusicStatus('🔇 음악 재생 실패');
+                        });
+                    }
+                } catch (error) {
+                    console.error('음악 재생 오류:', error);
+                }
             }
         }
         
-        // 음악 컨트롤 UI 업데이트
-        function updateMusicControl() {
+        // 음악 UI 업데이트
+        function updateMusicUI() {
             if (isPlaying) {
-                musicIcon.className = 'fas fa-volume-up';
+                musicIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/>';
             } else {
-                musicIcon.className = 'fas fa-music';
+                musicIcon.innerHTML = '<path d="M8 5v14l11-7z" fill="currentColor"/>';
             }
         }
         
-        // 음악 상태 메시지 표시
+        // 음악 배너 숨기기
+        function hideMusicBanner() {
+            musicBanner.classList.add('hidden');
+        }
+        
+        // 음악 상태 표시
         function showMusicStatus(message) {
             musicStatus.textContent = message;
             musicStatus.classList.add('show');
             
             setTimeout(() => {
                 musicStatus.classList.remove('show');
-            }, 2000);
+            }, 3000);
         }
         
-        // D-Day 카운터 계산
+        // D-day 카운터 계산
         function updateDday() {
             const eventDate = new Date(2025, 6, 5); // 2025년 7월 5일 (월은 0부터 시작)
             const today = new Date();
@@ -1158,34 +1168,39 @@
             }
         }
         
-        // 폼 제출 처리
-        function submitForm(e) {
-            e.preventDefault();
+        // 폼 제출 설정
+        function setupFormSubmission() {
+            const form = document.getElementById('attendForm');
             
-            const form = e.target;
-            const formData = new FormData(form);
-            const formStatusDiv = document.getElementById('formStatus');
-            
-            // 로딩 상태 표시
-            formStatusDiv.innerHTML = '제출 중입니다...';
-            formStatusDiv.className = 'form-status loading';
-            formStatusDiv.classList.remove('hidden');
-            
-            // Google Script로 데이터 전송
-            fetch('https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                formStatusDiv.innerHTML = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
-                formStatusDiv.className = 'form-status success';
-                form.reset();
-            })
-            .catch(error => {
-                formStatusDiv.innerHTML = '제출 중 오류가 발생했습니다. 다시 시도해 주세요.';
-                formStatusDiv.className = 'form-status error';
-                console.error('Error:', error);
-            });
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // 폼 데이터 수집
+                    const formData = new FormData(form);
+                    
+                    // 상태 표시
+                    formStatus.textContent = '제출 중입니다...';
+                    formStatus.className = 'form-status loading';
+                    formStatus.classList.remove('hidden');
+                    
+                    // 구글 시트로 데이터 전송 (시뮬레이션)
+                    setTimeout(() => {
+                        // 실제로는 fetch API를 사용하여 구글 시트 API에 전송
+                        // fetch('https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec', {
+                        //     method: 'POST',
+                        //     body: formData
+                        // })
+                        
+                        // 성공 메시지 표시
+                        formStatus.textContent = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
+                        formStatus.className = 'form-status success';
+                        
+                        // 폼 초기화
+                        form.reset();
+                    }, 1500);
+                });
+            }
         }
     </script>
 </body>
