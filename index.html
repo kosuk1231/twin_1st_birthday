@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>은설이와 은채의 첫 번째 생일에 초대합니다</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -59,7 +60,7 @@
             border-radius: 25px;
             padding: 15px 20px;
             margin: 0 auto;
-            max-width: 300px;
+            max-width: 280px;
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             position: relative;
@@ -102,7 +103,7 @@
             z-index: 2;
         }
 
-        /* 메인 이미지 섹션 - 크기 확대 */
+        /* 메인 이미지 섹션 */
         .main-image-section {
             padding: 40px 20px;
             text-align: center;
@@ -115,7 +116,7 @@
             border-radius: 25px;
             overflow: hidden;
             box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .main-image {
@@ -135,14 +136,16 @@
             pointer-events: none;
         }
 
-        /* 초대 메시지 - 크기 확대 */
+        /* 초대 메시지 */
         .invitation-text {
             font-size: 18px;
-            line-height: 2;
+            line-height: 2.0;
             color: #6a5a7a;
             margin: 30px 0;
             padding: 0 15px;
-            font-weight: 400;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .invitation-text .highlight {
@@ -323,7 +326,6 @@
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
-            cursor: pointer;
         }
 
         .gallery-item:hover {
@@ -393,8 +395,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             width: 100%;
-            padding-bottom: 100%;
-            cursor: pointer;
+            padding-bottom: 100%; /* 1:1 비율 */
         }
 
         .timeline-photo-item:hover {
@@ -461,7 +462,7 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
-        /* RSVP */
+        /* RSVP - 구글시트 연결 */
         .rsvp {
             text-align: center;
             background: white;
@@ -550,6 +551,77 @@
             color: #3f51b5;
         }
 
+        /* 연락처 섹션 스타일 */
+        .contact-info {
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .contact-name {
+            font-size: 17px;
+            font-weight: 600;
+            color: #5a4a6a;
+            margin-bottom: 10px;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .contact-link i {
+            margin-right: 6px;
+            font-size: 16px;
+        }
+        
+        .phone-link {
+            color: white;
+            background: linear-gradient(135deg, #6b8cff, #a579ff);
+        }
+        
+        .phone-link:hover {
+            background: linear-gradient(135deg, #5a7cef, #9569ef);
+            box-shadow: 0 4px 10px rgba(107, 140, 255, 0.3);
+        }
+        
+        .kakao-link {
+            color: #3c1e1e;
+            background: #fee500;
+        }
+        
+        .kakao-link:hover {
+            background: #ffd900;
+            box-shadow: 0 4px 10px rgba(254, 229, 0, 0.3);
+        }
+
         .hidden {
             display: none;
         }
@@ -589,9 +661,25 @@
         }
 
         .music-control svg {
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
             fill: white;
+        }
+        
+        .music-control::after {
+            content: '음악';
+            position: absolute;
+            bottom: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 107, 157, 0.9);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 1;
+            transition: opacity 0.3s;
         }
 
         /* 음악 상태 */
@@ -613,7 +701,15 @@
             opacity: 1;
         }
 
-        /* 라이트박스 */
+        /* 장식 요소 */
+        .decorative-hearts {
+            text-align: center;
+            font-size: 20px;
+            color: #fecfef;
+            margin: 20px 0;
+        }
+        
+        /* 라이트박스 스타일 */
         .lightbox {
             position: fixed;
             top: 0;
@@ -633,7 +729,8 @@
             max-height: 90%;
         }
 
-        .lightbox-content img {
+        .lightbox-content img,
+        .lightbox-content video {
             max-width: 100%;
             max-height: 90vh;
             object-fit: contain;
@@ -679,14 +776,6 @@
             opacity: 1;
         }
 
-        /* 장식 요소 */
-        .decorative-hearts {
-            text-align: center;
-            font-size: 20px;
-            color: #fecfef;
-            margin: 20px 0;
-        }
-
         /* 반응형 */
         @media (max-width: 480px) {
             .container {
@@ -696,15 +785,6 @@
             
             .age-number {
                 font-size: 60px;
-            }
-            
-            .main-image {
-                max-width: 350px;
-            }
-            
-            .invitation-text {
-                font-size: 16px;
-                padding: 0 10px;
             }
             
             .section {
@@ -717,25 +797,29 @@
                 font-size: 12px;
                 height: 40px;
             }
+            
+            .main-image {
+                max-width: 350px;
+            }
+            
+            .invitation-text {
+                font-size: 17px;
+                padding: 0 10px;
+                line-height: 1.9;
+            }
+            
+            .main-image-section {
+                padding: 35px 15px;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 음악 컨트롤 -->
-    <div class="music-control" id="musicControl">
-        <svg id="musicIcon" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"/>
-        </svg>
-    </div>
-
-    <!-- 음악 상태 -->
-    <div class="music-status" id="musicStatus">♪ 배경음악 재생 중</div>
-
-    <!-- 배경음악 -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="./background-music.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="container">
         <!-- 헤더 -->
         <div class="header">
@@ -777,11 +861,11 @@
         <div class="section">
             <div class="section-title">가족 소개</div>
             <div class="family-info">
-                <p>👵 할머니 소애숙</p>
-                <p>👨‍👩‍ 외할아버지 민한훈, 외할머니 신춘덕</p>
-                <p>👨 외삼촌 민재원</p>
-                <p>👨‍👩‍ 아빠 고석우, 엄마 민초원</p>
-                <p>👧👧 첫째 고은설, 둘째 고은채</p>
+                <p><i>👵</i> 할머니 소애숙</p>
+                <p><i>👨‍👩‍</i> 외할아버지 민한훈, 외할머니 신춘덕</p>
+                <p><i>👨</i> 외삼촌 민재원</p>
+                <p><i>👨‍👩‍</i> 아빠 고석우, 엄마 민초원</p>
+                <p><i>👧👧</i> 첫째 고은설, 둘째 고은채</p>
             </div>
         </div>
         
@@ -1028,6 +1112,36 @@
             </div>
         </div>
         
+        <!-- 연락처 섹션 -->
+        <div class="section">
+            <div class="section-title">연락처</div>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-name">아빠 고석우</div>
+                    <div class="contact-links">
+                        <a href="tel:010-9062-8804" class="contact-link phone-link">
+                            <i class="fas fa-phone-alt"></i> 010-9062-8804
+                        </a>
+                        <a href="https://open.kakao.com/o/carpediemkosuk" class="contact-link kakao-link">
+                            <i class="fas fa-comment"></i> 카카오톡: carpediemkosuk
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-name">엄마 민초원</div>
+                    <div class="contact-links">
+                        <a href="tel:010-4656-9202" class="contact-link phone-link">
+                            <i class="fas fa-phone-alt"></i> 010-4656-9202
+                        </a>
+                        <a href="https://open.kakao.com/o/chowon1112" class="contact-link kakao-link">
+                            <i class="fas fa-comment"></i> 카카오톡: chowon1112
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="decorative-hearts">♡ ♡ ♡</div>
         
         <!-- 감사 메시지 -->
@@ -1036,59 +1150,55 @@
             함께 축하해 주셔서 감사합니다.
         </div>
     </div>
-
+    
+    <!-- Music Control Button -->
+    <div class="music-control" id="musicControl" title="음악 재생/중지">
+        <svg id="musicIcon" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+    </div>
+    
+    <!-- Music Status -->
+    <div class="music-status" id="musicStatus">♪ 배경음악 재생 중</div>
+    
+    <!-- Background Music -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="./background-music.mp3" type="audio/mpeg">
+    </audio>
+    
     <script>
         // 전역 변수
         let isPlaying = false;
         const bgMusic = document.getElementById('bgMusic');
         const musicControl = document.getElementById('musicControl');
         const musicStatus = document.getElementById('musicStatus');
-
-        // 이미지 오류 처리
+        
+        // 이미지 로딩 실패 처리
         function handleImageError(img, text) {
             const parent = img.parentNode;
             
+            // 이미 플레이스홀더로 대체된 경우 중복 실행 방지
             if (parent.querySelector('.image-placeholder')) return;
             
             const placeholder = document.createElement('div');
             placeholder.className = 'image-placeholder';
-            placeholder.innerHTML = text || '📷';
             
+            placeholder.innerHTML = text || '📷';
             parent.replaceChild(placeholder, img);
         }
-
-        // 음악 아이콘 업데이트
-        function updateMusicIcon() {
-            const musicIcon = document.getElementById('musicIcon');
-            if (isPlaying) {
-                musicIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
-            } else {
-                musicIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-            }
-        }
-
-        // 음악 상태 표시
-        function showMusicStatus(message) {
-            musicStatus.textContent = message;
-            musicStatus.classList.add('show');
-            
-            setTimeout(() => {
-                musicStatus.classList.remove('show');
-            }, 2000);
-        }
-
-        // 음악 토글
+        
+        // 음악 재생/정지 토글 함수
         function toggleMusic() {
             if (isPlaying) {
                 bgMusic.pause();
+                musicIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
                 isPlaying = false;
-                updateMusicIcon();
                 showMusicStatus('🎵 음악 정지됨');
             } else {
                 bgMusic.play()
                     .then(() => {
+                        musicIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
                         isPlaying = true;
-                        updateMusicIcon();
                         showMusicStatus('🎵 음악 재생 중');
                     })
                     .catch(error => {
@@ -1097,13 +1207,24 @@
                     });
             }
         }
-
+        
+        // 음악 상태 메시지 표시
+        function showMusicStatus(message) {
+            musicStatus.textContent = message;
+            musicStatus.classList.add('show');
+            
+            setTimeout(() => {
+                musicStatus.classList.remove('show');
+            }, 2000);
+        }
+        
         // D-Day 카운터 계산
         function updateDday() {
             try {
-                const eventDate = new Date(2025, 6, 5);
+                const eventDate = new Date(2025, 6, 5); // 2025년 7월 5일 (월은 0부터 시작)
                 const today = new Date();
                 
+                // 날짜 차이 계산 (밀리초)
                 const diffTime = eventDate.getTime() - today.getTime();
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                 
@@ -1118,11 +1239,11 @@
                     }
                 }
             } catch (error) {
-                console.error('D-day 계산 오류:', error);
+                console.error("D-day 계산 오류:", error);
             }
         }
-
-        // 라이트박스 열기
+        
+        // 라이트박스 관련 함수
         function openLightbox(imageSrc) {
             const lightbox = document.createElement('div');
             lightbox.className = 'lightbox';
@@ -1133,105 +1254,167 @@
                 </div>
             `;
             document.body.appendChild(lightbox);
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'; // 스크롤 방지
             
+            // 닫기 버튼 클릭 시 라이트박스 닫기
             lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
+            
+            // 라이트박스 배경 클릭 시 닫기
             lightbox.addEventListener('click', function(e) {
                 if (e.target === lightbox) {
                     closeLightbox();
                 }
             });
         }
-
-        // 라이트박스 닫기
+        
         function closeLightbox() {
             const lightbox = document.querySelector('.lightbox');
             if (lightbox) {
                 document.body.removeChild(lightbox);
-                document.body.style.overflow = '';
+                document.body.style.overflow = ''; // 스크롤 복원
             }
         }
-
-        // 페이지 로드 시 초기화
+        
+        // 페이지 로드 시 자동 음악 재생
         document.addEventListener('DOMContentLoaded', function() {
             // D-Day 카운터 업데이트
             updateDday();
             
-            // 음악 컨트롤 이벤트
+            // 이미지 클릭 이벤트 설정
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+            galleryItems.forEach(img => {
+                if (img.parentElement) {
+                    img.addEventListener('click', function() {
+                        openLightbox(this.src);
+                    });
+                }
+            });
+            
+            const timelineImages = document.querySelectorAll('.timeline-photo-item img');
+            timelineImages.forEach(img => {
+                if (img.parentElement) {
+                    img.addEventListener('click', function() {
+                        openLightbox(this.src);
+                    });
+                }
+            });
+            
+            // 음악 컨트롤 버튼 클릭 이벤트
             if (musicControl) {
                 musicControl.addEventListener('click', toggleMusic);
             }
-
-            // 클릭 가능한 이미지들에 이벤트 추가
-            const clickableImages = document.querySelectorAll('.clickable-image img');
-            clickableImages.forEach(img => {
-                img.addEventListener('click', function() {
-                    openLightbox(this.src);
-                });
-            });
-
-            // 자동 음악 재생 시도
+            
+            // 약간의 지연 후 음악 자동 재생 시도
             setTimeout(function() {
                 if (bgMusic) {
                     bgMusic.play()
                         .then(() => {
                             isPlaying = true;
-                            updateMusicIcon();
+                            musicIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
                             showMusicStatus('🎵 배경음악 재생 중');
                         })
                         .catch(error => {
-                            console.log('자동 재생이 차단되었습니다.');
-                            showMusicStatus('🎵 음악 아이콘을 클릭해주세요');
+                            console.log('자동 재생이 차단되었습니다. 사용자가 직접 재생해주세요.');
                         });
                 }
             }, 1000);
-
-            // 사용자가 페이지를 클릭하면 음악 재생 시도
-            document.addEventListener('click', function() {
-                if (!isPlaying && bgMusic) {
-                    bgMusic.play()
-                        .then(() => {
-                            isPlaying = true;
-                            updateMusicIcon();
-                            showMusicStatus('🎵 배경음악 재생 중');
-                        })
-                        .catch(error => {
-                            console.log('음악 재생 실패:', error);
-                        });
-                }
-            }, { once: true });
-
-            // 폼 제출 처리
-            const form = document.getElementById('attendForm');
-            const formStatus = document.getElementById('formStatus');
             
-            if (form) {
+            // 폼 제출 이벤트
+            const form = document.getElementById('attendForm');
+            const formStatusDiv = document.getElementById('formStatus');
+            
+            if (form && formStatusDiv) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
                     const formData = new FormData(form);
                     
-                    formStatus.innerHTML = '제출 중입니다...';
-                    formStatus.className = 'form-status loading';
-                    formStatus.classList.remove('hidden');
+                    formStatusDiv.innerHTML = '제출 중입니다...';
+                    formStatusDiv.classList.remove('hidden');
+                    formStatusDiv.className = 'form-status loading';
                     
                     fetch('https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec', {
                         method: 'POST',
                         body: formData
                     })
                     .then(response => {
-                        formStatus.innerHTML = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
-                        formStatus.className = 'form-status success';
+                        formStatusDiv.innerHTML = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
+                        formStatusDiv.className = 'form-status success';
                         form.reset();
                     })
                     .catch(error => {
-                        formStatus.innerHTML = '제출 중 오류가 발생했습니다. 다시 시도해 주세요.';
-                        formStatus.className = 'form-status error';
+                        formStatusDiv.innerHTML = '제출 중 오류가 발생했습니다. 다시 시도해 주세요.';
+                        formStatusDiv.className = 'form-status error';
                         console.error('Error:', error);
                     });
                 });
             }
         });
+        
+        // 사용자가 페이지를 클릭하면 음악 재생 시도
+        document.addEventListener('click', function() {
+            if (!isPlaying && bgMusic) {
+                bgMusic.play()
+                    .then(() => {
+                        isPlaying = true;
+                        musicIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+                        showMusicStatus('🎵 배경음악 재생 중');
+                    })
+                    .catch(error => {
+                        console.log('음악 재생 실패:', error);
+                    });
+            }
+        }, { once: true });
+        
+        // 다양한 경로 및 확장자 변형 시도
+        function tryLoadImage(imgElement, baseName) {
+            // 시도할 경로 배열
+            const paths = [
+                './' + baseName,           // 현재 폴더
+                './images/' + baseName,    // images 폴더
+                '../' + baseName,          // 상위 폴더
+                '../images/' + baseName    // 상위 폴더의 images 폴더
+            ];
+            
+            // 대소문자 확장자 변형
+            const extensions = {
+                'JPG': ['JPG', 'jpg', 'jpeg', 'JPEG'],
+                'jpg': ['jpg', 'JPG', 'jpeg', 'JPEG'],
+                'jpeg': ['jpeg', 'jpg', 'JPG', 'JPEG'],
+                'JPEG': ['JPEG', 'jpeg', 'jpg', 'JPG']
+            };
+            
+            // 원본 src에서 파일명과 확장자 추출
+            const originalSrc = imgElement.src;
+            const match = originalSrc.match(/([^\/]+)\.([^\.]+)$/);
+            
+            if (!match) return false;
+            
+            const fileName = match[1];
+            const ext = match[2];
+            
+            // 확장자 변형 가져오기
+            const extVariations = extensions[ext] || [ext];
+            
+            // 모든 경로와 확장자 조합 시도
+            let loaded = false;
+            for (const path of paths) {
+                for (const extension of extVariations) {
+                    if (loaded) break;
+                    
+                    const newSrc = path + '/' + fileName + '.' + extension;
+                    const img = new Image();
+                    img.onload = function() {
+                        imgElement.src = newSrc;
+                        loaded = true;
+                    };
+                    img.src = newSrc;
+                }
+                if (loaded) break;
+            }
+            
+            return loaded;
+        }
     </script>
 </body>
 </html>
