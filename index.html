@@ -132,7 +132,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 154, 158, 0.1), rgba(254, 207, 239, 0.1));
+            background: linear-gradient(45deg, rgba(255, 154, 158, 0.08), rgba(254, 207, 239, 0.08));
             pointer-events: none;
         }
 
@@ -326,6 +326,7 @@
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            position: relative;
         }
 
         .gallery-item:hover {
@@ -395,7 +396,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             width: 100%;
-            padding-bottom: 100%; /* 1:1 비율 */
+            padding-bottom: 100%;
         }
 
         .timeline-photo-item:hover {
@@ -551,77 +552,6 @@
             color: #3f51b5;
         }
 
-        /* 연락처 섹션 스타일 */
-        .contact-info {
-            text-align: center;
-            margin: 15px 0;
-        }
-        
-        .contact-card {
-            background: white;
-            border-radius: 15px;
-            padding: 18px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .contact-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-        
-        .contact-name {
-            font-size: 17px;
-            font-weight: 600;
-            color: #5a4a6a;
-            margin-bottom: 10px;
-        }
-        
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 15px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .contact-link i {
-            margin-right: 6px;
-            font-size: 16px;
-        }
-        
-        .phone-link {
-            color: white;
-            background: linear-gradient(135deg, #6b8cff, #a579ff);
-        }
-        
-        .phone-link:hover {
-            background: linear-gradient(135deg, #5a7cef, #9569ef);
-            box-shadow: 0 4px 10px rgba(107, 140, 255, 0.3);
-        }
-        
-        .kakao-link {
-            color: #3c1e1e;
-            background: #fee500;
-        }
-        
-        .kakao-link:hover {
-            background: #ffd900;
-            box-shadow: 0 4px 10px rgba(254, 229, 0, 0.3);
-        }
-
         .hidden {
             display: none;
         }
@@ -642,44 +572,27 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .music-control:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6);
         }
 
         .music-control svg {
             width: 24px;
             height: 24px;
             fill: white;
-        }
-        
-        .music-control::after {
-            content: '음악';
-            position: absolute;
-            bottom: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 107, 157, 0.9);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 1;
-            transition: opacity 0.3s;
         }
 
         /* 음악 상태 */
@@ -708,7 +621,37 @@
             color: #fecfef;
             margin: 20px 0;
         }
-        
+
+        /* 클릭 가능 이미지 */
+        .clickable-image {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .clickable-image::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .clickable-image:hover::after {
+            opacity: 1;
+        }
+
         /* 라이트박스 스타일 */
         .lightbox {
             position: fixed;
@@ -747,33 +690,66 @@
             font-weight: bold;
         }
 
-        .clickable-image {
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
+        /* 연락처 스타일 개선 */
+        .contact-info {
+            padding: 10px 0;
         }
 
-        .clickable-image::after {
-            content: '🔍';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .contact-person {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .contact-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ff6b9d;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .contact-phone {
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #ff6b9d, #ff9cc2);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 10px 0;
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.2);
+            transition: all 0.3s ease;
         }
 
-        .clickable-image:hover::after {
-            opacity: 1;
+        .contact-phone:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 107, 157, 0.3);
+        }
+
+        .contact-phone i {
+            font-size: 22px;
+            margin-right: 12px;
+        }
+
+        .contact-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 107, 157, 0.3), transparent);
+            margin: 25px 0;
+        }
+
+        .contact-info-text {
+            text-align: center;
+            color: #6a5a7a;
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: 500;
         }
 
         /* 반응형 */
@@ -810,11 +786,6 @@
             
             .main-image-section {
                 padding: 35px 15px;
-            }
-            
-            .contact-links {
-                flex-direction: column;
-                gap: 10px;
             }
         }
     </style>
@@ -861,11 +832,11 @@
         <div class="section">
             <div class="section-title">가족 소개</div>
             <div class="family-info">
-                <p><i>👵</i> 할머니 소애숙</p>
-                <p><i>👨‍👩‍</i> 외할아버지 민한훈, 외할머니 신춘덕</p>
-                <p><i>👨</i> 외삼촌 민재원</p>
-                <p><i>👨‍👩‍</i> 아빠 고석우, 엄마 민초원</p>
-                <p><i>👧👧</i> 첫째 고은설, 둘째 고은채</p>
+                <p><i class="fas fa-female"></i> 할머니 소애숙</p>
+                <p><i class="fas fa-users"></i> 외할아버지 민한훈, 외할머니 신춘덕</p>
+                <p><i class="fas fa-male"></i> 외삼촌 민재원</p>
+                <p><i class="fas fa-users"></i> 아빠 고석우, 엄마 민초원</p>
+                <p><i class="fas fa-child"></i><i class="fas fa-child"></i> 첫째 고은설, 둘째 고은채</p>
             </div>
         </div>
         
@@ -1072,7 +1043,9 @@
                 <p>클래스홀</p>
                 <p>서울특별시 강서구 양천로 570 20층</p>
                 <p>📞 02-2013-5670</p>
-                <a class="map-button" href="https://naver.me/5ss0AH07" target="_blank">📍 네이버 지도에서 보기</a>
+                <a class="map-button" href="https://naver.me/5ss0AH07" target="_blank">
+                    <i class="fas fa-map-marker-alt"></i> 네이버 지도에서 보기
+                </a>
             </div>
         </div>
         
@@ -1083,13 +1056,13 @@
                 <p>참석 정보를 알려주시면 감사하겠습니다.</p>
                 <form id="attendForm">
                     <div class="form-group">
-                        <label class="form-label" for="이름">이름</label>
-                        <input type="text" id="이름" name="이름" class="form-control" required>
+                        <label for="name" class="form-label">이름</label>
+                        <input type="text" id="name" name="이름" class="form-control" required>
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label" for="참석여부">참석여부</label>
-                        <select id="참석여부" name="참석여부" class="form-control" required>
+                        <label for="attendance" class="form-label">참석여부</label>
+                        <select id="attendance" name="참석여부" class="form-control" required>
                             <option value="">선택해주세요</option>
                             <option value="참석">참석</option>
                             <option value="불참">불참</option>
@@ -1097,13 +1070,13 @@
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label" for="참석인원">참석인원</label>
-                        <input type="number" id="참석인원" name="참석인원" class="form-control" min="0" required>
+                        <label for="people" class="form-label">참석인원</label>
+                        <input type="number" id="people" name="참석인원" min="0" class="form-control" required>
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label" for="연락처">연락처</label>
-                        <input type="tel" id="연락처" name="연락처" class="form-control" placeholder="010-0000-0000" required>
+                        <label for="contact" class="form-label">연락처</label>
+                        <input type="tel" id="contact" name="연락처" placeholder="010-0000-0000" class="form-control" required>
                     </div>
                     
                     <button type="submit" class="submit-button">참석 정보 제출하기</button>
@@ -1115,29 +1088,22 @@
         <!-- 연락처 섹션 -->
         <div class="section">
             <div class="section-title">연락처</div>
+            <p class="contact-info-text">참석 여부는 아래 연락처로도 알려주실 수 있습니다.</p>
             <div class="contact-info">
-                <div class="contact-card">
+                <div class="contact-person">
                     <div class="contact-name">아빠 고석우</div>
-                    <div class="contact-links">
-                        <a href="tel:010-9062-8804" class="contact-link phone-link">
-                            <i class="fas fa-phone-alt"></i> 010-9062-8804
-                        </a>
-                        <a href="https://open.kakao.com/o/carpediemkosuk" class="contact-link kakao-link">
-                            <i class="fas fa-comment"></i> 카카오톡: carpediemkosuk
-                        </a>
-                    </div>
+                    <a href="tel:010-9062-8804" class="contact-phone">
+                        <i class="fas fa-phone-alt"></i> 010-9062-8804
+                    </a>
                 </div>
                 
-                <div class="contact-card">
+                <div class="contact-divider"></div>
+                
+                <div class="contact-person">
                     <div class="contact-name">엄마 민초원</div>
-                    <div class="contact-links">
-                        <a href="tel:010-4656-9202" class="contact-link phone-link">
-                            <i class="fas fa-phone-alt"></i> 010-4656-9202
-                        </a>
-                        <a href="https://open.kakao.com/o/chowon1112" class="contact-link kakao-link">
-                            <i class="fas fa-comment"></i> 카카오톡: chowon1112
-                        </a>
-                    </div>
+                    <a href="tel:010-4656-9202" class="contact-phone">
+                        <i class="fas fa-phone-alt"></i> 010-4656-9202
+                    </a>
                 </div>
             </div>
         </div>
@@ -1151,18 +1117,18 @@
         </div>
     </div>
     
-    <!-- Music Control Button -->
-    <div class="music-control" id="musicControl" title="음악 재생/중지">
+    <!-- 음악 컨트롤 버튼 -->
+    <div class="music-control" id="musicControl" title="음악 재생/정지">
         <svg id="musicIcon" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z"/>
         </svg>
     </div>
     
-    <!-- Music Status -->
+    <!-- 음악 상태 -->
     <div class="music-status" id="musicStatus">♪ 배경음악 재생 중</div>
     
-    <!-- Background Music -->
-    <audio id="bgMusic" loop preload="auto">
+    <!-- 배경 음악 -->
+    <audio id="bgMusic" loop>
         <source src="./background-music.mp3" type="audio/mpeg">
     </audio>
     
@@ -1171,6 +1137,7 @@
         let isPlaying = false;
         const bgMusic = document.getElementById('bgMusic');
         const musicControl = document.getElementById('musicControl');
+        const musicIcon = document.getElementById('musicIcon');
         const musicStatus = document.getElementById('musicStatus');
         
         // 이미지 로딩 실패 처리
@@ -1182,12 +1149,12 @@
             
             const placeholder = document.createElement('div');
             placeholder.className = 'image-placeholder';
+            placeholder.textContent = text || '📷';
             
-            placeholder.innerHTML = text || '📷';
             parent.replaceChild(placeholder, img);
         }
         
-        // 음악 재생/정지 토글 함수
+        // 음악 토글 함수
         function toggleMusic() {
             if (isPlaying) {
                 bgMusic.pause();
@@ -1199,7 +1166,7 @@
                     .then(() => {
                         musicIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
                         isPlaying = true;
-                        showMusicStatus('🎵 음악 재생 중');
+                        showMusicStatus('🎵 배경음악 재생 중');
                     })
                     .catch(error => {
                         console.error("음악 재생 실패:", error);
@@ -1208,7 +1175,7 @@
             }
         }
         
-        // 음악 상태 메시지 표시
+        // 음악 상태 표시
         function showMusicStatus(message) {
             musicStatus.textContent = message;
             musicStatus.classList.add('show');
@@ -1218,140 +1185,44 @@
             }, 2000);
         }
         
-        // D-Day 카운터 계산
-        function updateDday() {
-            try {
-                const eventDate = new Date(2025, 6, 5); // 2025년 7월 5일 (월은 0부터 시작)
-                const today = new Date();
-                
-                // 날짜 차이 계산 (밀리초)
-                const diffTime = eventDate.getTime() - today.getTime();
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                
-                const ddayCounter = document.getElementById('dday-counter');
-                if (ddayCounter) {
-                    if (diffDays > 0) {
-                        ddayCounter.innerHTML = `D-${diffDays}`;
-                    } else if (diffDays === 0) {
-                        ddayCounter.innerHTML = "D-Day";
-                    } else {
-                        ddayCounter.innerHTML = `D+${Math.abs(diffDays)}`;
-                    }
-                }
-            } catch (error) {
-                console.error("D-day 계산 오류:", error);
-            }
-        }
-        
-        // 라이트박스 관련 함수
-        function openLightbox(imageSrc) {
-            const lightbox = document.createElement('div');
-            lightbox.className = 'lightbox';
-            lightbox.innerHTML = `
-                <div class="lightbox-content">
-                    <span class="close-lightbox">&times;</span>
-                    <img src="${imageSrc}" alt="원본 이미지">
-                </div>
-            `;
-            document.body.appendChild(lightbox);
-            document.body.style.overflow = 'hidden'; // 스크롤 방지
-            
-            // 닫기 버튼 클릭 시 라이트박스 닫기
-            lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
-            
-            // 라이트박스 배경 클릭 시 닫기
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-        }
-        
-        function closeLightbox() {
-            const lightbox = document.querySelector('.lightbox');
-            if (lightbox) {
-                document.body.removeChild(lightbox);
-                document.body.style.overflow = ''; // 스크롤 복원
-            }
-        }
-        
-        // 페이지 로드 시 자동 음악 재생
+        // 페이지 로드 시 자동 음악 재생 시도
         document.addEventListener('DOMContentLoaded', function() {
-            // D-Day 카운터 업데이트
+            // 음악 컨트롤러 클릭 이벤트
+            musicControl.addEventListener('click', toggleMusic);
+            
+            // D-day 카운터 업데이트
             updateDday();
             
-            // 이미지 클릭 이벤트 설정
-            const galleryItems = document.querySelectorAll('.gallery-item img');
-            galleryItems.forEach(img => {
-                if (img.parentElement) {
-                    img.addEventListener('click', function() {
+            // 이미지 클릭 이벤트 (라이트박스)
+            document.querySelectorAll('.clickable-image img, .gallery-item .gallery-placeholder').forEach(el => {
+                el.addEventListener('click', function() {
+                    if (this.tagName === 'IMG') {
                         openLightbox(this.src);
-                    });
-                }
+                    }
+                });
             });
             
-            const timelineImages = document.querySelectorAll('.timeline-photo-item img');
-            timelineImages.forEach(img => {
-                if (img.parentElement) {
-                    img.addEventListener('click', function() {
-                        openLightbox(this.src);
-                    });
-                }
+            // 폼 제출 이벤트
+            document.getElementById('attendForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitForm(this);
             });
-            
-            // 음악 컨트롤 버튼 클릭 이벤트
-            if (musicControl) {
-                musicControl.addEventListener('click', toggleMusic);
-            }
             
             // 약간의 지연 후 음악 자동 재생 시도
             setTimeout(function() {
-                if (bgMusic) {
-                    bgMusic.play()
-                        .then(() => {
-                            isPlaying = true;
-                            musicIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
-                            showMusicStatus('🎵 배경음악 재생 중');
-                        })
-                        .catch(error => {
-                            console.log('자동 재생이 차단되었습니다. 사용자가 직접 재생해주세요.');
-                        });
-                }
-            }, 1000);
-            
-            // 폼 제출 이벤트
-            const form = document.getElementById('attendForm');
-            const formStatusDiv = document.getElementById('formStatus');
-            
-            if (form && formStatusDiv) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const formData = new FormData(form);
-                    
-                    formStatusDiv.innerHTML = '제출 중입니다...';
-                    formStatusDiv.classList.remove('hidden');
-                    formStatusDiv.className = 'form-status loading';
-                    
-                    fetch('https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => {
-                        formStatusDiv.innerHTML = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
-                        formStatusDiv.className = 'form-status success';
-                        form.reset();
+                bgMusic.play()
+                    .then(() => {
+                        isPlaying = true;
+                        musicIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+                        showMusicStatus('🎵 배경음악 재생 중');
                     })
                     .catch(error => {
-                        formStatusDiv.innerHTML = '제출 중 오류가 발생했습니다. 다시 시도해 주세요.';
-                        formStatusDiv.className = 'form-status error';
-                        console.error('Error:', error);
+                        console.log('자동 재생이 차단되었습니다. 사용자가 직접 재생해주세요.');
                     });
-                });
-            }
+            }, 1000);
         });
         
-        // 사용자가 페이지를 클릭하면 음악 재생 시도
+        // 사용자 클릭 시 음악 재생 시도 (자동 재생 차단 브라우저용)
         document.addEventListener('click', function() {
             if (!isPlaying && bgMusic) {
                 bgMusic.play()
@@ -1366,14 +1237,96 @@
             }
         }, { once: true });
         
-        // 다양한 경로 및 확장자 변형 시도
+        // D-Day 카운터 계산
+        function updateDday() {
+            try {
+                const eventDate = new Date(2025, 6, 5); // 2025년 7월 5일 (월은 0부터 시작)
+                const today = new Date();
+                
+                const diffTime = eventDate.getTime() - today.getTime();
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                const ddayCounter = document.getElementById('dday-counter');
+                if (ddayCounter) {
+                    if (diffDays > 0) {
+                        ddayCounter.innerHTML = `D-${diffDays}`;
+                    } else if (diffDays === 0) {
+                        ddayCounter.innerHTML = "D-Day";
+                    } else {
+                        ddayCounter.innerHTML = `D+${Math.abs(diffDays)}`;
+                    }
+                }
+            } catch (error) {
+                console.error('D-day 계산 오류:', error);
+            }
+        }
+        
+        // 라이트박스 열기
+        function openLightbox(imageSrc) {
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+            lightbox.innerHTML = `
+                <div class="lightbox-content">
+                    <span class="close-lightbox">&times;</span>
+                    <img src="${imageSrc}" alt="원본 이미지" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;300&quot; viewBox=&quot;0 0 300 300&quot;><rect width=&quot;300&quot; height=&quot;300&quot; fill=&quot;%23f8e8ff&quot;/><text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;24&quot; text-anchor=&quot;middle&quot; fill=&quot;%23ff6b9d&quot; dominant-baseline=&quot;middle&quot;>이미지를 불러올 수 없습니다</text></svg>'">
+                </div>
+            `;
+            document.body.appendChild(lightbox);
+            document.body.style.overflow = 'hidden'; // 스크롤 방지
+            
+            // 닫기 버튼 및 배경 클릭 시 라이트박스 닫기
+            lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+        }
+        
+        // 라이트박스 닫기
+        function closeLightbox() {
+            const lightbox = document.querySelector('.lightbox');
+            if (lightbox) {
+                document.body.removeChild(lightbox);
+                document.body.style.overflow = ''; // 스크롤 복원
+            }
+        }
+        
+        // 폼 제출 처리
+        function submitForm(form) {
+            const formData = new FormData(form);
+            const formStatusDiv = document.getElementById('formStatus');
+            formStatusDiv.innerHTML = '제출 중입니다...';
+            formStatusDiv.classList.remove('hidden');
+            formStatusDiv.className = 'form-status loading';
+            
+            // Google 스프레드시트 웹앱 URL
+            fetch('https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                formStatusDiv.innerHTML = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
+                formStatusDiv.classList.remove('loading');
+                formStatusDiv.classList.add('success');
+                form.reset();
+            })
+            .catch(error => {
+                formStatusDiv.innerHTML = '제출 중 오류가 발생했습니다. 다시 시도해 주세요.';
+                formStatusDiv.classList.remove('loading');
+                formStatusDiv.classList.add('error');
+                console.error('Error:', error);
+            });
+        }
+        
+        // 이미지 로딩을 위한 다양한 경로 시도
         function tryLoadImage(imgElement, baseName) {
             // 시도할 경로 배열
             const paths = [
-                './' + baseName,           // 현재 폴더
-                './images/' + baseName,    // images 폴더
-                '../' + baseName,          // 상위 폴더
-                '../images/' + baseName    // 상위 폴더의 images 폴더
+                './' + baseName,
+                './images/' + baseName,
+                '../' + baseName,
+                '../images/' + baseName
             ];
             
             // 대소문자 확장자 변형
