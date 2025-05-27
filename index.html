@@ -1,3 +1,6 @@
+**디자인 수정사항을 반영한 코드입니다:**
+
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -29,7 +32,7 @@
             position: relative;
         }
 
-        /* 헤더 섹션 */
+        /* 헤더 섹션 - 글자색 개선 */
         .header {
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
             padding: 40px 20px;
@@ -57,8 +60,13 @@
         .age-number {
             font-size: 80px;
             font-weight: bold;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #2d1b3d;
+            text-shadow: 
+                2px 2px 0px rgba(255,255,255,0.8),
+                -1px -1px 0px rgba(255,255,255,0.8),
+                1px -1px 0px rgba(255,255,255,0.8),
+                -1px 1px 0px rgba(255,255,255,0.8),
+                0px 0px 10px rgba(255,255,255,0.5);
             margin-bottom: 10px;
             position: relative;
             z-index: 2;
@@ -66,16 +74,26 @@
 
         .date-text {
             font-size: 18px;
-            color: white;
+            color: #2d1b3d;
+            text-shadow: 
+                1px 1px 0px rgba(255,255,255,0.8),
+                -1px -1px 0px rgba(255,255,255,0.8),
+                1px -1px 0px rgba(255,255,255,0.8),
+                -1px 1px 0px rgba(255,255,255,0.8);
             margin-bottom: 5px;
-            font-weight: 500;
+            font-weight: 600;
             position: relative;
             z-index: 2;
         }
 
         .names {
             font-size: 24px;
-            color: white;
+            color: #2d1b3d;
+            text-shadow: 
+                1px 1px 0px rgba(255,255,255,0.8),
+                -1px -1px 0px rgba(255,255,255,0.8),
+                1px -1px 0px rgba(255,255,255,0.8),
+                -1px 1px 0px rgba(255,255,255,0.8);
             font-weight: 700;
             position: relative;
             z-index: 2;
@@ -159,7 +177,7 @@
             border-radius: 2px;
         }
 
-        /* 가족 정보 */
+        /* 가족 정보 - 폰트 및 색상 통일 */
         .family-info {
             text-align: center;
         }
@@ -168,19 +186,7 @@
             margin: 12px 0;
             font-size: 15px;
             color: #6a5a7a;
-        }
-
-        .family-info .parents {
-            font-weight: 600;
-            color: #ff6b9d;
-            font-size: 16px;
-        }
-
-        .family-info .babies {
-            font-weight: 700;
-            color: #8b5fbf;
-            font-size: 18px;
-            margin-top: 15px;
+            font-weight: 400;
         }
 
         /* 날짜 정보 */
@@ -212,7 +218,7 @@
             margin-top: 10px;
         }
 
-        /* 달력 스타일 */
+        /* 달력 스타일 - 비율 재조정 */
         .calendar {
             background: white;
             border-radius: 15px;
@@ -235,27 +241,34 @@
         }
 
         table th, table td {
-            padding: 8px 4px;
+            padding: 12px 6px;
             text-align: center;
             font-size: 14px;
+            width: 14.28%;
+            height: 45px;
+            vertical-align: middle;
         }
 
         table th {
             color: #8b5fbf;
             font-weight: 600;
             border-bottom: 2px solid #fecfef;
+            height: 35px;
         }
 
         table td {
             color: #6a5a7a;
+            border: 1px solid transparent;
+            position: relative;
         }
 
         .special-date {
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
             color: white !important;
-            border-radius: 50%;
+            border-radius: 8px;
             font-weight: 700;
-            position: relative;
+            font-size: 12px;
+            line-height: 1.2;
         }
 
         /* 갤러리 */
@@ -293,7 +306,7 @@
             color: #ff6b9d;
         }
 
-        /* 타임라인 */
+        /* 타임라인 - 사진 공간 확보 */
         .timeline {
             position: relative;
             padding-left: 30px;
@@ -311,21 +324,50 @@
 
         .timeline-item {
             position: relative;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
             left: -27px;
-            top: 5px;
+            top: 50px;
             width: 12px;
             height: 12px;
             background: #ff6b9d;
             border-radius: 50%;
             border: 3px solid white;
             box-shadow: 0 0 0 2px #ff6b9d;
+        }
+
+        .timeline-image {
+            width: 100%;
+            max-width: 280px;
+            height: 180px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-image-placeholder {
+            width: 100%;
+            max-width: 280px;
+            height: 180px;
+            background: linear-gradient(135deg, #ffeef8, #f8e8ff);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #ff6b9d;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .timeline-date {
@@ -374,13 +416,31 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
-        /* RSVP */
+        /* RSVP - 구글시트 연결 */
         .rsvp {
             text-align: center;
             background: white;
             padding: 20px;
             border-radius: 15px;
             margin: 10px 0;
+        }
+
+        .rsvp-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #ff6b9d, #fecfef);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .rsvp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
         /* 감사 메시지 */
@@ -525,6 +585,17 @@
                 margin: 15px;
                 padding: 20px;
             }
+
+            table th, table td {
+                padding: 8px 4px;
+                font-size: 12px;
+                height: 40px;
+            }
+
+            .timeline-image-placeholder {
+                height: 150px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -580,8 +651,8 @@
                 <p>할머니 소애숙</p>
                 <p>외할아버지 민한훈, 외할머니 신춘덕</p>
                 <p>외삼촌 민재원</p>
-                <p class="parents">아빠 고석우, 엄마 민초원</p>
-                <p class="babies">첫째 고은설, 둘째 고은채</p>
+                <p>아빠 고석우, 엄마 민초원</p>
+                <p>첫째 고은설, 둘째 고은채</p>
             </div>
         </div>
         
@@ -671,20 +742,32 @@
             <div class="section-title">성장 타임라인</div>
             <div class="timeline">
                 <div class="timeline-item">
+                    <div class="timeline-image-placeholder">
+                        🍼<br>탄생 사진<br>업로드 예정
+                    </div>
                     <div class="timeline-date">2024년 7월</div>
-                    <div class="timeline-desc">두 아이의 탄생 🍼</div>
+                    <div class="timeline-desc">두 아이의 탄생</div>
                 </div>
                 <div class="timeline-item">
+                    <div class="timeline-image-placeholder">
+                        💯<br>100일 사진<br>업로드 예정
+                    </div>
                     <div class="timeline-date">2024년 10월</div>
-                    <div class="timeline-desc">100일 기념일 💯</div>
+                    <div class="timeline-desc">100일 기념일</div>
                 </div>
                 <div class="timeline-item">
+                    <div class="timeline-image-placeholder">
+                        🧧<br>명절 사진<br>업로드 예정
+                    </div>
                     <div class="timeline-date">2025년 1월</div>
-                    <div class="timeline-desc">첫 명절 🧧</div>
+                    <div class="timeline-desc">첫 명절</div>
                 </div>
                 <div class="timeline-item">
+                    <div class="timeline-image-placeholder">
+                        🎉<br>생일 사진<br>업로드 예정
+                    </div>
                     <div class="timeline-date">2025년 7월</div>
-                    <div class="timeline-desc">첫 번째 생일 🎉</div>
+                    <div class="timeline-desc">첫 번째 생일</div>
                 </div>
             </div>
         </div>
@@ -706,7 +789,9 @@
             <div class="section-title">참석 여부 알려주세요</div>
             <div class="rsvp">
                 <p>참석 정보를 알려주시면 감사하겠습니다.</p>
-                <p><strong>연락처: [전화번호 입력]</strong></p>
+                <a class="rsvp-button" href="https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec" target="_blank">
+                    📝 참석 여부 알리기
+                </a>
             </div>
         </div>
         
@@ -776,87 +861,4 @@
         function skipMusic() {
             musicModal.classList.add('hidden');
             musicInitialized = true;
-            showMusicStatus('🔇 음악 없이 진행 중');
-        }
-        
-        // 음악 토글 함수
-        function toggleMusic() {
-            if (!musicInitialized) {
-                startMusic();
-                return;
-            }
-            
-            if (isPlaying) {
-                bgMusic.pause();
-                isPlaying = false;
-                showMusicStatus('⏸️ 음악 일시정지');
-            } else {
-                const playPromise = bgMusic.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        isPlaying = true;
-                        showMusicStatus('♪ 배경음악 재생 중');
-                    }).catch(error => {
-                        console.log('재생 실패:', error);
-                        showMusicStatus('🔇 재생 실패');
-                    });
-                }
-            }
-            updateMusicControl();
-        }
-        
-        // 음악 컨트롤 버튼 업데이트
-        function updateMusicControl() {
-            if (isPlaying) {
-                musicControl.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
-                musicControl.title = '음악 일시정지';
-            } else {
-                musicControl.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-                musicControl.title = '음악 재생';
-            }
-        }
-        
-        // 음악 상태 표시
-        function showMusicStatus(message) {
-            musicStatus.textContent = message;
-            musicStatus.classList.add('show');
-            
-            setTimeout(() => {
-                musicStatus.classList.remove('show');
-            }, 3000);
-        }
-        
-        // 음악 이벤트 리스너
-        if (bgMusic) {
-            bgMusic.addEventListener('ended', function() {
-                isPlaying = false;
-                updateMusicControl();
-            });
-            
-            bgMusic.addEventListener('error', function() {
-                showMusicStatus('❌ 음악 파일을 불러올 수 없습니다');
-            });
-            
-            bgMusic.volume = 0.3;
-        }
-        
-        // 페이지 가시성 변경 시 음악 제어
-        document.addEventListener('visibilitychange', function() {
-            if (!bgMusic || !isPlaying) return;
-            
-            if (document.hidden) {
-                bgMusic.pause();
-            } else {
-                bgMusic.play().catch(console.log);
-            }
-        });
-        
-        // 갤러리 클릭 이벤트
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
-                showMusicStatus('📷 추가 사진을 업로드해주세요');
-            });
-        });
-    </script>
-</body>
-</html>
+            showMusicStatus('
