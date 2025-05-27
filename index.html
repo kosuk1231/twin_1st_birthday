@@ -172,8 +172,10 @@
 
         .invitation-text .highlight {
             color: #ff6b9d;
-            font-weight: 600;
-            font-size: 19px;
+            font-weight: 700;
+            font-size: 20px;
+            background: linear-gradient(transparent 60%, rgba(255, 107, 157, 0.2) 40%);
+            padding: 0 2px;
         }
 
         /* 섹션 스타일 */
@@ -484,100 +486,6 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
-        /* 참석여부 */
-        .rsvp {
-            text-align: center;
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 10px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .rsvp p {
-            margin-bottom: 15px;
-            color: #6a5a7a;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            border: 1px solid #fecfef;
-            border-radius: 10px;
-            font-family: 'Noto Sans KR', sans-serif;
-            font-size: 14px;
-            color: #5a4a6a;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: #ff6b9d;
-            box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.2);
-        }
-
-        .form-label {
-            display: block;
-            text-align: left;
-            margin-bottom: 5px;
-            font-size: 14px;
-            color: #8b5fbf;
-            font-weight: 500;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .submit-button {
-            display: inline-block;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #ff6b9d, #fecfef);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-
-        .submit-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
-        }
-
-        .form-status {
-            margin-top: 15px;
-            font-size: 15px;
-            font-weight: 500;
-            padding: 10px;
-            border-radius: 10px;
-            display: none;
-        }
-
-        .form-status.success {
-            background-color: rgba(145, 255, 172, 0.2);
-            color: #4CAF50;
-            display: block;
-        }
-
-        .form-status.error {
-            background-color: rgba(255, 145, 145, 0.2);
-            color: #f44336;
-            display: block;
-        }
-
-        .form-status.loading {
-            background-color: rgba(145, 187, 255, 0.2);
-            color: #3f51b5;
-            display: block;
-        }
-
         /* 연락처 */
         .contact-info {
             padding: 15px 10px;
@@ -794,6 +702,92 @@
             margin: 30px 0;
         }
 
+        /* RSVP 폼 */
+        .rsvp {
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 10px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: #8b5fbf;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #fecfef;
+            border-radius: 10px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 15px;
+            color: #5a4a6a;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #ff6b9d;
+            box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.2);
+        }
+
+        .submit-button {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff6b9d, #fecfef);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .form-status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        .form-status.success {
+            background-color: rgba(145, 255, 172, 0.2);
+            color: #4CAF50;
+        }
+
+        .form-status.error {
+            background-color: rgba(255, 145, 145, 0.2);
+            color: #f44336;
+        }
+
+        .form-status.loading {
+            background-color: rgba(145, 187, 255, 0.2);
+            color: #3f51b5;
+        }
+
+        .hidden {
+            display: none;
+        }
+
         /* 반응형 */
         @media (max-width: 480px) {
             .container {
@@ -857,9 +851,16 @@
             <div class="invitation-header">
                 소중한 순간, 소중한 분들을 모십니다
             </div>
+            
             <div class="invitation-text">
-                저희 부부에게 기적처럼 찾아와준 선물같은 두 아이, <span class="highlight">은설이와 은채</span>가 어느덧 건강하게 자라 첫 번째 생일을 맞이하였습니다.<br><br>
-                늘 마음으로 저희를 응원해주시는 감사한 분들을 초대하여 뜻깊은 날의 기쁨을 함께 나누고자 합니다.<br><br>
+                저희 부부에게 기적처럼 찾아와준<br>
+                선물같은 두 아이, <span class="highlight">은설이와 은채</span>가<br>
+                어느덧 건강하게 자라 첫 번째 생일을 맞이하였습니다.<br><br>
+                
+                늘 마음으로 저희를 응원해주시는<br>
+                감사한 분들을 초대하여<br>
+                뜻깊은 날의 기쁨을 함께 나누고자 합니다.<br><br>
+                
                 귀한 발걸음으로 자리를 빛내주시면 감사하겠습니다.
             </div>
         </div>
@@ -1129,28 +1130,32 @@
             <div class="rsvp">
                 <form id="attendForm">
                     <div class="form-group">
-                        <label for="name" class="form-label">이름</label>
-                        <input type="text" id="name" name="이름" class="form-control" required>
+                        <label for="이름" class="form-label">이름</label>
+                        <input type="text" id="이름" name="이름" class="form-control" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="attend" class="form-label">참석여부</label>
-                        <select id="attend" name="참석여부" class="form-control" required>
+                        <label for="참석여부" class="form-label">참석여부</label>
+                        <select id="참석여부" name="참석여부" class="form-control" required>
                             <option value="">선택해주세요</option>
                             <option value="참석">참석</option>
                             <option value="불참">불참</option>
                         </select>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="guests" class="form-label">참석인원</label>
-                        <input type="number" id="guests" name="참석인원" class="form-control" min="0" required>
+                        <label for="참석인원" class="form-label">참석인원</label>
+                        <input type="number" id="참석인원" name="참석인원" class="form-control" min="0" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="phone" class="form-label">연락처</label>
-                        <input type="tel" id="phone" name="연락처" class="form-control" placeholder="010-0000-0000" required>
+                        <label for="연락처" class="form-label">연락처</label>
+                        <input type="tel" id="연락처" name="연락처" class="form-control" placeholder="010-0000-0000" required>
                     </div>
+                    
                     <button type="submit" class="submit-button">참석 정보 제출하기</button>
                 </form>
-                <div id="formStatus" class="form-status"></div>
+                <div id="formStatus" class="form-status hidden"></div>
             </div>
         </div>
         
@@ -1230,9 +1235,37 @@
             setTimeout(function() {
                 tryAutoplayMusic();
             }, 1000);
-            
-            // 폼 제출 이벤트 설정
-            setupFormSubmission();
+
+            // 폼 제출 처리
+            const form = document.getElementById('attendForm');
+            const formStatusDiv = document.getElementById('formStatus');
+
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(form);
+                    
+                    formStatusDiv.innerHTML = '제출 중입니다...';
+                    formStatusDiv.classList.remove('hidden');
+                    formStatusDiv.className = 'form-status loading';
+                    
+                    fetch('https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        formStatusDiv.innerHTML = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
+                        formStatusDiv.className = 'form-status success';
+                        form.reset();
+                    })
+                    .catch(error => {
+                        formStatusDiv.innerHTML = '제출 중 오류가 발생했습니다. 다시 시도해 주세요.';
+                        formStatusDiv.className = 'form-status error';
+                        console.error('Error:', error);
+                    });
+                });
+            }
         });
         
         // D-Day 카운터 계산
@@ -1354,41 +1387,6 @@
                 .catch(error => {
                     console.log('자동 재생 실패:', error);
                 });
-        }
-        
-        // 폼 제출 설정
-        function setupFormSubmission() {
-            const form = document.getElementById('attendForm');
-            const formStatus = document.getElementById('formStatus');
-            
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // 폼 데이터 수집
-                    const formData = new FormData(form);
-                    
-                    // 제출 중 상태 표시
-                    formStatus.textContent = '제출 중입니다...';
-                    formStatus.className = 'form-status loading';
-                    
-                    // Google Script로 데이터 전송
-                    fetch('https://script.google.com/macros/s/AKfycbyQDnaDrEya-eW5y88cLTMp-yAixj_XIT06AFx2AOf1zKjDHnzR435pVZBIik6eEbmS/exec', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => {
-                        formStatus.textContent = '은설이, 은채의 첫 생일에 함께해주셔서 감사합니다.';
-                        formStatus.className = 'form-status success';
-                        form.reset();
-                    })
-                    .catch(error => {
-                        formStatus.textContent = '제출 중 오류가 발생했습니다. 다시 시도해 주세요.';
-                        formStatus.className = 'form-status error';
-                        console.error('Error:', error);
-                    });
-                });
-            }
         }
         
         // 이미지 파일 확장자 대소문자 관계없이 로딩
