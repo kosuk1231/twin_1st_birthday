@@ -1,6 +1,3 @@
-**완전한 HTML 코드 (JavaScript 포함):**
-
-```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -32,7 +29,7 @@
             position: relative;
         }
 
-        /* 1. 헤더 글자색 개선 - 진한 색상으로 변경 */
+        /* 헤더 섹션 - 글자색 개선 */
         .header {
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
             padding: 40px 20px;
@@ -59,14 +56,14 @@
 
         .age-number {
             font-size: 80px;
-            font-weight: 900;
-            color: #1a0d2e; /* 매우 진한 보라색 */
+            font-weight: bold;
+            color: #2d1b3d;
             text-shadow: 
-                3px 3px 0px #ffffff,
-                -2px -2px 0px #ffffff,
-                2px -2px 0px #ffffff,
-                -2px 2px 0px #ffffff,
-                0px 0px 15px rgba(255,255,255,0.8);
+                3px 3px 0px rgba(255,255,255,0.9),
+                -1px -1px 0px rgba(255,255,255,0.9),
+                1px -1px 0px rgba(255,255,255,0.9),
+                -1px 1px 0px rgba(255,255,255,0.9),
+                0px 0px 15px rgba(255,255,255,0.7);
             margin-bottom: 10px;
             position: relative;
             z-index: 2;
@@ -74,29 +71,27 @@
 
         .date-text {
             font-size: 18px;
-            color: #1a0d2e; /* 매우 진한 보라색 */
+            color: #2d1b3d;
             text-shadow: 
-                2px 2px 0px #ffffff,
-                -1px -1px 0px #ffffff,
-                1px -1px 0px #ffffff,
-                -1px 1px 0px #ffffff,
-                0px 0px 10px rgba(255,255,255,0.8);
+                2px 2px 0px rgba(255,255,255,0.9),
+                -1px -1px 0px rgba(255,255,255,0.9),
+                1px -1px 0px rgba(255,255,255,0.9),
+                -1px 1px 0px rgba(255,255,255,0.9);
             margin-bottom: 5px;
-            font-weight: 700;
+            font-weight: 600;
             position: relative;
             z-index: 2;
         }
 
         .names {
             font-size: 24px;
-            color: #1a0d2e; /* 매우 진한 보라색 */
+            color: #2d1b3d;
             text-shadow: 
-                2px 2px 0px #ffffff,
-                -1px -1px 0px #ffffff,
-                1px -1px 0px #ffffff,
-                -1px 1px 0px #ffffff,
-                0px 0px 10px rgba(255,255,255,0.8);
-            font-weight: 800;
+                2px 2px 0px rgba(255,255,255,0.9),
+                -1px -1px 0px rgba(255,255,255,0.9),
+                1px -1px 0px rgba(255,255,255,0.9),
+                -1px 1px 0px rgba(255,255,255,0.9);
+            font-weight: 700;
             position: relative;
             z-index: 2;
         }
@@ -179,7 +174,7 @@
             border-radius: 2px;
         }
 
-        /* 2. 가족 정보 - 모든 글자 동일한 스타일 */
+        /* 가족 정보 - 폰트 및 색상 통일 */
         .family-info {
             text-align: center;
         }
@@ -187,9 +182,9 @@
         .family-info p {
             margin: 12px 0;
             font-size: 15px;
-            color: #6a5a7a; /* 모든 글자 동일한 색상 */
-            font-weight: 400; /* 모든 글자 동일한 폰트 굵기 */
-            font-family: 'Noto Sans KR', sans-serif; /* 동일한 폰트 */
+            color: #6a5a7a;
+            font-weight: 400;
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
         /* 날짜 정보 */
@@ -221,7 +216,7 @@
             margin-top: 10px;
         }
 
-        /* 3. 달력 스타일 - 비율 완전 재조정 */
+        /* 달력 스타일 - 비율 재조정 */
         .calendar {
             background: white;
             border-radius: 15px;
@@ -235,54 +230,44 @@
             font-size: 18px;
             font-weight: 600;
             color: #ff6b9d;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 2px;
+            border-collapse: collapse;
+            table-layout: fixed;
         }
 
         table th, table td {
-            padding: 10px;
+            padding: 10px 0;
             text-align: center;
             font-size: 14px;
-            width: 14.28%;
+            width: calc(100% / 7);
             height: 40px;
             vertical-align: middle;
-            border-radius: 6px;
         }
 
         table th {
             color: #8b5fbf;
             font-weight: 600;
-            background: #f8f4ff;
-            height: 35px;
+            border-bottom: 2px solid #fecfef;
+            height: 30px;
         }
 
         table td {
             color: #6a5a7a;
-            background: #fafafa;
-            transition: background 0.3s ease;
-        }
-
-        table td:hover {
-            background: #f0f0f0;
+            border: 1px solid transparent;
+            position: relative;
         }
 
         .special-date {
-            background: linear-gradient(135deg, #ff6b9d, #fecfef) !important;
+            background: linear-gradient(135deg, #ff6b9d, #fecfef);
             color: white !important;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 13px;
-            line-height: 1.3;
-            box-shadow: 0 3px 10px rgba(255, 107, 157, 0.3);
-        }
-
-        .special-date:hover {
-            background: linear-gradient(135deg, #ff6b9d, #fecfef) !important;
-            transform: scale(1.05);
+            font-size: 12px;
+            line-height: 1.2;
         }
 
         /* 갤러리 */
@@ -320,7 +305,7 @@
             color: #ff6b9d;
         }
 
-        /* 4. 타임라인 - 사진 공간 크게 확보 */
+        /* 타임라인 - 사진 공간 확보 */
         .timeline {
             position: relative;
             padding-left: 30px;
@@ -338,7 +323,7 @@
 
         .timeline-item {
             position: relative;
-            margin-bottom: 50px; /* 간격 더 크게 */
+            margin-bottom: 40px;
             padding-left: 20px;
             display: flex;
             flex-direction: column;
@@ -349,7 +334,7 @@
             content: '';
             position: absolute;
             left: -27px;
-            top: 120px; /* 이미지 중간 정도에 위치 */
+            top: 50px;
             width: 12px;
             height: 12px;
             background: #ff6b9d;
@@ -360,43 +345,40 @@
 
         .timeline-image {
             width: 100%;
-            max-width: 300px;
-            height: 220px; /* 높이 더 크게 */
-            border-radius: 15px;
-            margin-bottom: 15px;
+            max-width: 280px;
+            height: 200px;
+            border-radius: 12px;
+            margin-bottom: 10px;
             object-fit: cover;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .timeline-image-placeholder {
             width: 100%;
-            max-width: 300px;
-            height: 220px; /* 높이 더 크게 */
+            max-width: 280px;
+            height: 200px;
             background: linear-gradient(135deg, #ffeef8, #f8e8ff);
-            border-radius: 15px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            font-size: 18px;
+            margin-bottom: 10px;
+            font-size: 20px;
             color: #ff6b9d;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border: 2px dashed #ff6b9d;
-            line-height: 1.4;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .timeline-date {
-            font-size: 15px;
+            font-size: 14px;
             color: #ff6b9d;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .timeline-desc {
-            font-size: 16px;
+            font-size: 15px;
             color: #6a5a7a;
-            font-weight: 500;
         }
 
         /* 위치 정보 */
@@ -433,38 +415,31 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
-        /* 5. RSVP - 구글시트 연결 */
+        /* RSVP - 구글시트 연결 */
         .rsvp {
             text-align: center;
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
             margin: 10px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .rsvp p {
-            margin-bottom: 20px;
-            color: #6a5a7a;
-            font-size: 16px;
         }
 
         .rsvp-button {
             display: inline-block;
+            margin-top: 15px;
             padding: 15px 30px;
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
             color: white;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 25px;
             font-weight: 600;
             font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+            transition: transform 0.3s ease;
         }
 
         .rsvp-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
         /* 감사 메시지 */
@@ -613,16 +588,12 @@
             table th, table td {
                 padding: 8px 4px;
                 font-size: 12px;
-                height: 35px;
+                height: 40px;
             }
 
             .timeline-image-placeholder {
                 height: 180px;
                 font-size: 16px;
-            }
-
-            .timeline-item::before {
-                top: 90px;
             }
         }
     </style>
@@ -852,4 +823,88 @@
         let isPlaying = false;
         let musicInitialized = false;
         const bgMusic = document.getElementById('bgMusic');
+        const musicControl = document.getElementById('musicControl');
+        const musicModal = document.getElementById('musicModal');
+        const musicStatus = document.getElementById('musicStatus');
         
+        // 이미지 로딩 실패 처리
+        function handleImageError(img) {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'gallery-placeholder';
+            placeholder.style.width = '100%';
+            placeholder.style.height = '200px';
+            placeholder.innerHTML = '📷<br>이미지 로딩 중...';
+            img.parentNode.replaceChild(placeholder, img);
+        }
+        
+        // 음악 시작 함수
+        function startMusic() {
+            musicModal.classList.add('hidden');
+            musicInitialized = true;
+            
+            const playPromise = bgMusic.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    updateMusicControl();
+                    showMusicStatus('♪ 배경음악 재생 중');
+                }).catch(error => {
+                    console.log('자동 재생 실패:', error);
+                    showMusicStatus('🔇 음악 재생 실패');
+                });
+            }
+        }
+        
+        // 음악 없이 시작
+        function skipMusic() {
+            musicModal.classList.add('hidden');
+            musicInitialized = true;
+            showMusicStatus('🔇 음악 없이 시작');
+            
+            setTimeout(() => {
+                musicStatus.classList.remove('show');
+            }, 2000);
+        }
+        
+        // 음악 재생/중지 전환
+        function toggleMusic() {
+            if (!musicInitialized) {
+                startMusic();
+                return;
+            }
+            
+            if (isPlaying) {
+                bgMusic.pause();
+                isPlaying = false;
+                showMusicStatus('🔇 배경음악 중지됨');
+            } else {
+                bgMusic.play();
+                isPlaying = true;
+                showMusicStatus('♪ 배경음악 재생 중');
+            }
+            
+            updateMusicControl();
+        }
+        
+        // 음악 컨트롤 아이콘 업데이트
+        function updateMusicControl() {
+            if (isPlaying) {
+                musicControl.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+            } else {
+                musicControl.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+            }
+        }
+        
+        // 음악 상태 표시
+        function showMusicStatus(message) {
+            musicStatus.textContent = message;
+            musicStatus.classList.add('show');
+            
+            setTimeout(() => {
+                musicStatus.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
