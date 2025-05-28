@@ -387,6 +387,7 @@
             position: relative;
             width: 100%;
             padding-bottom: 100%; /* 1:1 비율 */
+            cursor: pointer;
         }
 
         .timeline-photo-item:hover {
@@ -432,6 +433,7 @@
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
 
         .gallery-item:hover {
@@ -548,6 +550,7 @@
             margin-top: 4px;
         }
 
+        /* 각 앱별 호버 효과 */
         .tmap-btn:hover .nav-icon {
             transform: scale(1.05);
             box-shadow: 0 4px 12px rgba(139, 95, 191, 0.3);
@@ -572,6 +575,7 @@
         .map-container {
             margin: 20px 0;
             text-align: center;
+            position: relative;
         }
 
         .map-image {
@@ -581,11 +585,32 @@
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .map-image:hover {
             transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-image::after {
+            content: '🔍 클릭하면 확대됩니다';
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-image:hover::after {
+            opacity: 1;
         }
 
         /* 교통 안내 스타일 */
@@ -622,64 +647,7 @@
             font-weight: 600;
         }
 
-        /* 연락처 */
-        .contact-info {
-            padding: 15px 10px;
-        }
-
-        .contact-person {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .contact-name {
-            font-size: 18px;
-            font-weight: 600;
-            color: #ff6b9d;
-            margin-bottom: 15px;
-        }
-
-        .phone-button {
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #ff6b9d, #ff9cc2);
-            color: white;
-            padding: 16px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            margin-top: 15px;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
-            transition: all 0.3s ease;
-            justify-content: center;
-        }
-
-        .phone-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
-        }
-
-        .phone-icon {
-            font-size: 24px;
-            margin-right: 15px;
-        }
-
-        .phone-number {
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255, 107, 157, 0.3), transparent);
-            margin: 25px 0;
-        }
-
-        /* RSVP 폼 */
+        /* RSVP 폼 스타일 */
         .rsvp {
             text-align: center;
             background: white;
@@ -748,8 +716,8 @@
         }
 
         .form-status.success {
-            background-color: rgba(145, 255, 172, 0.2);
-            color: #4CAF50;
+            background-color: rgba(255, 107, 157, 0.1);
+            color: #ff6b9d;
         }
 
         .form-status.error {
@@ -766,37 +734,64 @@
             display: none;
         }
 
-        /* 클릭 가능한 이미지 */
-        .clickable-image {
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
+        /* 연락처 */
+        .contact-info {
+            padding: 15px 10px;
         }
 
-        .clickable-image::after {
-            content: '🔍';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .contact-person {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .contact-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ff6b9d;
+            margin-bottom: 15px;
+        }
+
+        .phone-button {
             display: flex;
             align-items: center;
+            background: linear-gradient(135deg, #ff6b9d, #ff9cc2);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
+            transition: all 0.3s ease;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
-        .clickable-image:hover::after {
-            opacity: 1;
+        .phone-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
         }
 
-        /* 라이트박스 */
+        .phone-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .phone-number {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 107, 157, 0.3), transparent);
+            margin: 25px 0;
+        }
+
+        /* 라이트박스 스타일 */
         .lightbox {
             position: fixed;
             top: 0;
@@ -807,30 +802,62 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 2000;
+            z-index: 3000;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .lightbox.show {
+            opacity: 1;
         }
 
         .lightbox-content {
             position: relative;
             max-width: 95%;
             max-height: 95%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .lightbox-content img {
+        .lightbox-image {
             max-width: 100%;
-            max-height: 90vh;
+            max-height: 85vh;
             object-fit: contain;
             border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-caption {
+            color: white;
+            margin-top: 15px;
+            font-size: 16px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 16px;
+            border-radius: 20px;
         }
 
         .close-lightbox {
             position: absolute;
-            top: -40px;
+            top: -50px;
             right: 0;
             color: white;
-            font-size: 30px;
+            font-size: 40px;
             cursor: pointer;
             font-weight: bold;
+            background: rgba(0, 0, 0, 0.7);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-lightbox:hover {
+            background: rgba(255, 107, 157, 0.8);
         }
 
         /* 감사 메시지 */
@@ -954,13 +981,9 @@
             }
             
             .invitation-text {
-                font-size: 16px;
-                line-height: 1.7;
+                font-size: 17px;
                 padding: 0 10px;
-            }
-            
-            .invitation-header {
-                font-size: 19px;
+                line-height: 1.9;
             }
             
             .main-image-section {
@@ -971,11 +994,6 @@
                 font-size: 16px;
             }
 
-            .transport-section p {
-                font-size: 14px;
-                line-height: 1.7;
-            }
-            
             .nav-grid {
                 gap: 10px;
             }
@@ -985,11 +1003,33 @@
             }
             
             .nav-icon {
-                font-size: 24px;
+                width: 40px;
+                height: 40px;
             }
             
             .nav-btn span {
                 font-size: 12px;
+            }
+
+            .lightbox-image {
+                max-height: 80vh;
+            }
+            
+            .lightbox-caption {
+                font-size: 14px;
+                margin-top: 10px;
+            }
+            
+            .close-lightbox {
+                top: -40px;
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .transport-section p {
+                font-size: 14px;
+                line-height: 1.7;
             }
         }
     </style>
@@ -1053,7 +1093,7 @@
             </div>
         </div>
         
-        <!-- 돌잔치 D-Day 달력 -->
+        <!-- 달력 -->
         <div class="section">
             <div class="section-title">돌잔치 D-Day</div>
             <div class="calendar">
@@ -1126,17 +1166,17 @@
         <div class="section">
             <div class="section-title">성장 타임라인</div>
             <div class="timeline">
-                <!-- 둥이들 탄생! -->
+                <!-- 탄생 -->
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2024년 7월</div>
                         <div class="timeline-title">둥이들 탄생!</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./birth_1.JPG" alt="탄생 사진 1" onerror="handleImageError(this, '🍼')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./birth_2.JPG" alt="탄생 사진 2" onerror="handleImageError(this, '🍼')">
                         </div>
                     </div>
@@ -1149,10 +1189,10 @@
                         <div class="timeline-title">둥이들 50일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./50days_1.JPG" alt="50일 사진 1" onerror="handleImageError(this, '💝')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./50days_2.JPG" alt="50일 사진 2" onerror="handleImageError(this, '💝')">
                         </div>
                     </div>
@@ -1165,22 +1205,22 @@
                         <div class="timeline-title">둥이들 100일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./100days_1.jpeg" alt="100일 사진 1" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./100days_2.jpeg" alt="100일 사진 2" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./100days_3.jpeg" alt="100일 사진 3" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./100days_4.jpg" alt="100일 사진 4" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./100days_5.jpg" alt="100일 사진 5" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./100days_6.JPG" alt="100일 사진 6" onerror="handleImageError(this, '🎀')">
                         </div>
                     </div>
@@ -1193,10 +1233,10 @@
                         <div class="timeline-title">둥이들 첫 크리스마스</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./x-mas_1.JPG" alt="첫 크리스마스 1" onerror="handleImageError(this, '🎄')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./x-mas_2.JPG" alt="첫 크리스마스 2" onerror="handleImageError(this, '🎄')">
                         </div>
                     </div>
@@ -1209,16 +1249,16 @@
                         <div class="timeline-title">둥이들 200일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./200days_1.JPG" alt="200일 사진 1" onerror="handleImageError(this, '🌟')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./200days_2.JPG" alt="200일 사진 2" onerror="handleImageError(this, '🌟')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./200days_3.JPG" alt="200일 사진 3" onerror="handleImageError(this, '🌟')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./200days_4.JPG" alt="200일 사진 4" onerror="handleImageError(this, '🌟')">
                         </div>
                     </div>
@@ -1231,22 +1271,22 @@
                         <div class="timeline-title">둥이들 돌 사진</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./1years_1.JPG" alt="돌 사진 1" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./1years_2.JPG" alt="돌 사진 2" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./1years_3.JPG" alt="돌 사진 3" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./1years_4.JPG" alt="돌 사진 4" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./1years_5.png" alt="돌 사진 5" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item clickable-image">
+                        <div class="timeline-photo-item">
                             <img src="./1years_6.png" alt="돌 사진 6" onerror="handleImageError(this, '🎉')">
                         </div>
                     </div>
@@ -1258,22 +1298,22 @@
         <div class="section">
             <div class="section-title">갤러리</div>
             <div class="gallery">
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item">
                     <div class="gallery-placeholder">🎂</div>
                 </div>
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item">
                     <div class="gallery-placeholder">👶</div>
                 </div>
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item">
                     <div class="gallery-placeholder">👶</div>
                 </div>
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item">
                     <div class="gallery-placeholder">🎁</div>
                 </div>
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item">
                     <div class="gallery-placeholder">🎈</div>
                 </div>
-                <div class="gallery-item clickable-image">
+                <div class="gallery-item">
                     <div class="gallery-placeholder">🎊</div>
                 </div>
             </div>
@@ -1373,7 +1413,7 @@
             
             <!-- 약도 이미지 -->
             <div class="map-container">
-                <img src="./map.png" alt="오시는 길 약도" class="map-image clickable-image" onerror="handleImageError(this, '🗺️ 약도')">
+                <img src="./map.png" alt="오시는 길 약도" class="map-image" id="mapImage" onerror="handleImageError(this, '🗺️ 약도')">
             </div>
             
             <!-- 교통 안내 -->
@@ -1500,13 +1540,16 @@
             // D-Day 카운터 업데이트
             updateDday();
             
-            // 클릭 가능한 이미지 설정
+            // 이미지 클릭 설정
             setupImageClicks();
+            
+            // 약도 이미지 클릭 설정 (별도로 처리)
+            setupMapImageClick();
             
             // 음악 컨트롤 설정
             setupMusicControl();
             
-            // 폼 제출 처리 설정
+            // 폼 제출 설정
             setupFormSubmission();
             
             // 음악 자동 재생 시도
@@ -1515,10 +1558,37 @@
             }, 1000);
         });
         
+        // 약도 이미지 클릭 설정 (중요: 명시적으로 설정)
+        function setupMapImageClick() {
+            const mapImage = document.getElementById('mapImage');
+            if (mapImage) {
+                console.log('약도 이미지 클릭 이벤트 설정 중...');
+                mapImage.style.cursor = 'pointer';
+                
+                // 클릭 이벤트 추가
+                mapImage.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('약도 이미지 클릭됨!');
+                    openLightbox(this.src, this.alt || '약도');
+                });
+                
+                // 터치 이벤트도 추가 (모바일용)
+                mapImage.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    console.log('약도 이미지 터치됨!');
+                    openLightbox(this.src, this.alt || '약도');
+                });
+                
+                console.log('약도 이미지 클릭 이벤트 설정 완료');
+            } else {
+                console.error('약도 이미지를 찾을 수 없습니다.');
+            }
+        }
+        
         // D-Day 카운터 계산
         function updateDday() {
             try {
-                const eventDate = new Date(2025, 6, 5); // 2025년 7월 5일 (월은 0부터 시작)
+                const eventDate = new Date(2025, 6, 5); // 2025년 7월 5일
                 const today = new Date();
                 
                 const diffTime = eventDate.getTime() - today.getTime();
@@ -1544,7 +1614,6 @@
             try {
                 const parent = img.parentNode;
                 
-                // 이미 플레이스홀더로 대체된 경우 중복 실행 방지
                 if (parent.querySelector('.image-placeholder')) return;
                 
                 const placeholder = document.createElement('div');
@@ -1558,27 +1627,52 @@
             }
         }
         
-        // 이미지 클릭 설정
+        // 타임라인 이미지 클릭 설정
         function setupImageClicks() {
-            document.querySelectorAll('.clickable-image img').forEach(img => {
-                img.addEventListener('click', function() {
-                    openLightbox(this.src, this.alt);
+            // 타임라인 이미지들
+            document.querySelectorAll('.timeline-photo-item img').forEach(img => {
+                img.parentElement.style.cursor = 'pointer';
+                img.parentElement.addEventListener('click', function() {
+                    openLightbox(img.src, img.alt);
+                });
+            });
+            
+            // 갤러리 이미지들
+            document.querySelectorAll('.gallery-item img').forEach(img => {
+                img.parentElement.style.cursor = 'pointer';
+                img.parentElement.addEventListener('click', function() {
+                    openLightbox(img.src, img.alt);
                 });
             });
         }
         
-        // 라이트박스 열기
+        // 라이트박스 열기 (개선된 버전)
         function openLightbox(imageSrc, imageAlt) {
+            console.log('라이트박스 열기:', imageSrc);
+            
+            // 기존 라이트박스가 있으면 제거
+            const existingLightbox = document.querySelector('.lightbox');
+            if (existingLightbox) {
+                existingLightbox.remove();
+            }
+            
             const lightbox = document.createElement('div');
             lightbox.className = 'lightbox';
             lightbox.innerHTML = `
                 <div class="lightbox-content">
                     <span class="close-lightbox">&times;</span>
-                    <img src="${imageSrc}" alt="${imageAlt || '이미지'}">
+                    <img src="${imageSrc}" alt="${imageAlt || '이미지'}" class="lightbox-image">
+                    <div class="lightbox-caption">${imageAlt || '이미지'}</div>
                 </div>
             `;
+            
             document.body.appendChild(lightbox);
             document.body.style.overflow = 'hidden'; // 스크롤 방지
+            
+            // 애니메이션 효과
+            setTimeout(() => {
+                lightbox.classList.add('show');
+            }, 10);
             
             // 닫기 버튼 이벤트
             lightbox.querySelector('.close-lightbox').addEventListener('click', function() {
@@ -1591,12 +1685,26 @@
                     closeLightbox(lightbox);
                 }
             });
+            
+            // ESC 키로 닫기
+            const escHandler = function(e) {
+                if (e.key === 'Escape') {
+                    closeLightbox(lightbox);
+                    document.removeEventListener('keydown', escHandler);
+                }
+            };
+            document.addEventListener('keydown', escHandler);
         }
         
         // 라이트박스 닫기
         function closeLightbox(lightbox) {
-            document.body.removeChild(lightbox);
-            document.body.style.overflow = ''; // 스크롤 복원
+            lightbox.classList.remove('show');
+            setTimeout(() => {
+                if (lightbox && lightbox.parentNode) {
+                    document.body.removeChild(lightbox);
+                }
+                document.body.style.overflow = '';
+            }, 300);
         }
         
         // 음악 컨트롤 설정
@@ -1636,11 +1744,11 @@
                 });
         }
         
-        // 폼 제출 처리 설정
+        // 폼 제출 설정
         function setupFormSubmission() {
             const form = document.getElementById('attendForm');
             const formStatusDiv = document.getElementById('formStatus');
-
+            
             if (form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
