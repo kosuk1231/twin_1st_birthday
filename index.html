@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>은설이와 은채의 첫 번째 생일에 초대합니다</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -258,7 +257,6 @@
             font-size: 15px;
             color: #6a5a7a;
             margin-top: 10px;
-            line-height: 1.4;
         }
 
         /* 달력 스타일 */
@@ -387,7 +385,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             width: 100%;
-            padding-bottom: 100%; /* 1:1 비율 */
+            padding-bottom: 100%;
         }
 
         .timeline-photo-item:hover {
@@ -472,73 +470,6 @@
             color: #ff6b9d;
         }
 
-        .map-image {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: 15px;
-            margin: 20px 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .transport-info {
-            background: #f8f5ff;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            text-align: left;
-            line-height: 1.8;
-        }
-
-        .transport-info h4 {
-            color: #ff6b9d;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .transport-info p {
-            color: #6a5a7a;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .nav-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .nav-button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            min-height: 70px;
-        }
-
-        .nav-button:hover {
-            transform: translateY(-2px);
-        }
-
-        .nav-button i {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .tmap { background: linear-gradient(135deg, #4285f4, #34a853); }
-        .kakao-navi { background: linear-gradient(135deg, #fee500, #ffc107); color: #333 !important; }
-        .naver-map { background: linear-gradient(135deg, #03c75a, #00d564); }
-        .kakao-map { background: linear-gradient(135deg, #fee500, #ffc107); color: #333 !important; }
-
         .map-button {
             display: inline-block;
             margin-top: 15px;
@@ -556,7 +487,156 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
-        /* RSVP 폼 */
+        /* 약도 이미지 */
+        .map-image-container {
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .map-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 교통 안내 */
+        .transport-guide {
+            margin: 25px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .transport-guide h4 {
+            color: #ff6b9d;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .transport-guide p {
+            line-height: 1.8;
+            color: #6a5a7a;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* 내비게이션 앱 바로가기 */
+        .navigation-apps {
+            margin: 25px 0;
+        }
+
+        .navigation-apps h4 {
+            color: #ff6b9d;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .nav-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 8px;
+            background: white;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #6a5a7a;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .nav-button span {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* 클릭 가능한 이미지 */
+        .clickable-image {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .clickable-image::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .clickable-image:hover::after {
+            opacity: 1;
+        }
+
+        /* 라이트박스 */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* RSVP */
         .rsvp {
             text-align: center;
             background: white;
@@ -699,71 +779,6 @@
             margin: 25px 0;
         }
 
-        /* 클릭 가능한 이미지 */
-        .clickable-image {
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        .clickable-image::after {
-            content: '🔍';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .clickable-image:hover::after {
-            opacity: 1;
-        }
-
-        /* 라이트박스 */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-        }
-
         /* 감사 메시지 */
         .thanks-section {
             margin: 40px 20px;
@@ -886,8 +901,8 @@
             
             .invitation-text {
                 font-size: 16px;
-                line-height: 1.7;
                 padding: 0 10px;
+                line-height: 1.7;
             }
             
             .invitation-header {
@@ -903,17 +918,20 @@
             }
 
             .nav-buttons {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
             }
 
             .nav-button {
-                padding: 12px;
-                min-height: 60px;
-                font-size: 12px;
+                padding: 12px 6px;
             }
 
-            .nav-button i {
-                font-size: 20px;
+            .nav-button span {
+                font-size: 11px;
+            }
+
+            .transport-guide p {
+                font-size: 14px;
             }
         }
     </style>
@@ -1211,44 +1229,47 @@
                 <p>클래스홀</p>
                 <p>서울특별시 강서구 양천로 570 20층</p>
                 <p>📞 02-2013-5670</p>
-                
-                <!-- 약도 이미지 -->
-                <img src="./map.jpg" alt="약도" class="map-image" onerror="handleImageError(this, '🗺️ 약도')">
-                
-                <!-- 교통 안내 -->
-                <div class="transport-info">
-                    <h4>🚇 지하철 이용시</h4>
-                    <p>지하철 9호선 증미역 3번출구로 나오시면<br>
-                    우측에 바로보이시는 가장 큰건물(NH 서울타워) 20층 입니다<br>
-                    증미역에서 도보로 1분정도 거리에 있습니다.</p>
-                    
-                    <h4>🚗 차량 이용시</h4>
-                    <p>T MAP 또는 카카오네비에<br>
-                    서울 강서구 양천로570 또는 NH서울타워로<br>
-                    검색하시면 주차장으로 바로 오실 수 있습니다</p>
-                </div>
-                
-                <!-- 내비게이션 앱 바로가기 -->
-                <div class="nav-buttons">
-                    <a href="javascript:void(0)" class="nav-button tmap" onclick="openNavigation('tmap')">
-                        <i class="fas fa-map-marked-alt"></i>
-                        T맵
-                    </a>
-                    <a href="javascript:void(0)" class="nav-button kakao-navi" onclick="openNavigation('kakaonavi')">
-                        <i class="fas fa-route"></i>
-                        카카오네비
-                    </a>
-                    <a href="javascript:void(0)" class="nav-button naver-map" onclick="openNavigation('navermap')">
-                        <i class="fas fa-map"></i>
-                        네이버지도
-                    </a>
-                    <a href="javascript:void(0)" class="nav-button kakao-map" onclick="openNavigation('kakaomap')">
-                        <i class="fas fa-location-arrow"></i>
-                        카카오맵
-                    </a>
-                </div>
-                
                 <a class="map-button" href="https://naver.me/5ss0AH07" target="_blank">📍 네이버 지도에서 보기</a>
+            </div>
+
+            <!-- 약도 이미지 -->
+            <div class="map-image-container">
+                <img src="./map.jpg" alt="오시는 길 약도" class="map-image" onerror="handleImageError(this, '🗺️ 약도')">
+            </div>
+
+            <!-- 교통 안내 -->
+            <div class="transport-guide">
+                <h4>🚇 지하철 이용 안내</h4>
+                <p>지하철 9호선 증미역 3번출구로 나오시면 우측에 바로보이시는 가장 큰건물(NH 서울타워) 20층 입니다. 증미역에서 도보로 1분정도 거리에 있습니다.</p>
+                
+                <h4>🚗 차량 이용 안내</h4>
+                <p>차량으로 오시는분들은 T MAP 또는 카카오네비에 <strong>서울 강서구 양천로570</strong> 또는 <strong>NH서울타워</strong>로 검색하시면 주차장으로 바로 오실 수 있습니다.</p>
+            </div>
+
+            <!-- 내비게이션 앱 바로가기 -->
+            <div class="navigation-apps">
+                <h4>📱 내비게이션 바로가기</h4>
+                <div class="nav-buttons">
+                    <a href="tmap://search?name=서울 강서구 양천로570" class="nav-button">
+                        <div class="nav-icon">🅿️</div>
+                        <span>T맵</span>
+                    </a>
+                    
+                    <a href="kakaonavi://navigate?ep=37.5515,126.8477&ename=NH서울타워" class="nav-button">
+                        <div class="nav-icon">🔵</div>
+                        <span>카카오네비</span>
+                    </a>
+                    
+                    <a href="nmap://search?query=서울 강서구 양천로570" class="nav-button">
+                        <div class="nav-icon">🟢</div>
+                        <span>네이버지도</span>
+                    </a>
+                    
+                    <a href="kakaomap://search?q=서울 강서구 양천로570" class="nav-button">
+                        <div class="nav-icon">🟡</div>
+                        <span>카카오맵</span>
+                    </a>
+                </div>
             </div>
         </div>
         
@@ -1519,53 +1540,6 @@
                         console.error('Error:', error);
                     });
                 });
-            }
-        }
-        
-        // 내비게이션 앱 열기
-        function openNavigation(type) {
-            const address = '서울 강서구 양천로 570';
-            const encodedAddress = encodeURIComponent(address);
-            
-            let url;
-            let webUrl;
-            
-            switch(type) {
-                case 'tmap':
-                    url = `tmap://search?name=${encodedAddress}`;
-                    webUrl = `https://tmap.life/route/search?name=${encodedAddress}`;
-                    break;
-                case 'kakaonavi':
-                    url = `kakaonavi://navigate?ep=126.8503,37.5518&by=CAR`;
-                    webUrl = `https://map.kakao.com/link/to/NH서울타워,37.5518,126.8503`;
-                    break;
-                case 'navermap':
-                    url = `nmap://search?query=${encodedAddress}`;
-                    webUrl = `https://map.naver.com/v5/search/${encodedAddress}`;
-                    break;
-                case 'kakaomap':
-                    url = `kakaomap://search?q=${encodedAddress}`;
-                    webUrl = `https://map.kakao.com/link/search/${encodedAddress}`;
-                    break;
-                default:
-                    return;
-            }
-            
-            // 모바일 앱 실행 시도
-            const isAndroid = /Android/i.test(navigator.userAgent);
-            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-            
-            if (isAndroid || isIOS) {
-                // 앱 실행 시도
-                window.location.href = url;
-                
-                // 2초 후 앱이 실행되지 않으면 웹 버전으로 이동
-                setTimeout(function() {
-                    window.open(webUrl, '_blank');
-                }, 2000);
-            } else {
-                // 데스크톱에서는 웹 버전으로 바로 이동
-                window.open(webUrl, '_blank');
             }
         }
         
