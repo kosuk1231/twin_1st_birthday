@@ -260,16 +260,6 @@
             margin-top: 10px;
         }
 
-        /* 달력 스타일 */
-        .calendar {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-
         .dday-badge {
             position: absolute;
             top: -15px;
@@ -293,6 +283,16 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+
+        /* 달력 스타일 */
+        .calendar {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
         }
 
         .calendar-header {
@@ -386,7 +386,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             width: 100%;
-            padding-bottom: 100%; /* 1:1 비율 */
+            padding-bottom: 100%;
             cursor: pointer;
         }
 
@@ -490,7 +490,7 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
-        /* 네비게이션 버튼 스타일 */
+        /* 네비게이션 버튼 */
         .navigation-buttons {
             margin: 25px 0;
         }
@@ -550,28 +550,7 @@
             margin-top: 4px;
         }
 
-        /* 각 앱별 호버 효과 */
-        .tmap-btn:hover .nav-icon {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(139, 95, 191, 0.3);
-        }
-
-        .kakao-navi-btn:hover .nav-icon {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
-        }
-
-        .naver-btn:hover .nav-icon {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(3, 199, 90, 0.3);
-        }
-
-        .kakao-map-btn:hover .nav-icon {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(254, 229, 0, 0.3);
-        }
-
-        /* 약도 이미지 스타일 */
+        /* 약도 */
         .map-container {
             margin: 20px 0;
             text-align: center;
@@ -586,34 +565,28 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
+            border: 2px solid transparent;
         }
 
         .map-image:hover {
             transform: scale(1.02);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            border-color: #ff6b9d;
         }
 
-        .map-image::after {
-            content: '🔍 클릭하면 확대됩니다';
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .click-hint {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #ff6b9d;
+            font-weight: 500;
+            animation: blink 2s infinite;
         }
 
-        .map-image:hover::after {
-            opacity: 1;
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.6; }
         }
 
-        /* 교통 안내 스타일 */
         .transport-info {
             margin: 20px 0;
         }
@@ -647,7 +620,7 @@
             font-weight: 600;
         }
 
-        /* RSVP 폼 스타일 */
+        /* RSVP 폼 */
         .rsvp {
             text-align: center;
             background: white;
@@ -716,7 +689,7 @@
         }
 
         .form-status.success {
-            background-color: rgba(255, 107, 157, 0.1);
+            background-color: rgba(145, 255, 172, 0.2);
             color: #ff6b9d;
         }
 
@@ -791,7 +764,37 @@
             margin: 25px 0;
         }
 
-        /* 라이트박스 스타일 */
+        /* 클릭 가능한 이미지 효과 */
+        .clickable-image {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .clickable-image::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .clickable-image:hover::after {
+            opacity: 1;
+        }
+
+        /* 라이트박스 */
         .lightbox {
             position: fixed;
             top: 0;
@@ -802,13 +805,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 3000;
-            transition: opacity 0.3s ease;
+            z-index: 9999;
             opacity: 0;
-        }
-
-        .lightbox.show {
-            opacity: 1;
+            transition: opacity 0.3s ease;
         }
 
         .lightbox-content {
@@ -846,18 +845,19 @@
             font-size: 40px;
             cursor: pointer;
             font-weight: bold;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(255, 107, 157, 0.8);
             width: 50px;
             height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .close-lightbox:hover {
-            background: rgba(255, 107, 157, 0.8);
+            background: rgba(255, 107, 157, 1);
+            transform: scale(1.1);
         }
 
         /* 감사 메시지 */
@@ -994,6 +994,11 @@
                 font-size: 16px;
             }
 
+            .transport-text {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+            
             .nav-grid {
                 gap: 10px;
             }
@@ -1003,8 +1008,7 @@
             }
             
             .nav-icon {
-                width: 40px;
-                height: 40px;
+                font-size: 24px;
             }
             
             .nav-btn span {
@@ -1026,10 +1030,9 @@
                 width: 40px;
                 height: 40px;
             }
-
-            .transport-section p {
-                font-size: 14px;
-                line-height: 1.7;
+            
+            .click-hint {
+                font-size: 11px;
             }
         }
     </style>
@@ -1173,10 +1176,10 @@
                         <div class="timeline-title">둥이들 탄생!</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./birth_1.JPG" alt="탄생 사진 1" onerror="handleImageError(this, '🍼')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./birth_2.JPG" alt="탄생 사진 2" onerror="handleImageError(this, '🍼')">
                         </div>
                     </div>
@@ -1189,10 +1192,10 @@
                         <div class="timeline-title">둥이들 50일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./50days_1.JPG" alt="50일 사진 1" onerror="handleImageError(this, '💝')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./50days_2.JPG" alt="50일 사진 2" onerror="handleImageError(this, '💝')">
                         </div>
                     </div>
@@ -1205,22 +1208,22 @@
                         <div class="timeline-title">둥이들 100일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./100days_1.jpeg" alt="100일 사진 1" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./100days_2.jpeg" alt="100일 사진 2" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./100days_3.jpeg" alt="100일 사진 3" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./100days_4.jpg" alt="100일 사진 4" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./100days_5.jpg" alt="100일 사진 5" onerror="handleImageError(this, '🎀')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./100days_6.JPG" alt="100일 사진 6" onerror="handleImageError(this, '🎀')">
                         </div>
                     </div>
@@ -1233,10 +1236,10 @@
                         <div class="timeline-title">둥이들 첫 크리스마스</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./x-mas_1.JPG" alt="첫 크리스마스 1" onerror="handleImageError(this, '🎄')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./x-mas_2.JPG" alt="첫 크리스마스 2" onerror="handleImageError(this, '🎄')">
                         </div>
                     </div>
@@ -1249,16 +1252,16 @@
                         <div class="timeline-title">둥이들 200일</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./200days_1.JPG" alt="200일 사진 1" onerror="handleImageError(this, '🌟')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./200days_2.JPG" alt="200일 사진 2" onerror="handleImageError(this, '🌟')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./200days_3.JPG" alt="200일 사진 3" onerror="handleImageError(this, '🌟')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./200days_4.JPG" alt="200일 사진 4" onerror="handleImageError(this, '🌟')">
                         </div>
                     </div>
@@ -1271,22 +1274,22 @@
                         <div class="timeline-title">둥이들 돌 사진</div>
                     </div>
                     <div class="timeline-photos">
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./1years_1.JPG" alt="돌 사진 1" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./1years_2.JPG" alt="돌 사진 2" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./1years_3.JPG" alt="돌 사진 3" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./1years_4.JPG" alt="돌 사진 4" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./1years_5.png" alt="돌 사진 5" onerror="handleImageError(this, '🎉')">
                         </div>
-                        <div class="timeline-photo-item">
+                        <div class="timeline-photo-item clickable-image">
                             <img src="./1years_6.png" alt="돌 사진 6" onerror="handleImageError(this, '🎉')">
                         </div>
                     </div>
@@ -1298,22 +1301,22 @@
         <div class="section">
             <div class="section-title">갤러리</div>
             <div class="gallery">
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">🎂</div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">👶</div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">👶</div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">🎁</div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">🎈</div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item clickable-image">
                     <div class="gallery-placeholder">🎊</div>
                 </div>
             </div>
@@ -1335,7 +1338,7 @@
                     <div class="nav-grid">
                         <!-- T맵 -->
                         <a href="tmap://search?name=서울 강서구 양천로570" class="nav-btn tmap-btn">
-                            <div class="nav-icon tmap-icon">
+                            <div class="nav-icon">
                                 <svg viewBox="0 0 40 40">
                                     <defs>
                                         <linearGradient id="tmapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1352,7 +1355,7 @@
                         
                         <!-- 카카오네비 -->
                         <a href="kakaonavi://navigate?ep=37.5515,126.8477&ename=서울 강서구 양천로570" class="nav-btn kakao-navi-btn">
-                            <div class="nav-icon kakao-navi-icon">
+                            <div class="nav-icon">
                                 <svg viewBox="0 0 40 40">
                                     <defs>
                                         <linearGradient id="kakaoNaviGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1370,7 +1373,7 @@
                         
                         <!-- 네이버지도 -->
                         <a href="https://map.naver.com/v5/search/서울 강서구 양천로570" target="_blank" class="nav-btn naver-btn">
-                            <div class="nav-icon naver-icon">
+                            <div class="nav-icon">
                                 <svg viewBox="0 0 40 40">
                                     <defs>
                                         <linearGradient id="naverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1387,7 +1390,7 @@
                         
                         <!-- 카카오맵 -->
                         <a href="https://map.kakao.com/link/search/서울 강서구 양천로570" target="_blank" class="nav-btn kakao-map-btn">
-                            <div class="nav-icon kakao-map-icon">
+                            <div class="nav-icon">
                                 <svg viewBox="0 0 40 40">
                                     <defs>
                                         <linearGradient id="kakaoMapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1413,7 +1416,8 @@
             
             <!-- 약도 이미지 -->
             <div class="map-container">
-                <img src="./map.png" alt="오시는 길 약도" class="map-image" id="mapImage" onerror="handleImageError(this, '🗺️ 약도')">
+                <img src="./map.png" alt="오시는 길 약도" class="map-image clickable-image" onerror="handleImageError(this, '🗺️ 약도')">
+                <div class="click-hint">📍 클릭하면 확대됩니다</div>
             </div>
             
             <!-- 교통 안내 -->
@@ -1543,9 +1547,6 @@
             // 이미지 클릭 설정
             setupImageClicks();
             
-            // 약도 이미지 클릭 설정 (별도로 처리)
-            setupMapImageClick();
-            
             // 음악 컨트롤 설정
             setupMusicControl();
             
@@ -1558,37 +1559,10 @@
             }, 1000);
         });
         
-        // 약도 이미지 클릭 설정 (중요: 명시적으로 설정)
-        function setupMapImageClick() {
-            const mapImage = document.getElementById('mapImage');
-            if (mapImage) {
-                console.log('약도 이미지 클릭 이벤트 설정 중...');
-                mapImage.style.cursor = 'pointer';
-                
-                // 클릭 이벤트 추가
-                mapImage.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('약도 이미지 클릭됨!');
-                    openLightbox(this.src, this.alt || '약도');
-                });
-                
-                // 터치 이벤트도 추가 (모바일용)
-                mapImage.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    console.log('약도 이미지 터치됨!');
-                    openLightbox(this.src, this.alt || '약도');
-                });
-                
-                console.log('약도 이미지 클릭 이벤트 설정 완료');
-            } else {
-                console.error('약도 이미지를 찾을 수 없습니다.');
-            }
-        }
-        
         // D-Day 카운터 계산
         function updateDday() {
             try {
-                const eventDate = new Date(2025, 6, 5); // 2025년 7월 5일
+                const eventDate = new Date(2025, 6, 5); // 2025년 7월 5일 (월은 0부터 시작)
                 const today = new Date();
                 
                 const diffTime = eventDate.getTime() - today.getTime();
@@ -1614,6 +1588,7 @@
             try {
                 const parent = img.parentNode;
                 
+                // 이미 플레이스홀더로 대체된 경우 중복 실행 방지
                 if (parent.querySelector('.image-placeholder')) return;
                 
                 const placeholder = document.createElement('div');
@@ -1627,69 +1602,81 @@
             }
         }
         
-        // 타임라인 이미지 클릭 설정
+        // 이미지 클릭 설정
         function setupImageClicks() {
             // 타임라인 이미지들
-            document.querySelectorAll('.timeline-photo-item img').forEach(img => {
-                img.parentElement.style.cursor = 'pointer';
-                img.parentElement.addEventListener('click', function() {
-                    openLightbox(img.src, img.alt);
+            document.querySelectorAll('.timeline-photo-item.clickable-image').forEach(item => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    if (img && img.src) {
+                        openLightbox(img.src, img.alt);
+                    }
                 });
             });
             
             // 갤러리 이미지들
-            document.querySelectorAll('.gallery-item img').forEach(img => {
-                img.parentElement.style.cursor = 'pointer';
-                img.parentElement.addEventListener('click', function() {
-                    openLightbox(img.src, img.alt);
+            document.querySelectorAll('.gallery-item.clickable-image').forEach(item => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    if (img && img.src) {
+                        openLightbox(img.src, img.alt);
+                    }
                 });
             });
+            
+            // 약도 이미지
+            const mapImage = document.querySelector('.map-image.clickable-image');
+            if (mapImage) {
+                mapImage.addEventListener('click', function() {
+                    openLightbox(this.src, this.alt || '약도');
+                });
+            }
         }
         
-        // 라이트박스 열기 (개선된 버전)
+        // 라이트박스 열기
         function openLightbox(imageSrc, imageAlt) {
-            console.log('라이트박스 열기:', imageSrc);
-            
-            // 기존 라이트박스가 있으면 제거
+            // 기존 라이트박스가 있다면 제거
             const existingLightbox = document.querySelector('.lightbox');
             if (existingLightbox) {
-                existingLightbox.remove();
+                document.body.removeChild(existingLightbox);
             }
             
             const lightbox = document.createElement('div');
             lightbox.className = 'lightbox';
             lightbox.innerHTML = `
                 <div class="lightbox-content">
-                    <span class="close-lightbox">&times;</span>
+                    <span class="close-lightbox" title="닫기">&times;</span>
                     <img src="${imageSrc}" alt="${imageAlt || '이미지'}" class="lightbox-image">
                     <div class="lightbox-caption">${imageAlt || '이미지'}</div>
                 </div>
             `;
             
             document.body.appendChild(lightbox);
-            document.body.style.overflow = 'hidden'; // 스크롤 방지
+            document.body.style.overflow = 'hidden';
             
             // 애니메이션 효과
             setTimeout(() => {
-                lightbox.classList.add('show');
+                lightbox.style.opacity = '1';
             }, 10);
             
-            // 닫기 버튼 이벤트
-            lightbox.querySelector('.close-lightbox').addEventListener('click', function() {
-                closeLightbox(lightbox);
-            });
+            // 닫기 이벤트들
+            const closeBtn = lightbox.querySelector('.close-lightbox');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    closeLightbox();
+                });
+            }
             
-            // 배경 클릭 시 닫기
             lightbox.addEventListener('click', function(e) {
                 if (e.target === this) {
-                    closeLightbox(lightbox);
+                    closeLightbox();
                 }
             });
             
             // ESC 키로 닫기
             const escHandler = function(e) {
                 if (e.key === 'Escape') {
-                    closeLightbox(lightbox);
+                    closeLightbox();
                     document.removeEventListener('keydown', escHandler);
                 }
             };
@@ -1697,14 +1684,17 @@
         }
         
         // 라이트박스 닫기
-        function closeLightbox(lightbox) {
-            lightbox.classList.remove('show');
-            setTimeout(() => {
-                if (lightbox && lightbox.parentNode) {
-                    document.body.removeChild(lightbox);
-                }
-                document.body.style.overflow = '';
-            }, 300);
+        function closeLightbox() {
+            const lightbox = document.querySelector('.lightbox');
+            if (lightbox) {
+                lightbox.style.opacity = '0';
+                setTimeout(() => {
+                    if (lightbox.parentNode) {
+                        document.body.removeChild(lightbox);
+                    }
+                    document.body.style.overflow = '';
+                }, 300);
+            }
         }
         
         // 음악 컨트롤 설정
@@ -1744,11 +1734,11 @@
                 });
         }
         
-        // 폼 제출 설정
+        // 폼 제출 처리
         function setupFormSubmission() {
             const form = document.getElementById('attendForm');
             const formStatusDiv = document.getElementById('formStatus');
-            
+
             if (form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
