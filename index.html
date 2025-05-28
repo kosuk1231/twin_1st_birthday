@@ -238,6 +238,7 @@
             border-radius: 15px;
             margin: 10px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
         }
 
         .event-date {
@@ -385,7 +386,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             width: 100%;
-            padding-bottom: 100%;
+            padding-bottom: 100%; /* 1:1 비율 */
         }
 
         .timeline-photo-item:hover {
@@ -487,156 +488,180 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
-        /* 약도 이미지 */
-        .map-image-container {
+        /* 네비게이션 버튼 스타일 */
+        .navigation-buttons {
             margin: 25px 0;
+        }
+
+        .nav-title {
+            text-align: center;
+            color: #ff6b9d;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 10px;
+            border-radius: 15px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            color: white;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* T맵 스타일 */
+        .tmap-btn {
+            background: linear-gradient(135deg, #6B46C1, #8B5CF6);
+        }
+
+        .tmap-btn .nav-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #6B46C1;
+            margin-bottom: 8px;
+        }
+
+        /* 카카오네비 스타일 */
+        .kakao-navi-btn {
+            background: linear-gradient(135deg, #1976D2, #42A5F5);
+        }
+
+        .kakao-navi-btn .nav-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #1976D2;
+            margin-bottom: 8px;
+        }
+
+        /* 네이버지도 스타일 */
+        .naver-btn {
+            background: linear-gradient(135deg, #03C75A, #1EC800);
+        }
+
+        .naver-btn .nav-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #03C75A;
+            margin-bottom: 8px;
+        }
+
+        /* 카카오맵 스타일 */
+        .kakao-map-btn {
+            background: linear-gradient(135deg, #FEE500, #FFDC3C);
+            color: #3C1E1E;
+        }
+
+        .kakao-map-btn .nav-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #FEE500;
+            margin-bottom: 8px;
+        }
+
+        .nav-btn span {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* 약도 이미지 스타일 */
+        .map-container {
+            margin: 20px 0;
             text-align: center;
         }
 
         .map-image {
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
             height: auto;
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        /* 교통 안내 */
-        .transport-guide {
-            margin: 25px 0;
-            padding: 20px;
+        .map-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* 교통 안내 스타일 */
+        .transport-info {
+            margin: 20px 0;
+        }
+
+        .transport-section {
             background: white;
+            padding: 20px;
+            margin: 15px 0;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
 
-        .transport-guide h4 {
+        .transport-section h4 {
             color: #ff6b9d;
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
         }
 
-        .transport-guide p {
+        .transport-section p {
             line-height: 1.8;
             color: #6a5a7a;
             font-size: 15px;
-            margin-bottom: 15px;
+            margin: 0;
         }
 
-        /* 내비게이션 앱 바로가기 */
-        .navigation-apps {
-            margin: 25px 0;
-        }
-
-        .navigation-apps h4 {
+        .transport-section strong {
             color: #ff6b9d;
-            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
         }
 
-        .nav-buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .nav-button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 15px 8px;
-            background: white;
-            border-radius: 12px;
-            text-decoration: none;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            color: #6a5a7a;
-        }
-
-        .nav-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-icon {
-            font-size: 20px;
-            margin-bottom: 6px;
-        }
-
-        .nav-button span {
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        /* 클릭 가능한 이미지 */
-        .clickable-image {
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        .clickable-image::after {
-            content: '🔍';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .clickable-image:hover::after {
-            opacity: 1;
-        }
-
-        /* 라이트박스 */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-        }
-
-        /* RSVP */
+        /* RSVP 폼 스타일 */
         .rsvp {
             text-align: center;
             background: white;
@@ -677,6 +702,7 @@
         }
 
         .submit-button {
+            display: inline-block;
             width: 100%;
             padding: 15px;
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
@@ -705,7 +731,7 @@
 
         .form-status.success {
             background-color: rgba(145, 255, 172, 0.2);
-            color: #4CAF50;
+            color: #ff6b9d;
         }
 
         .form-status.error {
@@ -777,6 +803,71 @@
             height: 1px;
             background: linear-gradient(to right, transparent, rgba(255, 107, 157, 0.3), transparent);
             margin: 25px 0;
+        }
+
+        /* 클릭 가능한 이미지 */
+        .clickable-image {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .clickable-image::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .clickable-image:hover::after {
+            opacity: 1;
+        }
+
+        /* 라이트박스 */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
         }
 
         /* 감사 메시지 */
@@ -917,21 +1008,21 @@
                 font-size: 16px;
             }
 
-            .nav-buttons {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-
-            .nav-button {
-                padding: 12px 6px;
-            }
-
-            .nav-button span {
-                font-size: 11px;
-            }
-
-            .transport-guide p {
+            .transport-section p {
                 font-size: 14px;
+                line-height: 1.7;
+            }
+            
+            .nav-grid {
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                padding: 12px 8px;
+            }
+            
+            .nav-btn span {
+                font-size: 12px;
             }
         }
     </style>
@@ -1230,45 +1321,67 @@
                 <p>서울특별시 강서구 양천로 570 20층</p>
                 <p>📞 02-2013-5670</p>
                 <a class="map-button" href="https://naver.me/5ss0AH07" target="_blank">📍 네이버 지도에서 보기</a>
-            </div>
-
-            <!-- 약도 이미지 -->
-            <div class="map-image-container">
-                <img src="./map.jpg" alt="오시는 길 약도" class="map-image" onerror="handleImageError(this, '🗺️ 약도')">
-            </div>
-
-            <!-- 교통 안내 -->
-            <div class="transport-guide">
-                <h4>🚇 지하철 이용 안내</h4>
-                <p>지하철 9호선 증미역 3번출구로 나오시면 우측에 바로보이시는 가장 큰건물(NH 서울타워) 20층 입니다. 증미역에서 도보로 1분정도 거리에 있습니다.</p>
                 
-                <h4>🚗 차량 이용 안내</h4>
-                <p>차량으로 오시는분들은 T MAP 또는 카카오네비에 <strong>서울 강서구 양천로570</strong> 또는 <strong>NH서울타워</strong>로 검색하시면 주차장으로 바로 오실 수 있습니다.</p>
+                <!-- 네비게이션 바로가기 -->
+                <div class="navigation-buttons">
+                    <div class="nav-title">📱 내비게이션 바로가기</div>
+                    <div class="nav-grid">
+                        <!-- T맵 -->
+                        <a href="tmap://search?name=서울 강서구 양천로570" class="nav-btn tmap-btn">
+                            <div class="nav-icon">T</div>
+                            <span>T맵</span>
+                        </a>
+                        
+                        <!-- 카카오네비 -->
+                        <a href="kakaonavi://navigate?ep=37.5515,126.8477&ename=서울 강서구 양천로570" class="nav-btn kakao-navi-btn">
+                            <div class="nav-icon">🗺</div>
+                            <span>카카오네비</span>
+                        </a>
+                        
+                        <!-- 네이버지도 -->
+                        <a href="https://map.naver.com/v5/search/서울 강서구 양천로570" target="_blank" class="nav-btn naver-btn">
+                            <div class="nav-icon">N</div>
+                            <span>네이버지도</span>
+                        </a>
+                        
+                        <!-- 카카오맵 -->
+                        <a href="https://map.kakao.com/link/search/서울 강서구 양천로570" target="_blank" class="nav-btn kakao-map-btn">
+                            <div class="nav-icon">📍</div>
+                            <span>카카오맵</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-
-            <!-- 내비게이션 앱 바로가기 -->
-            <div class="navigation-apps">
-                <h4>📱 내비게이션 바로가기</h4>
-                <div class="nav-buttons">
-                    <a href="tmap://search?name=서울 강서구 양천로570" class="nav-button">
-                        <div class="nav-icon">🅿️</div>
-                        <span>T맵</span>
-                    </a>
-                    
-                    <a href="kakaonavi://navigate?ep=37.5515,126.8477&ename=NH서울타워" class="nav-button">
-                        <div class="nav-icon">🔵</div>
-                        <span>카카오네비</span>
-                    </a>
-                    
-                    <a href="nmap://search?query=서울 강서구 양천로570" class="nav-button">
-                        <div class="nav-icon">🟢</div>
-                        <span>네이버지도</span>
-                    </a>
-                    
-                    <a href="kakaomap://search?q=서울 강서구 양천로570" class="nav-button">
-                        <div class="nav-icon">🟡</div>
-                        <span>카카오맵</span>
-                    </a>
+        </div>
+        
+        <!-- 약도 -->
+        <div class="section">
+            <div class="section-title">약도</div>
+            
+            <!-- 약도 이미지 -->
+            <div class="map-container">
+                <img src="./map.png" alt="오시는 길 약도" class="map-image clickable-image" onerror="handleImageError(this, '🗺️ 약도')">
+            </div>
+            
+            <!-- 교통 안내 -->
+            <div class="transport-info">
+                <div class="transport-section subway">
+                    <h4>🚇 지하철 이용시</h4>
+                    <p>
+                        지하철 9호선 증미역 3번출구로 나오시면<br>
+                        우측에 바로보이시는 가장 큰건물(NH 서울타워) 20층 입니다<br>
+                        증미역에서 도보로 1분정도 거리에 있습니다.
+                    </p>
+                </div>
+                
+                <div class="transport-section car">
+                    <h4>🚗 차량 이용시</h4>
+                    <p>
+                        차량으로 오시는분들은<br>
+                        T MAP 또는 카카오네비에<br>
+                        <strong>서울 강서구 양천로570</strong> 또는 <strong>NH서울타워</strong>로<br>
+                        검색하시면 주차장으로 바로 오실 수 있습니다
+                    </p>
                 </div>
             </div>
         </div>
@@ -1380,7 +1493,7 @@
             // 음악 컨트롤 설정
             setupMusicControl();
             
-            // 폼 제출 처리 설정
+            // 폼 제출 처리
             setupFormSubmission();
             
             // 음악 자동 재생 시도
@@ -1510,7 +1623,7 @@
                 });
         }
         
-        // 폼 제출 처리 설정
+        // 폼 제출 처리
         function setupFormSubmission() {
             const form = document.getElementById('attendForm');
             const formStatusDiv = document.getElementById('formStatus');
