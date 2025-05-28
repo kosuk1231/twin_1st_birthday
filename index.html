@@ -161,7 +161,7 @@
 
         .invitation-text {
             font-size: 18px;
-            line-height: 1.8;
+            line-height: 2.0;
             color: #6a5a7a;
             margin: 25px 0;
             padding: 0 15px;
@@ -260,23 +260,22 @@
             margin-top: 10px;
         }
 
+        /* D-Day 배지 (큰 사이즈) */
         .dday-badge {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            width: 60px;
-            height: 60px;
+            width: 120px;
+            height: 120px;
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 14px;
+            font-size: 28px;
             font-weight: 700;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
             z-index: 10;
             animation: pulse 2s infinite;
+            margin: 0 auto 20px auto;
         }
 
         @keyframes pulse {
@@ -292,7 +291,6 @@
             padding: 20px;
             margin: 15px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
         }
 
         .calendar-header {
@@ -386,8 +384,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             width: 100%;
-            padding-bottom: 100%;
-            cursor: pointer;
+            padding-bottom: 100%; /* 1:1 비율 */
         }
 
         .timeline-photo-item:hover {
@@ -433,7 +430,6 @@
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
-            cursor: pointer;
         }
 
         .gallery-item:hover {
@@ -554,7 +550,6 @@
         .map-container {
             margin: 20px 0;
             text-align: center;
-            position: relative;
         }
 
         .map-image {
@@ -565,13 +560,11 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
         }
 
         .map-image:hover {
-            transform: scale(1.02);
+            transform: translateY(-5px);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-            border-color: #ff6b9d;
         }
 
         .click-hint {
@@ -579,12 +572,13 @@
             font-size: 13px;
             color: #ff6b9d;
             font-weight: 500;
-            animation: blink 2s infinite;
+            opacity: 0.8;
+            animation: pulse-hint 2s infinite;
         }
 
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.6; }
+        @keyframes pulse-hint {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
         }
 
         .transport-info {
@@ -620,7 +614,64 @@
             font-weight: 600;
         }
 
-        /* RSVP 폼 */
+        /* 연락처 */
+        .contact-info {
+            padding: 15px 10px;
+        }
+
+        .contact-person {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .contact-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ff6b9d;
+            margin-bottom: 15px;
+        }
+
+        .phone-button {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ff6b9d, #ff9cc2);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
+            transition: all 0.3s ease;
+            justify-content: center;
+        }
+
+        .phone-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .phone-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .phone-number {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 107, 157, 0.3), transparent);
+            margin: 25px 0;
+        }
+
+        /* 참석 폼 */
         .rsvp {
             text-align: center;
             background: white;
@@ -690,7 +741,7 @@
 
         .form-status.success {
             background-color: rgba(145, 255, 172, 0.2);
-            color: #ff6b9d;
+            color: #4CAF50;
         }
 
         .form-status.error {
@@ -707,64 +758,7 @@
             display: none;
         }
 
-        /* 연락처 */
-        .contact-info {
-            padding: 15px 10px;
-        }
-
-        .contact-person {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .contact-name {
-            font-size: 18px;
-            font-weight: 600;
-            color: #ff6b9d;
-            margin-bottom: 15px;
-        }
-
-        .phone-button {
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #ff6b9d, #ff9cc2);
-            color: white;
-            padding: 16px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            margin-top: 15px;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
-            transition: all 0.3s ease;
-            justify-content: center;
-        }
-
-        .phone-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
-        }
-
-        .phone-icon {
-            font-size: 24px;
-            margin-right: 15px;
-        }
-
-        .phone-number {
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255, 107, 157, 0.3), transparent);
-            margin: 25px 0;
-        }
-
-        /* 클릭 가능한 이미지 효과 */
+        /* 클릭 가능한 이미지 */
         .clickable-image {
             position: relative;
             cursor: pointer;
@@ -794,6 +788,29 @@
             opacity: 1;
         }
 
+        .map-image.clickable-image::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+            color: white;
+            background: rgba(255, 107, 157, 0.8);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-image.clickable-image:hover::after {
+            opacity: 1;
+        }
+
         /* 라이트박스 */
         .lightbox {
             position: fixed;
@@ -819,22 +836,12 @@
             align-items: center;
         }
 
-        .lightbox-image {
+        .lightbox-content img {
             max-width: 100%;
             max-height: 85vh;
             object-fit: contain;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .lightbox-caption {
-            color: white;
-            margin-top: 15px;
-            font-size: 16px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 8px 16px;
-            border-radius: 20px;
         }
 
         .close-lightbox {
@@ -994,11 +1001,12 @@
                 font-size: 16px;
             }
 
-            .transport-text {
-                font-size: 14px;
-                line-height: 1.7;
+            .dday-badge {
+                width: 100px;
+                height: 100px;
+                font-size: 24px;
             }
-            
+
             .nav-grid {
                 gap: 10px;
             }
@@ -1008,20 +1016,24 @@
             }
             
             .nav-icon {
-                font-size: 24px;
+                width: 40px;
+                height: 40px;
             }
             
             .nav-btn span {
                 font-size: 12px;
             }
 
-            .lightbox-image {
-                max-height: 80vh;
-            }
-            
-            .lightbox-caption {
+            .transport-section p {
                 font-size: 14px;
-                margin-top: 10px;
+            }
+
+            .click-hint {
+                font-size: 11px;
+            }
+
+            .lightbox-content img {
+                max-height: 80vh;
             }
             
             .close-lightbox {
@@ -1029,10 +1041,6 @@
                 font-size: 30px;
                 width: 40px;
                 height: 40px;
-            }
-            
-            .click-hint {
-                font-size: 11px;
             }
         }
     </style>
@@ -1058,7 +1066,7 @@
             <div class="invitation-header">
                 소중한 순간, 소중한 분들을 모십니다
             </div>
-            
+
             <div class="invitation-text">
                 저희 부부에게 기적처럼 찾아와준<br>
                 선물같은 두 아이, <span class="highlight">은설이와 은채</span>가<br>
@@ -1083,24 +1091,12 @@
                 <div class="venue">더퍼스트클래스파티 강서NH서울타워점<br>클래스홀</div>
             </div>
         </div>
-        
-        <!-- 가족 소개 -->
+
+        <!-- D-Day -->
         <div class="section">
-            <div class="section-title">가족 소개</div>
-            <div class="family-info">
-                <p><i>👵</i> 할머니 소애숙</p>
-                <p><i>👨‍👩‍</i> 외할아버지 민한훈, 외할머니 신춘덕</p>
-                <p><i>👨</i> 외삼촌 민재원</p>
-                <p><i>👨‍👩‍</i> 아빠 고석우, 엄마 민초원</p>
-                <p><i>👧👧</i> 첫째 고은설, 둘째 고은채</p>
-            </div>
-        </div>
-        
-        <!-- 달력 -->
-        <div class="section">
-            <div class="section-title">돌잔치 D-Day</div>
+            <div class="section-title">D-Day</div>
+            <div class="dday-badge" id="dday-counter">D-Day</div>
             <div class="calendar">
-                <div class="dday-badge" id="dday-counter">D-Day</div>
                 <div class="calendar-header">2025년 7월</div>
                 <table>
                     <thead>
@@ -1162,6 +1158,18 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        
+        <!-- 가족 소개 -->
+        <div class="section">
+            <div class="section-title">가족 소개</div>
+            <div class="family-info">
+                <p><i>👵</i> 할머니 소애숙</p>
+                <p><i>👨‍👩‍</i> 외할아버지 민한훈, 외할머니 신춘덕</p>
+                <p><i>👨</i> 외삼촌 민재원</p>
+                <p><i>👨‍👩‍</i> 아빠 고석우, 엄마 민초원</p>
+                <p><i>👧👧</i> 첫째 고은설, 둘째 고은채</p>
             </div>
         </div>
         
@@ -1338,7 +1346,7 @@
                     <div class="nav-grid">
                         <!-- T맵 -->
                         <a href="tmap://search?name=서울 강서구 양천로570" class="nav-btn tmap-btn">
-                            <div class="nav-icon">
+                            <div class="nav-icon tmap-icon">
                                 <svg viewBox="0 0 40 40">
                                     <defs>
                                         <linearGradient id="tmapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1355,7 +1363,7 @@
                         
                         <!-- 카카오네비 -->
                         <a href="kakaonavi://navigate?ep=37.5515,126.8477&ename=서울 강서구 양천로570" class="nav-btn kakao-navi-btn">
-                            <div class="nav-icon">
+                            <div class="nav-icon kakao-navi-icon">
                                 <svg viewBox="0 0 40 40">
                                     <defs>
                                         <linearGradient id="kakaoNaviGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1373,7 +1381,7 @@
                         
                         <!-- 네이버지도 -->
                         <a href="https://map.naver.com/v5/search/서울 강서구 양천로570" target="_blank" class="nav-btn naver-btn">
-                            <div class="nav-icon">
+                            <div class="nav-icon naver-icon">
                                 <svg viewBox="0 0 40 40">
                                     <defs>
                                         <linearGradient id="naverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1390,7 +1398,7 @@
                         
                         <!-- 카카오맵 -->
                         <a href="https://map.kakao.com/link/search/서울 강서구 양천로570" target="_blank" class="nav-btn kakao-map-btn">
-                            <div class="nav-icon">
+                            <div class="nav-icon kakao-map-icon">
                                 <svg viewBox="0 0 40 40">
                                     <defs>
                                         <linearGradient id="kakaoMapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1409,7 +1417,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- 약도 -->
         <div class="section">
             <div class="section-title">약도</div>
@@ -1602,71 +1610,50 @@
             }
         }
         
-        // 이미지 클릭 설정
+        // 이미지 클릭 설정 (통합된 시스템)
         function setupImageClicks() {
-            // 타임라인 이미지들
-            document.querySelectorAll('.timeline-photo-item.clickable-image').forEach(item => {
-                item.addEventListener('click', function() {
-                    const img = this.querySelector('img');
-                    if (img && img.src) {
-                        openLightbox(img.src, img.alt);
-                    }
+            // 모든 클릭 가능한 이미지 (성장 타임라인 + 갤러리 + 약도)
+            document.querySelectorAll('.clickable-image img, img.clickable-image').forEach(img => {
+                img.addEventListener('click', function() {
+                    openLightbox(this.src, this.alt);
                 });
+                
+                // 클릭 가능함을 명시적으로 표시
+                img.style.cursor = 'pointer';
+                img.title = '클릭하면 확대됩니다';
             });
-            
-            // 갤러리 이미지들
-            document.querySelectorAll('.gallery-item.clickable-image').forEach(item => {
-                item.addEventListener('click', function() {
-                    const img = this.querySelector('img');
-                    if (img && img.src) {
-                        openLightbox(img.src, img.alt);
-                    }
-                });
-            });
-            
-            // 약도 이미지
-            const mapImage = document.querySelector('.map-image.clickable-image');
-            if (mapImage) {
-                mapImage.addEventListener('click', function() {
-                    openLightbox(this.src, this.alt || '약도');
-                });
-            }
         }
         
-        // 라이트박스 열기
+        // 라이트박스 열기 (통합된 버전)
         function openLightbox(imageSrc, imageAlt) {
             // 기존 라이트박스가 있다면 제거
             const existingLightbox = document.querySelector('.lightbox');
             if (existingLightbox) {
-                document.body.removeChild(existingLightbox);
+                closeLightbox();
             }
             
             const lightbox = document.createElement('div');
             lightbox.className = 'lightbox';
             lightbox.innerHTML = `
                 <div class="lightbox-content">
-                    <span class="close-lightbox" title="닫기">&times;</span>
-                    <img src="${imageSrc}" alt="${imageAlt || '이미지'}" class="lightbox-image">
-                    <div class="lightbox-caption">${imageAlt || '이미지'}</div>
+                    <span class="close-lightbox">&times;</span>
+                    <img src="${imageSrc}" alt="${imageAlt || '이미지'}">
                 </div>
             `;
-            
             document.body.appendChild(lightbox);
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'; // 스크롤 방지
             
             // 애니메이션 효과
             setTimeout(() => {
                 lightbox.style.opacity = '1';
             }, 10);
             
-            // 닫기 이벤트들
-            const closeBtn = lightbox.querySelector('.close-lightbox');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    closeLightbox();
-                });
-            }
+            // 닫기 버튼 이벤트
+            lightbox.querySelector('.close-lightbox').addEventListener('click', function() {
+                closeLightbox();
+            });
             
+            // 배경 클릭 시 닫기
             lightbox.addEventListener('click', function(e) {
                 if (e.target === this) {
                     closeLightbox();
@@ -1734,7 +1721,7 @@
                 });
         }
         
-        // 폼 제출 처리
+        // 폼 제출 설정
         function setupFormSubmission() {
             const form = document.getElementById('attendForm');
             const formStatusDiv = document.getElementById('formStatus');
