@@ -161,7 +161,7 @@
 
         .invitation-text {
             font-size: 18px;
-            line-height: 1.8;
+            line-height: 2.0;
             color: #6a5a7a;
             margin: 25px 0;
             padding: 0 15px;
@@ -260,29 +260,27 @@
             margin-top: 10px;
         }
 
-        /* D-Day 배지 */
+        /* D-Day 배지 (큰 사이즈) */
         .dday-badge {
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             background: linear-gradient(135deg, #ff6b9d, #fecfef);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 18px;
+            font-size: 28px;
             font-weight: 700;
-            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
             z-index: 10;
             animation: pulse 2s infinite;
+            margin: 0 auto 20px auto;
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
 
@@ -290,10 +288,9 @@
         .calendar {
             background: white;
             border-radius: 15px;
-            padding: 25px 20px 20px 20px;
-            margin: 20px 0 15px 0;
+            padding: 20px;
+            margin: 15px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
         }
 
         .calendar-header {
@@ -302,7 +299,6 @@
             font-weight: 600;
             color: #ff6b9d;
             margin-bottom: 15px;
-            margin-top: 10px;
         }
 
         table {
@@ -339,41 +335,6 @@
             font-weight: 700;
             font-size: 12px;
             line-height: 1.2;
-        }
-
-        /* 갤러리 */
-        .gallery {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .gallery-item {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-        }
-
-        .gallery-placeholder {
-            height: 120px;
-            background: linear-gradient(135deg, #ffeef8, #f8e8ff);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #ff6b9d;
         }
 
         /* 타임라인 */
@@ -456,6 +417,41 @@
             padding: 20px;
         }
 
+        /* 갤러리 */
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .gallery-placeholder {
+            height: 120px;
+            background: linear-gradient(135deg, #ffeef8, #f8e8ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #ff6b9d;
+        }
+
         /* 위치 정보 */
         .location-info {
             text-align: center;
@@ -490,7 +486,7 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
-        /* 네비게이션 앱 아이콘 */
+        /* 네비게이션 버튼 */
         .navigation-buttons {
             margin: 25px 0;
         }
@@ -550,32 +546,10 @@
             margin-top: 4px;
         }
 
-        /* 각 앱별 호버 효과 */
-        .tmap-btn:hover .nav-icon {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(139, 95, 191, 0.3);
-        }
-
-        .kakao-navi-btn:hover .nav-icon {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
-        }
-
-        .naver-btn:hover .nav-icon {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(3, 199, 90, 0.3);
-        }
-
-        .kakao-map-btn:hover .nav-icon {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(254, 229, 0, 0.3);
-        }
-
         /* 약도 */
         .map-container {
             margin: 20px 0;
             text-align: center;
-            position: relative;
         }
 
         .map-image {
@@ -585,11 +559,12 @@
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .map-image:hover {
             transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
         .click-hint {
@@ -606,7 +581,6 @@
             50% { opacity: 1; }
         }
 
-        /* 교통 안내 */
         .transport-info {
             margin: 20px 0;
         }
@@ -640,60 +614,64 @@
             font-weight: 600;
         }
 
-        /* 클릭 가능한 이미지 */
-        .clickable-image {
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
+        /* 연락처 */
+        .contact-info {
+            padding: 15px 10px;
         }
 
-        .clickable-image::after {
-            content: '🔍';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .contact-person {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .contact-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ff6b9d;
+            margin-bottom: 15px;
+        }
+
+        .phone-button {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ff6b9d, #ff9cc2);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
+            transition: all 0.3s ease;
+            justify-content: center;
+        }
+
+        .phone-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .phone-icon {
             font-size: 24px;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            margin-right: 15px;
         }
 
-        .clickable-image:hover::after {
-            opacity: 1;
+        .phone-number {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
-        .map-image.clickable-image::after {
-            content: '🔍';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 28px;
-            color: white;
-            background: rgba(255, 107, 157, 0.8);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .contact-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 107, 157, 0.3), transparent);
+            margin: 25px 0;
         }
 
-        .map-image.clickable-image:hover::after {
-            opacity: 1;
-        }
-
-        /* RSVP */
+        /* 참석 폼 */
         .rsvp {
             text-align: center;
             background: white;
@@ -776,61 +754,61 @@
             color: #3f51b5;
         }
 
-        /* 연락처 */
-        .contact-info {
-            padding: 15px 10px;
+        .hidden {
+            display: none;
         }
 
-        .contact-person {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
+        /* 클릭 가능한 이미지 */
+        .clickable-image {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
         }
 
-        .contact-name {
-            font-size: 18px;
-            font-weight: 600;
-            color: #ff6b9d;
-            margin-bottom: 15px;
-        }
-
-        .phone-button {
+        .clickable-image::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #ff6b9d, #ff9cc2);
-            color: white;
-            padding: 16px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            margin-top: 15px;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
-            transition: all 0.3s ease;
             justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .phone-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+        .clickable-image:hover::after {
+            opacity: 1;
         }
 
-        .phone-icon {
-            font-size: 24px;
-            margin-right: 15px;
+        .map-image.clickable-image::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+            color: white;
+            background: rgba(255, 107, 157, 0.8);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .phone-number {
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255, 107, 157, 0.3), transparent);
-            margin: 25px 0;
+        .map-image.clickable-image:hover::after {
+            opacity: 1;
         }
 
         /* 라이트박스 */
@@ -844,7 +822,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 2000;
+            z-index: 9999;
+            opacity: 0;
             transition: opacity 0.3s ease;
         }
 
@@ -852,23 +831,40 @@
             position: relative;
             max-width: 95%;
             max-height: 95%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .lightbox-content img {
             max-width: 100%;
-            max-height: 90vh;
+            max-height: 85vh;
             object-fit: contain;
             border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .close-lightbox {
             position: absolute;
-            top: -40px;
+            top: -50px;
             right: 0;
             color: white;
             font-size: 40px;
             cursor: pointer;
             font-weight: bold;
+            background: rgba(255, 107, 157, 0.8);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-lightbox:hover {
+            background: rgba(255, 107, 157, 1);
+            transform: scale(1.1);
         }
 
         /* 감사 메시지 */
@@ -981,18 +977,6 @@
                 padding: 20px;
             }
 
-            .dday-badge {
-                width: 70px;
-                height: 70px;
-                font-size: 16px;
-                top: -15px;
-                right: -15px;
-            }
-            
-            .calendar {
-                padding: 20px 15px 15px 15px;
-            }
-
             table th, table td {
                 padding: 8px 4px;
                 font-size: 12px;
@@ -1016,16 +1000,13 @@
             .phone-number {
                 font-size: 16px;
             }
-            
-            .invitation-header {
-                font-size: 19px;
+
+            .dday-badge {
+                width: 100px;
+                height: 100px;
+                font-size: 24px;
             }
-            
-            .transport-text {
-                font-size: 14px;
-                line-height: 1.7;
-            }
-            
+
             .nav-grid {
                 gap: 10px;
             }
@@ -1035,11 +1016,31 @@
             }
             
             .nav-icon {
-                font-size: 24px;
+                width: 40px;
+                height: 40px;
             }
             
             .nav-btn span {
                 font-size: 12px;
+            }
+
+            .transport-section p {
+                font-size: 14px;
+            }
+
+            .click-hint {
+                font-size: 11px;
+            }
+
+            .lightbox-content img {
+                max-height: 80vh;
+            }
+            
+            .close-lightbox {
+                top: -40px;
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -1065,7 +1066,7 @@
             <div class="invitation-header">
                 소중한 순간, 소중한 분들을 모십니다
             </div>
-            
+
             <div class="invitation-text">
                 저희 부부에게 기적처럼 찾아와준<br>
                 선물같은 두 아이, <span class="highlight">은설이와 은채</span>가<br>
@@ -1090,12 +1091,12 @@
                 <div class="venue">더퍼스트클래스파티 강서NH서울타워점<br>클래스홀</div>
             </div>
         </div>
-        
+
         <!-- D-Day -->
         <div class="section">
             <div class="section-title">D-Day</div>
+            <div class="dday-badge" id="dday-counter">D-Day</div>
             <div class="calendar">
-                <div class="dday-badge" id="dday-counter">D-Day</div>
                 <div class="calendar-header">2025년 7월</div>
                 <table>
                     <thead>
@@ -1176,7 +1177,7 @@
         <div class="section">
             <div class="section-title">성장 타임라인</div>
             <div class="timeline">
-                <!-- 탄생사진 -->
+                <!-- 탄생 -->
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2024년 7월</div>
@@ -1192,7 +1193,7 @@
                     </div>
                 </div>
                 
-                <!-- 50일 사진 -->
+                <!-- 50일 -->
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2024년 8월</div>
@@ -1208,7 +1209,7 @@
                     </div>
                 </div>
                 
-                <!-- 100일 사진 -->
+                <!-- 100일 -->
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2024년 10월</div>
@@ -1252,7 +1253,7 @@
                     </div>
                 </div>
                 
-                <!-- 200일 사진 -->
+                <!-- 200일 -->
                 <div class="timeline-section">
                     <div class="timeline-header">
                         <div class="timeline-date">2025년 1월</div>
@@ -1416,7 +1417,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- 약도 -->
         <div class="section">
             <div class="section-title">약도</div>
@@ -1441,7 +1442,10 @@
                 <div class="transport-section car">
                     <h4>🚗 차량 이용시</h4>
                     <p>
-                        차량으로 오시는분들은 T MAP 또는 카카오네비에 <strong>서울 강서구 양천로570</strong> 또는 <strong>NH서울타워</strong>로 검색하시면 주차장으로 바로 오실 수 있습니다
+                        차량으로 오시는분들은<br>
+                        T MAP 또는 카카오네비에<br>
+                        <strong>서울 강서구 양천로570</strong> 또는 <strong>NH서울타워</strong>로<br>
+                        검색하시면 주차장으로 바로 오실 수 있습니다
                     </p>
                 </div>
             </div>
@@ -1554,13 +1558,13 @@
             // 음악 컨트롤 설정
             setupMusicControl();
             
+            // 폼 제출 설정
+            setupFormSubmission();
+            
             // 음악 자동 재생 시도
             setTimeout(function() {
                 tryAutoplayMusic();
             }, 1000);
-            
-            // 폼 제출 이벤트 설정
-            setupFormSubmission();
         });
         
         // D-Day 카운터 계산
@@ -1590,41 +1594,37 @@
         // 이미지 오류 처리
         function handleImageError(img, text) {
             try {
+                const parent = img.parentNode;
+                
                 // 이미 플레이스홀더로 대체된 경우 중복 실행 방지
-                if (img.parentNode && img.parentNode.querySelector('.image-placeholder')) return;
+                if (parent.querySelector('.image-placeholder')) return;
                 
                 const placeholder = document.createElement('div');
                 placeholder.className = 'image-placeholder';
                 placeholder.textContent = text || '📷';
                 
-                if (img.parentNode) {
-                    img.style.display = 'none';
-                    img.parentNode.appendChild(placeholder);
-                }
+                parent.appendChild(placeholder);
+                img.style.display = 'none';
             } catch (error) {
                 console.error('이미지 오류 처리 실패:', error);
             }
         }
         
-        // 이미지 클릭 설정
+        // 이미지 클릭 설정 (통합된 시스템)
         function setupImageClicks() {
-            // 모든 클릭 가능한 이미지
+            // 모든 클릭 가능한 이미지 (성장 타임라인 + 갤러리 + 약도)
             document.querySelectorAll('.clickable-image img, img.clickable-image').forEach(img => {
                 img.addEventListener('click', function() {
                     openLightbox(this.src, this.alt);
                 });
+                
+                // 클릭 가능함을 명시적으로 표시
+                img.style.cursor = 'pointer';
+                img.title = '클릭하면 확대됩니다';
             });
-            
-            // 약도 이미지 클릭 이벤트 직접 추가
-            const mapImage = document.querySelector('.map-image');
-            if (mapImage) {
-                mapImage.addEventListener('click', function() {
-                    openLightbox(this.src, this.alt || '약도');
-                });
-            }
         }
         
-        // 라이트박스 열기
+        // 라이트박스 열기 (통합된 버전)
         function openLightbox(imageSrc, imageAlt) {
             // 기존 라이트박스가 있다면 제거
             const existingLightbox = document.querySelector('.lightbox');
@@ -1642,6 +1642,11 @@
             `;
             document.body.appendChild(lightbox);
             document.body.style.overflow = 'hidden'; // 스크롤 방지
+            
+            // 애니메이션 효과
+            setTimeout(() => {
+                lightbox.style.opacity = '1';
+            }, 10);
             
             // 닫기 버튼 이벤트
             lightbox.querySelector('.close-lightbox').addEventListener('click', function() {
@@ -1669,8 +1674,13 @@
         function closeLightbox() {
             const lightbox = document.querySelector('.lightbox');
             if (lightbox) {
-                document.body.removeChild(lightbox);
-                document.body.style.overflow = ''; // 스크롤 복원
+                lightbox.style.opacity = '0';
+                setTimeout(() => {
+                    if (lightbox.parentNode) {
+                        document.body.removeChild(lightbox);
+                    }
+                    document.body.style.overflow = '';
+                }, 300);
             }
         }
         
@@ -1713,11 +1723,10 @@
         
         // 폼 제출 설정
         function setupFormSubmission() {
-            // 폼 제출 처리
             const form = document.getElementById('attendForm');
             const formStatusDiv = document.getElementById('formStatus');
 
-            if (form && formStatusDiv) {
+            if (form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
